@@ -1,0 +1,61 @@
+name: whatamilookingat
+description: "AI-powered smart camera that explains what you're looking at"
+publish_to: 'none'
+version: 1.0.0+1
+
+environment:
+  sdk: ^3.10.4
+
+dependencies:
+  flutter:
+    sdk: flutter
+  cupertino_icons: ^1.0.8
+
+  # Camera & Media
+  camera: ^0.11.1
+  image_picker: ^1.1.2
+  path_provider: ^2.1.5
+  image: ^4.5.3
+
+  # Location
+  geolocator: ^14.0.0
+  permission_handler: ^11.4.0
+
+  # AI - Gemini
+  google_generative_ai: ^0.4.6
+
+  # HTTP for REST APIs (Groq, OpenRouter, News)
+  http: ^1.4.0
+
+  # State Management
+  provider: ^6.1.5
+
+  # Environment
+  flutter_dotenv: ^5.2.1
+
+  # Connectivity
+  connectivity_plus: ^6.1.4
+
+  # UI Enhancements
+  shimmer: ^3.0.0
+
+  # EXIF reading
+  exif: ^3.3.0
+
+  # Share
+  share_plus: ^10.1.4
+
+  # On-Device Vision (Fast Feedback)
+  google_mlkit_object_detection: any
+  google_mlkit_text_recognition: any
+  google_mlkit_commons: any
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  flutter_lints: ^6.0.0
+
+flutter:
+  uses-material-design: true
+  assets:
+    - .env
