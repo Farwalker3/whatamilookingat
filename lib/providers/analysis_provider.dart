@@ -573,7 +573,7 @@ class AnalysisProvider extends ChangeNotifier {
     // Add the city or street to the query for local context
     String? finalQuery;
     if (query != null && geocode['city'] != null) {
-      finalQuery = '$query \${geocode['city']}';
+      finalQuery = '$query ${geocode['city']}';
     } else {
       finalQuery = query;
     }
