@@ -48,6 +48,13 @@ jobs:
           path: build/app/outputs/flutter-apk/app-release.apk
           retention-days: 7
 
+      - name: Force update latest tag
+        run: |
+          git config user.name "github-actions"
+          git config user.email "github-actions@github.com"
+          git tag -fa latest -m "Update latest tag"
+          git push -f origin latest
+
       - name: Update Latest Release
         uses: softprops/action-gh-release@v2
         with:
