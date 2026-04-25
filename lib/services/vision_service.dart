@@ -69,6 +69,20 @@ class VisionService {
     }
   }
 
+  /// Extremely fast, targeted object detection strictly for AR Bounding Box rendering.
+  Future<List<DetectedObject>> detectObjectsRealtime(CameraImage image, int sensorOrientation) async {
+    if (!_isInitialized) await initialize();
+
+    try {
+      final inputImage = _buildInputImage(image, sensorOrientation);
+      if (inputImage == null) return [];
+
+      return await _objectDetector.processImage(inputImage);
+    } catch (_) {
+      return [];
+    }
+  }
+
   /// Analyze an image from a file path.
   Future<List<String>> detectLabelsFromPath(String path) async {
     if (!_isInitialized) await initialize();

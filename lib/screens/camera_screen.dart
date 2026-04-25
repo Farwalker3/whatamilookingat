@@ -5,6 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 import 'package:flutter/services.dart';
 import 'package:gal/gal.dart';
+import 'package:google_mlkit_object_detection/google_mlkit_object_detection.dart';
 import 'package:path_provider/path_provider.dart';
 import 'package:provider/provider.dart';
 import 'package:shimmer/shimmer.dart';
@@ -281,7 +282,29 @@ class _CameraScreenState extends State<CameraScreen>
               child: SizedBox(
                 width: _cameraController!.value.previewSize?.height ?? 1920,
                 height: _cameraController!.value.previewSize?.width ?? 1080,
-                child: CameraPreview(_cameraController!),
+                child: Stack(
+                  fit: StackFit.expand,
+                  children: [
+                    CameraPreview(_cameraController!),
+                    if (provider.isARModeEnabled)
+                      ValueListenableBuilder<List<DetectedObject>>(
+                        valueListenable: provider.realtimeObjects,
+                        builder: (context, objects, child) {
+                          if (objects.isEmpty) return const SizedBox.shrink();
+                          return CustomPaint(
+                            painter: BoundingBoxPainter(
+                              objects: objects,
+                              imageSize: Size(
+                                _cameraController!.value.previewSize?.width ?? 1080,
+                                _cameraController!.value.previewSize?.height ?? 1920,
+                              ),
+                              rotation: _cameraController!.description.sensorOrientation,
+                            ),
+                          );
+                        },
+                      ),
+                  ],
+                ),
               ),
             ),
           );
@@ -688,3 +711,86 @@ class _CameraScreenState extends State<CameraScreen>
     );
   }
 }
+
+/// Draws neon bounding boxes over detected objects in real-time.
+class BoundingBoxPainter extends CustomPainter {
+  final List<DetectedObject> objects;
+  final Size imageSize;
+  final int rotation;
+
+  BoundingBoxPainter({
+    required this.objects,
+    required this.imageSize,
+    required this.rotation,
+  });
+
+  @override
+  void paint(Canvas canvas, Size size) {
+    if (objects.isEmpty) return;
+
+    final double scaleX = size.width / imageSize.width;
+    final double scaleY = size.height / imageSize.height;
+
+    final Paint paint = Paint()
+      ..style = PaintingStyle.stroke
+      ..strokeWidth = 2.0
+      ..color = AppTheme.primary
+      ..strokeJoin = StrokeJoin.round;
+
+    final Paint fillPaint = Paint()
+      ..style = PaintingStyle.fill
+      ..color = AppTheme.primary.withAlpha(40);
+
+    final TextPainter textPainter = TextPainter(
+      textDirection: TextDirection.ltr,
+    );
+
+    for (final obj in objects) {
+      final rect = obj.boundingBox;
+      
+      // Calculate scaled rect based on camera preview
+      // Note: mapping bounding boxes directly from raw camera pixel space to screen
+      // can require rotation/translation matrices, but we approximate for simple AR:
+      final left = rect.left * scaleX;
+      final top = rect.top * scaleY;
+      final right = rect.right * scaleX;
+      final bottom = rect.bottom * scaleY;
+      
+      final displayRect = Rect.fromLTRB(left, top, right, bottom);
+
+      // Draw neon box
+      canvas.drawRRect(
+        RRect.fromRectAndRadius(displayRect, const Radius.circular(8)),
+        fillPaint,
+      );
+      canvas.drawRRect(
+        RRect.fromRectAndRadius(displayRect, const Radius.circular(8)),
+        paint,
+      );
+
+      // Draw primary label if above threshold
+      final labels = obj.labels.where((l) => l.confidence > 0.6).toList();
+      if (labels.isNotEmpty) {
+        final label = labels.first.text;
+        
+        textPainter.text = TextSpan(
+          text: label,
+          style: const TextStyle(
+            color: Colors.white,
+            fontSize: 14,
+            fontWeight: FontWeight.bold,
+            backgroundColor: Colors.black54,
+          ),
+        );
+        textPainter.layout();
+        textPainter.paint(canvas, Offset(displayRect.left + 4, displayRect.top + 4));
+      }
+    }
+  }
+
+  @override
+  bool shouldRepaint(BoundingBoxPainter oldDelegate) {
+    return oldDelegate.objects != objects || oldDelegate.imageSize != imageSize;
+  }
+}
+

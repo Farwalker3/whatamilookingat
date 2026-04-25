@@ -80,7 +80,7 @@ class GroqProvider extends AIProvider with RateLimitTracker {
 ${context.toPromptText()}
 
 CRITICAL RULES:
-- DO NOT HALLUCINATE brands or models. If an object lacks a clear logo, describe it generically (e.g., "white circular device", NOT "Apple AirPod").
+- Identify the EXACT make and model (e.g. 'Ford F-350', 'John Deere Tractor') ONLY IF there are highly distinct visual indicators. If the item is generic, unlabeled, or handmade, describe it physically without guessing a brand.
 - NEVER invent or guess text. You MUST strictly rely on the "EXACT OCR TEXT IN IMAGE" provided in the DEVICE CONTEXT above. If no text is provided, do NOT guess text.
 - Identify objects both NEAR and FAR in the scene
 - Get STRAIGHT TO THE POINT — no filler phrases

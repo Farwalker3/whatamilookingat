@@ -128,6 +128,27 @@ class _SettingsScreenState extends State<SettingsScreen> {
           ),
 
           const SizedBox(height: 24),
+          _buildSectionHeader('Features', Icons.auto_awesome_rounded),
+          const SizedBox(height: 8),
+          Consumer<AnalysisProvider>(
+            builder: (context, provider, _) => SwitchListTile(
+              title: const Text(
+                'Live AR Bounds (Beta)',
+                style: TextStyle(color: Colors.white, fontWeight: FontWeight.w600),
+              ),
+              subtitle: Text(
+                'Draws real-time computer vision boundaries over objects. Uses more battery.',
+                style: TextStyle(color: Colors.white.withAlpha(150), fontSize: 13),
+              ),
+              value: provider.isARModeEnabled,
+              onChanged: (val) => provider.toggleARMode(),
+              activeColor: AppTheme.primary,
+              shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(16)),
+              tileColor: Colors.white.withAlpha(10),
+            ),
+          ),
+
+          const SizedBox(height: 24),
           _buildSectionHeader('About', Icons.info_rounded),
           const SizedBox(height: 8),
           _buildInfoCard(

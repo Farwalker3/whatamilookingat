@@ -4,6 +4,7 @@ import 'dart:io';
 import 'package:camera/camera.dart';
 import 'package:connectivity_plus/connectivity_plus.dart';
 import 'package:flutter/foundation.dart';
+import 'package:google_mlkit_object_detection/google_mlkit_object_detection.dart';
 import 'package:image/image.dart' as img;
 import 'package:image_picker/image_picker.dart';
 import 'package:path_provider/path_provider.dart';
@@ -58,8 +59,13 @@ class AnalysisProvider extends ChangeNotifier {
 
   // Live analysis loop
   Timer? _analysisTimer;
-
   CameraController? _cameraController;
+
+  // AR Features
+  bool _isARModeEnabled = false;
+  bool get isARModeEnabled => _isARModeEnabled;
+  final ValueNotifier<List<DetectedObject>> realtimeObjects = ValueNotifier([]);
+  bool _isStreamProcessing = false;
 
   // Getters
   List<Explanation> get explanations => _explanations;
@@ -103,6 +109,41 @@ class AnalysisProvider extends ChangeNotifier {
     _cameraController = controller;
   }
 
+  void toggleARMode() {
+    _isARModeEnabled = !_isARModeEnabled;
+    notifyListeners();
+    if (_isARModeEnabled && !_isFrozen) {
+      _startARStream();
+    } else if (!_isARModeEnabled && _cameraController?.value.isStreamingImages == true) {
+      _cameraController?.stopImageStream();
+      realtimeObjects.value = [];
+    }
+  }
+
+  Future<void> _startARStream() async {
+    if (_cameraController == null || !_cameraController!.value.isInitialized) return;
+    if (_cameraController!.value.isStreamingImages) return;
+
+    try {
+      await _cameraController!.startImageStream((image) async {
+        if (_isStreamProcessing || _isFrozen) return;
+        _isStreamProcessing = true;
+        
+        final orientation = _cameraController!.description.sensorOrientation;
+        final objects = await _visionService.detectObjectsRealtime(image, orientation);
+        
+        if (objects.isNotEmpty || realtimeObjects.value.isNotEmpty) {
+          realtimeObjects.value = objects;
+        }
+        
+        await Future.delayed(const Duration(milliseconds: 100)); // Rate limit roughly 10fps
+        _isStreamProcessing = false;
+      });
+    } catch (e) {
+      debugPrint('Failed to start AR stream: $e');
+    }
+  }
+
   /// Start the live analysis loop.
   void startLiveAnalysis() {
     _isFrozen = false;
@@ -112,6 +153,9 @@ class AnalysisProvider extends ChangeNotifier {
       _currentInterval,
       (_) => _analyzeCurrentFrame(),
     );
+    if (_isARModeEnabled) {
+      _startARStream();
+    }
     // Run immediately too
     _analyzeCurrentFrame();
     notifyListeners();
@@ -121,6 +165,9 @@ class AnalysisProvider extends ChangeNotifier {
   void stopLiveAnalysis() {
     _analysisTimer?.cancel();
     _analysisTimer = null;
+    if (_cameraController?.value.isStreamingImages == true) {
+      _cameraController?.stopImageStream();
+    }
     notifyListeners();
   }
 
@@ -133,8 +180,13 @@ class AnalysisProvider extends ChangeNotifier {
     try {
       if (_cameraController != null &&
           _cameraController!.value.isInitialized) {
+        final wasStreaming = _cameraController!.value.isStreamingImages;
+        if (wasStreaming) await _cameraController!.stopImageStream();
+        realtimeObjects.value = [];
+
         final xFile = await _cameraController!.takePicture();
         _frozenImage = await xFile.readAsBytes();
+        
         notifyListeners();
 
         // Run one final analysis on the frozen image
@@ -276,7 +328,15 @@ class AnalysisProvider extends ChangeNotifier {
     }
 
     try {
+      final wasStreaming = _cameraController!.value.isStreamingImages;
+      if (wasStreaming) await _cameraController!.stopImageStream();
+
       final xFile = await _cameraController!.takePicture();
+      
+      if (wasStreaming && !_isFrozen && _isARModeEnabled) {
+        await _startARStream();
+      }
+
       await _runAnalysis(xFile: xFile);
     } catch (_) {
       // Frame capture failed
@@ -333,8 +393,20 @@ class AnalysisProvider extends ChangeNotifier {
       // === Step 3: Compress image for faster upload ===
       final Uint8List compressedBytes = await compute(_compressImage, rawBytes);
 
+      // === Step 3b: Determine contextual search query ===
+      String? contextQuery;
+      final fullTextLabel = currentLabels.firstWhere(
+        (l) => l.startsWith('EXACT OCR'),
+        orElse: () => '',
+      ).toLowerCase();
+      
+      if (fullTextLabel.contains(RegExp(r'road\s*clos|construction|traffic|accident|police|detour'))) {
+        contextQuery = 'road closed OR construction OR traffic OR accident';
+        debugPrint('[Analysis] Context query triggered: $contextQuery');
+      }
+
       // === Step 4: Build context (parallel with compression) ===
-      final context = overrideContext ?? await _getOptimizedContext(currentLabels);
+      final context = overrideContext ?? await _getOptimizedContext(currentLabels, contextQuery);
 
       if (context.hasLocation) {
         _locationName = context.placeName?.isNotEmpty == true
@@ -470,10 +542,11 @@ class AnalysisProvider extends ChangeNotifier {
     debugPrint('[Analysis] Interval adapted to ${_currentInterval.inSeconds}s');
   }
 
-  Future<DeviceContext> _getOptimizedContext([List<String> labels = const []]) async {
+  Future<DeviceContext> _getOptimizedContext([List<String> labels = const [], String? query]) async {
     if (_cachedContext != null && _lastContextUpdate != null) {
       final age = DateTime.now().difference(_lastContextUpdate!);
-      if (age < _contextCacheDuration) {
+      // If we have a specific query, we force a refresh to get the local news
+      if (query == null && age < _contextCacheDuration) {
         // Return cached context but with fresh labels and findings
         return DeviceContext(
           latitude: _cachedContext!.latitude,
@@ -497,8 +570,16 @@ class AnalysisProvider extends ChangeNotifier {
     final geocode = await _locationService.reverseGeocode(
         position.latitude, position.longitude);
     
+    // Add the city or street to the query for local context
+    String? finalQuery;
+    if (query != null && geocode['city'] != null) {
+      finalQuery = '$query \${geocode['city']}';
+    } else {
+      finalQuery = query;
+    }
+
     final news = await _newsService.getLocalNews(
-        countryCode: geocode['countryCode']);
+        countryCode: geocode['countryCode'], query: finalQuery);
 
     _cachedContext = DeviceContext(
       latitude: position.latitude,
