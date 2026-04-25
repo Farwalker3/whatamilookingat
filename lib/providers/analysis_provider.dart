@@ -40,6 +40,10 @@ class AnalysisProvider extends ChangeNotifier {
   List<String> _previousLabels = [];
   int _staticFrameCount = 0;
   static const _staticThreshold = 2; // frames before slowing down
+  DateTime? _lastCloudAnalysisAt;
+  bool _isPendingSceneAnalysis = false;
+  static const _sceneSimilarityThreshold = 0.65;
+
 
   // Self-learning memory
   List<String> _recentFindings = [];
@@ -114,8 +118,7 @@ class AnalysisProvider extends ChangeNotifier {
     notifyListeners();
     if (_isARModeEnabled && !_isFrozen) {
       _startARStream();
-    } else if (!_isARModeEnabled && _cameraController?.value.isStreamingImages == true) {
-      _cameraController?.stopImageStream();
+    } else if (!_isARModeEnabled) {
       realtimeObjects.value = [];
     }
   }
@@ -125,22 +128,11 @@ class AnalysisProvider extends ChangeNotifier {
     if (_cameraController!.value.isStreamingImages) return;
 
     try {
-      await _cameraController!.startImageStream((image) async {
-        if (_isStreamProcessing || _isFrozen) return;
-        _isStreamProcessing = true;
-        
-        final orientation = _cameraController!.description.sensorOrientation;
-        final objects = await _visionService.detectObjectsRealtime(image, orientation);
-        
-        if (objects.isNotEmpty || realtimeObjects.value.isNotEmpty) {
-          realtimeObjects.value = objects;
-        }
-        
-        await Future.delayed(const Duration(milliseconds: 100)); // Rate limit roughly 10fps
-        _isStreamProcessing = false;
+      await _cameraController!.startImageStream((image) {
+        unawaited(_handleLiveFrame(image));
       });
     } catch (e) {
-      debugPrint('Failed to start AR stream: $e');
+      debugPrint('Failed to start live stream: $e');
     }
   }
 
@@ -148,16 +140,11 @@ class AnalysisProvider extends ChangeNotifier {
   void startLiveAnalysis() {
     _isFrozen = false;
     _frozenImage = null;
-    _analysisTimer?.cancel();
-    _analysisTimer = Timer.periodic(
-      _currentInterval,
-      (_) => _analyzeCurrentFrame(),
-    );
-    if (_isARModeEnabled) {
-      _startARStream();
-    }
-    // Run immediately too
-    _analyzeCurrentFrame();
+    _isPendingSceneAnalysis = false;
+    _currentInterval = _fastInterval;
+    _previousLabels = [];
+    _staticFrameCount = 0;
+    _startARStream();
     notifyListeners();
   }
 
@@ -165,6 +152,7 @@ class AnalysisProvider extends ChangeNotifier {
   void stopLiveAnalysis() {
     _analysisTimer?.cancel();
     _analysisTimer = null;
+    _isPendingSceneAnalysis = false;
     if (_cameraController?.value.isStreamingImages == true) {
       _cameraController?.stopImageStream();
     }
@@ -176,6 +164,7 @@ class AnalysisProvider extends ChangeNotifier {
     _isFrozen = true;
     _analysisTimer?.cancel();
     _analysisTimer = null;
+    _isPendingSceneAnalysis = false;
 
     try {
       if (_cameraController != null &&
@@ -186,10 +175,9 @@ class AnalysisProvider extends ChangeNotifier {
 
         final xFile = await _cameraController!.takePicture();
         _frozenImage = await xFile.readAsBytes();
-        
+
         notifyListeners();
 
-        // Run one final analysis on the frozen image
         await _runAnalysis(xFile: xFile);
         return _frozenImage;
       }
@@ -321,26 +309,91 @@ class AnalysisProvider extends ChangeNotifier {
     notifyListeners();
   }
 
-  Future<void> _analyzeCurrentFrame() async {
-    if (_isAnalyzing || _isFrozen) return;
+  Future<void> _handleLiveFrame(CameraImage image) async {
+    if (_isStreamProcessing || _isFrozen || _isAnalyzing) return;
     if (_cameraController == null || !_cameraController!.value.isInitialized) {
       return;
     }
 
+    _isStreamProcessing = true;
     try {
-      final wasStreaming = _cameraController!.value.isStreamingImages;
-      if (wasStreaming) await _cameraController!.stopImageStream();
+      final orientation = _cameraController!.description.sensorOrientation;
+      final currentLabels = await _visionService.detectLabels(image, orientation);
 
-      final xFile = await _cameraController!.takePicture();
-      
-      if (wasStreaming && !_isFrozen && _isARModeEnabled) {
-        await _startARStream();
+      if (currentLabels.isNotEmpty) {
+        _liveLabels = currentLabels.take(4).join(' • ');
       }
 
-      await _runAnalysis(xFile: xFile);
-    } catch (_) {
-      // Frame capture failed
+      if (_isARModeEnabled) {
+        final objects = await _visionService.detectObjectsRealtime(image, orientation);
+        if (objects.isNotEmpty || realtimeObjects.value.isNotEmpty) {
+          realtimeObjects.value = objects;
+        }
+      }
+
+      final similarity = _calculateLabelSimilarity(_previousLabels, currentLabels);
+      final now = DateTime.now();
+      final enoughGap = _lastCloudAnalysisAt == null ||
+          now.difference(_lastCloudAnalysisAt!) >= _currentInterval;
+      final sceneChanged = _previousLabels.isEmpty ||
+          similarity < _sceneSimilarityThreshold;
+
+      if (sceneChanged) {
+        _staticFrameCount = 0;
+        _adaptInterval(_fastInterval);
+      } else {
+        _staticFrameCount++;
+        if (_staticFrameCount > _staticThreshold) {
+          _adaptInterval(_slowInterval);
+        }
+      }
+
+      _previousLabels = currentLabels;
+
+      if (sceneChanged && enoughGap && !_isPendingSceneAnalysis) {
+        _isPendingSceneAnalysis = true;
+        _lastCloudAnalysisAt = now;
+        unawaited(_captureAndAnalyzeCurrentScene());
+      }
+
+      notifyListeners();
+    } catch (e) {
+      debugPrint('[Analysis] Live frame processing failed: $e');
+    } finally {
+      _isStreamProcessing = false;
     }
+  }
+
+  Future<void> _captureAndAnalyzeCurrentScene() async {
+    if (_cameraController == null || !_cameraController!.value.isInitialized) {
+      _isPendingSceneAnalysis = false;
+      return;
+    }
+
+    try {
+      final controller = _cameraController!;
+      final wasStreaming = controller.value.isStreamingImages;
+      if (wasStreaming) {
+        await controller.stopImageStream();
+      }
+
+      final xFile = await controller.takePicture();
+      await _runAnalysis(xFile: xFile);
+
+      if (wasStreaming && !_isFrozen && !_isARModeEnabled) {
+        await _startARStream();
+      } else if (wasStreaming && !_isFrozen) {
+        await _startARStream();
+      }
+    } catch (e) {
+      debugPrint('[Analysis] Scene-triggered capture failed: $e');
+    } finally {
+      _isPendingSceneAnalysis = false;
+    }
+  }
+
+  Future<void> _analyzeCurrentFrame() async {
+    await _captureAndAnalyzeCurrentScene();
   }
 
   Future<void> _runAnalysis({
@@ -534,11 +587,6 @@ class AnalysisProvider extends ChangeNotifier {
   void _adaptInterval(Duration newInterval) {
     if (_currentInterval == newInterval) return;
     _currentInterval = newInterval;
-    _analysisTimer?.cancel();
-    _analysisTimer = Timer.periodic(
-      _currentInterval,
-      (_) => _analyzeCurrentFrame(),
-    );
     debugPrint('[Analysis] Interval adapted to ${_currentInterval.inSeconds}s');
   }
 
