@@ -81,10 +81,9 @@ class TogetherProvider extends AIProvider with RateLimitTracker {
 ${context.toPromptText()}
 
 CRITICAL RULES:
-- Name EACH object by its EXACT brand, model, or product name (e.g. "OUCH! Bubble Gum tin" not "candy container")
-- If text is visible, read it EXACTLY and translate if not English
+- DO NOT HALLUCINATE brands or models. If an object lacks a clear logo, describe it generically (e.g., "white circular device", NOT "Apple AirPod").
+- NEVER invent or guess text. You MUST strictly rely on the "EXACT OCR TEXT IN IMAGE" provided in the DEVICE CONTEXT above. If no text is provided, do NOT guess text.
 - Identify objects both NEAR and FAR in the scene
-- If you see packaging/logos, identify the brand and product
 - Get STRAIGHT TO THE POINT — no filler phrases
 
 Return JSON: {"explanations": [{"headline": "...", "summary": "...", "details": "...", "sources": ["camera","location","news","time"], "category": "landmark|event|sign|object|person|nature|vehicle|text|scene|product", "confidence": 0.0-1.0}]}

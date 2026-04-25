@@ -54,11 +54,12 @@ class VisionService {
         }
       }
 
-      // Add prominent text snippets
+      // Add prominent text snippets exactly
       if (visionText.text.isNotEmpty) {
-        final lines = visionText.blocks.take(2).map((b) => b.text).toList();
-        for (final line in lines) {
-          if (line.length < 30) labels.add('Text: "$line"');
+        // Clean up text and remove excessive newlines for brevity in context
+        final cleanedText = visionText.text.replaceAll('\n', ' ').replaceAll(RegExp(r'\s+'), ' ').trim();
+        if (cleanedText.isNotEmpty) {
+          labels.add('EXACT OCR TEXT IN IMAGE: """$cleanedText""" (Treat this as absolute truth, DO NOT guess)');
         }
       }
 
@@ -95,11 +96,11 @@ class VisionService {
         }
       }
 
-      // Add prominent text snippets
+      // Add prominent text snippets exactly
       if (visionText.text.isNotEmpty) {
-        final lines = visionText.blocks.take(2).map((b) => b.text).toList();
-        for (final line in lines) {
-          if (line.length < 30) labels.add('Text: "$line"');
+        final cleanedText = visionText.text.replaceAll('\n', ' ').replaceAll(RegExp(r'\s+'), ' ').trim();
+        if (cleanedText.isNotEmpty) {
+          labels.add('EXACT OCR TEXT IN IMAGE: """$cleanedText""" (Treat this as absolute truth, DO NOT guess)');
         }
       }
 
@@ -130,12 +131,21 @@ class VisionService {
       ]);
 
       final objects = results[0] as List<DetectedObject>;
+      final visionText = results[1] as RecognizedText;
+      
       final labels = objects
           .expand((o) => o.labels)
           .where((l) => l.confidence > 0.5)
           .map((l) => l.text)
           .toSet()
           .toList();
+
+      if (visionText.text.isNotEmpty) {
+        final cleanedText = visionText.text.replaceAll('\n', ' ').replaceAll(RegExp(r'\s+'), ' ').trim();
+        if (cleanedText.isNotEmpty) {
+          labels.add('EXACT OCR TEXT IN IMAGE: """$cleanedText""" (Treat this as absolute truth, DO NOT guess)');
+        }
+      }
 
       return labels;
     } catch (_) {
