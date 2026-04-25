@@ -1,10 +1,12 @@
 import 'dart:async';
 
+import 'dart:io';
 import 'package:camera/camera.dart';
 import 'package:connectivity_plus/connectivity_plus.dart';
 import 'package:flutter/foundation.dart';
 import 'package:image/image.dart' as img;
 import 'package:image_picker/image_picker.dart';
+import 'package:path_provider/path_provider.dart';
 import 'package:exif/exif.dart';
 import '../models/analysis_result.dart';
 import '../models/device_context.dart';
@@ -136,7 +138,7 @@ class AnalysisProvider extends ChangeNotifier {
         notifyListeners();
 
         // Run one final analysis on the frozen image
-        await _runAnalysis(imageBytes: _frozenImage!);
+        await _runAnalysis(xFile: xFile);
         return _frozenImage;
       }
     } catch (e) {
@@ -376,6 +378,22 @@ class AnalysisProvider extends ChangeNotifier {
         _providerName = provider;
         _liveLabels = ''; // Clear fast labels when deep analysis is done
 
+        String? savedImagePath;
+        if (_isFrozen && xFile != null) {
+          // Copy the frozen image to history folder
+          try {
+            final appDir = await getApplicationDocumentsDirectory();
+            savedImagePath = '\${appDir.path}/history_\${DateTime.now().millisecondsSinceEpoch}.jpg';
+            await xFile.saveTo(savedImagePath);
+          } catch (_) {}
+        } else if (_isFrozen && imageBytes != null) { // For uploaded images
+          try {
+            final appDir = await getApplicationDocumentsDirectory();
+            savedImagePath = '\${appDir.path}/history_\${DateTime.now().millisecondsSinceEpoch}.jpg';
+            await File(savedImagePath).writeAsBytes(imageBytes);
+          } catch (_) {}
+        }
+
         final analysisResult = AnalysisResult(
           explanations: results,
           locationName: _locationName,
@@ -384,6 +402,7 @@ class AnalysisProvider extends ChangeNotifier {
           timestamp: DateTime.now(),
           providerUsed: provider,
           isOffline: !_isOnline,
+          imagePath: savedImagePath,
         );
         _lastResult = analysisResult;
 

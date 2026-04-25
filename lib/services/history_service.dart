@@ -47,14 +47,24 @@ class HistoryService {
         _history.first.explanations.isNotEmpty &&
         _history.first.explanations.first.headline ==
             result.explanations.first.headline) {
+      if (result.imagePath != null) {
+        try {
+          await File(result.imagePath!).delete();
+        } catch (_) {}
+      }
       return;
     }
 
     _history.insert(0, result);
 
     // Cap size
-    if (_history.length > maxEntries) {
-      _history = _history.sublist(0, maxEntries);
+    while (_history.length > maxEntries) {
+      final removed = _history.removeLast();
+      if (removed.imagePath != null) {
+        try {
+          await File(removed.imagePath!).delete();
+        } catch (_) {}
+      }
     }
 
     // Persist in background (fire-and-forget)
@@ -72,6 +82,13 @@ class HistoryService {
 
   /// Clear all history.
   Future<void> clear() async {
+    for (final r in _history) {
+      if (r.imagePath != null) {
+        try {
+          await File(r.imagePath!).delete();
+        } catch (_) {}
+      }
+    }
     _history.clear();
     _persistAsync();
   }

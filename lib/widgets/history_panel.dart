@@ -1,3 +1,4 @@
+import 'dart:io';
 import 'dart:ui';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
@@ -119,13 +120,23 @@ class HistoryPanel extends StatelessWidget {
                                     : AppTheme.glassWhite,
                                 borderRadius: BorderRadius.circular(10),
                               ),
-                              child: Center(
-                                child: Text(
-                                  result.explanations.isNotEmpty
-                                      ? result.explanations.first.categoryIcon
-                                      : '🔍',
-                                  style: const TextStyle(fontSize: 16),
-                                ),
+                              child: ClipRRect(
+                                borderRadius: BorderRadius.circular(10),
+                                child: result.imagePath != null
+                                    ? Image.file(
+                                        File(result.imagePath!),
+                                        fit: BoxFit.cover,
+                                        width: 36,
+                                        height: 36,
+                                      )
+                                    : Center(
+                                        child: Text(
+                                          result.explanations.isNotEmpty
+                                              ? result.explanations.first.categoryIcon
+                                              : '🔍',
+                                          style: const TextStyle(fontSize: 16),
+                                        ),
+                                      ),
                               ),
                             ),
                             title: Text(

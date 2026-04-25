@@ -9,6 +9,7 @@ class AnalysisResult {
   final DateTime timestamp;
   final String providerUsed;
   final bool isOffline;
+  final String? imagePath;
 
   const AnalysisResult({
     required this.explanations,
@@ -18,6 +19,7 @@ class AnalysisResult {
     required this.timestamp,
     this.providerUsed = 'unknown',
     this.isOffline = false,
+    this.imagePath,
   });
 
   bool get hasExplanations => explanations.isNotEmpty;
@@ -30,6 +32,7 @@ class AnalysisResult {
         'timestamp': timestamp.toIso8601String(),
         'providerUsed': providerUsed,
         'isOffline': isOffline,
+        'imagePath': imagePath,
       };
 
   factory AnalysisResult.fromJson(Map<String, dynamic> json) {
@@ -45,6 +48,7 @@ class AnalysisResult {
           DateTime.now(),
       providerUsed: json['providerUsed'] as String? ?? 'unknown',
       isOffline: json['isOffline'] as bool? ?? false,
+      imagePath: json['imagePath'] as String?,
     );
   }
 }

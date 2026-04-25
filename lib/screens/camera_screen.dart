@@ -1,6 +1,11 @@
+import 'dart:io';
+import 'dart:ui' as ui;
 import 'package:camera/camera.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/rendering.dart';
 import 'package:flutter/services.dart';
+import 'package:gal/gal.dart';
+import 'package:path_provider/path_provider.dart';
 import 'package:provider/provider.dart';
 import 'package:shimmer/shimmer.dart';
 import 'package:whatamilookingat/providers/analysis_provider.dart';
@@ -26,6 +31,8 @@ class _CameraScreenState extends State<CameraScreen>
   bool _isInitializing = true;
   int _currentCameraIndex = 0;
 
+  final GlobalKey _repaintKey = GlobalKey();
+  
   @override
   void initState() {
     super.initState();
@@ -115,9 +122,11 @@ class _CameraScreenState extends State<CameraScreen>
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: AppTheme.background,
-      body: Stack(
-        fit: StackFit.expand,
-        children: [
+      body: RepaintBoundary(
+        key: _repaintKey,
+        child: Stack(
+          fit: StackFit.expand,
+          children: [
           // Camera preview or frozen image
           _buildCameraLayer(),
 
@@ -192,7 +201,63 @@ class _CameraScreenState extends State<CameraScreen>
           ),
         ],
       ),
+      ),
     );
+  }
+
+  Future<void> _savePhotoToGallery() async {
+    final provider = context.read<AnalysisProvider>();
+    if (provider.frozenImage == null) return;
+    try {
+      final hasAccess = await Gal.hasAccess();
+      if (!hasAccess) await Gal.requestAccess();
+      final tempDir = await getTemporaryDirectory();
+      final tempPath = '${tempDir.path}/temp_freeze_${DateTime.now().millisecondsSinceEpoch}.jpg';
+      await File(tempPath).writeAsBytes(provider.frozenImage!);
+      await Gal.putImage(tempPath, album: 'WhatAmILookingAt');
+      if (mounted) {
+        ScaffoldMessenger.of(context).showSnackBar(
+          const SnackBar(content: Text('Photo saved to gallery')),
+        );
+      }
+    } catch (e) {
+      if (mounted) {
+        ScaffoldMessenger.of(context).showSnackBar(
+          SnackBar(content: Text('Failed to save to gallery: $e')),
+        );
+      }
+    }
+  }
+
+  Future<void> _saveCardToGallery() async {
+    try {
+      final hasAccess = await Gal.hasAccess();
+      if (!hasAccess) await Gal.requestAccess();
+      
+      final boundary = _repaintKey.currentContext?.findRenderObject() as RenderRepaintBoundary?;
+      if (boundary == null) return;
+
+      final image = await boundary.toImage(pixelRatio: 3.0);
+      final byteData = await image.toByteData(format: ui.ImageByteFormat.png);
+      final pngBytes = byteData?.buffer.asUint8List();
+      if (pngBytes == null) return;
+
+      final tempDir = await getTemporaryDirectory();
+      final tempPath = '${tempDir.path}/temp_card_${DateTime.now().millisecondsSinceEpoch}.png';
+      await File(tempPath).writeAsBytes(pngBytes);
+      await Gal.putImage(tempPath, album: 'WhatAmILookingAt');
+      if (mounted) {
+        ScaffoldMessenger.of(context).showSnackBar(
+          const SnackBar(content: Text('Explanation card saved to gallery')),
+        );
+      }
+    } catch (e) {
+      if (mounted) {
+        ScaffoldMessenger.of(context).showSnackBar(
+          SnackBar(content: Text('Failed to save card: $e')),
+        );
+      }
+    }
   }
 
   Widget _buildCameraLayer() {
@@ -311,34 +376,44 @@ class _CameraScreenState extends State<CameraScreen>
               else
                 _buildWelcomeCard(),
 
-              const SizedBox(height: 12),
-
               // Action buttons
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 children: [
-                  // Upload button
-                  _buildActionButton(
-                    icon: Icons.photo_library_rounded,
-                    label: 'Upload',
-                    onTap: provider.analyzeUploadedImage,
-                    color: AppTheme.secondary,
-                  ),
+                  // Save/Upload button
+                  if (provider.isFrozen)
+                    _buildActionButton(
+                      icon: Icons.download_rounded,
+                      label: 'Save Photo',
+                      onTap: _savePhotoToGallery,
+                      color: Colors.blueAccent,
+                    )
+                  else
+                    _buildActionButton(
+                      icon: Icons.image_rounded,
+                      label: 'Upload',
+                      onTap: provider.analyzeUploadedImage,
+                      color: AppTheme.accent,
+                    ),
 
                   // Capture / Unfreeze button
                   _buildCaptureButton(provider),
 
-                  // Share button (when frozen)
-                  _buildActionButton(
-                    icon: provider.isFrozen
-                        ? Icons.play_arrow_rounded
-                        : Icons.info_outline_rounded,
-                    label: provider.isFrozen ? 'Resume' : 'About',
-                    onTap: provider.isFrozen
-                        ? provider.unfreezeFrame
-                        : () => _showAboutDialog(context),
-                    color: provider.isFrozen ? AppTheme.accent : AppTheme.textMuted,
-                  ),
+                  // Share/Resume button
+                  if (provider.isFrozen)
+                    _buildActionButton(
+                      icon: Icons.ios_share_rounded,
+                      label: 'Share Card',
+                      onTap: _saveCardToGallery,
+                      color: Colors.greenAccent,
+                    )
+                  else
+                    _buildActionButton(
+                      icon: Icons.play_arrow_rounded,
+                      label: 'Resume',
+                      onTap: provider.startLiveAnalysis,
+                      color: AppTheme.textMuted,
+                    ),
                 ],
               ),
             ],
