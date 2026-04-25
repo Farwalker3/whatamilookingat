@@ -68,6 +68,47 @@ class VisionService {
     }
   }
 
+  /// Analyze an image from a file path.
+  Future<List<String>> detectLabelsFromPath(String path) async {
+    if (!_isInitialized) await initialize();
+
+    try {
+      final inputImage = InputImage.fromFilePath(path);
+
+      // Run detection in parallel
+      final results = await Future.wait([
+        _objectDetector.processImage(inputImage),
+        _textRecognizer.processImage(inputImage),
+      ]);
+
+      final objects = results[0] as List<DetectedObject>;
+      final visionText = results[1] as RecognizedText;
+
+      final labels = <String>{};
+
+      // Add object labels
+      for (final obj in objects) {
+        for (final label in obj.labels) {
+          if (label.confidence > 0.5) {
+            labels.add(label.text);
+          }
+        }
+      }
+
+      // Add prominent text snippets
+      if (visionText.text.isNotEmpty) {
+        final lines = visionText.blocks.take(2).map((b) => b.text).toList();
+        for (final line in lines) {
+          if (line.length < 30) labels.add('Text: "$line"');
+        }
+      }
+
+      return labels.toList();
+    } catch (_) {
+      return [];
+    }
+  }
+
   /// Analyze a static image byte array.
   Future<List<String>> detectLabelsFromBytes(Uint8List bytes) async {
     if (!_isInitialized) await initialize();
@@ -120,15 +161,6 @@ class VisionService {
           InputImageFormatValue.fromRawValue(image.format.raw) ??
               InputImageFormat.nv21;
 
-      final planeData = image.planes.map(
-        (Plane plane) {
-          return InputImagePlaneMetadata(
-            bytesPerRow: plane.bytesPerRow,
-            height: plane.height,
-            width: plane.width,
-          );
-        },
-      ).toList();
 
       final inputImageMetadata = InputImageMetadata(
         size: imageSize,

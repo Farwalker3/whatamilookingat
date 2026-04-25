@@ -35,7 +35,7 @@ class OpenRouterProvider extends AIProvider with RateLimitTracker {
           'X-Title': 'What Am I Looking At',
         },
         body: jsonEncode({
-          'model': 'google/gemma-4-31b-it:free',
+          'model': 'google/gemini-2.5-flash',
           'messages': [
             {
               'role': 'user',
@@ -75,16 +75,19 @@ class OpenRouterProvider extends AIProvider with RateLimitTracker {
   }
 
   String _buildPrompt(DeviceContext context) {
-    return '''You are an expert visual analyst. Analyze this camera image and provide multiple distinct explanations.
+    return '''You are an expert visual analyst. Identify EVERY distinct object visible in this camera image with maximum specificity.
 
 ${context.toPromptText()}
 
-Return ONLY a JSON array (no other text) of 3-8 explanation objects describing DIFFERENT things visible or relevant to the scene.
+CRITICAL RULES:
+- Name EACH object by its EXACT brand, model, or product name
+- If text is visible, read it EXACTLY and translate if not English
+- Identify objects both NEAR and FAR in the scene
+- If you see packaging/logos, identify the brand and product
+- Get STRAIGHT TO THE POINT — no filler phrases
 
-Each object format:
-{"headline": "one punchy sentence", "summary": "2-3 detail sentences", "details": "full paragraph with context", "sources": ["camera","location","news","time"], "category": "landmark|event|sign|object|person|nature|vehicle|text|scene", "confidence": 0.0-1.0}
-
-Get straight to the point. Sort by relevance. Use device context for richer explanations.''';
+Return ONLY a JSON array of 3-8 explanation objects:
+[{"headline": "...", "summary": "...", "details": "...", "sources": ["camera","location","news","time"], "category": "landmark|event|sign|object|person|nature|vehicle|text|scene|product", "confidence": 0.0-1.0}]''';
   }
 
   List<Explanation> _parseResponse(String text) {

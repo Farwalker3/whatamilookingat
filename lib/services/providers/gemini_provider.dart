@@ -60,33 +60,20 @@ class GeminiProvider extends AIProvider with RateLimitTracker {
   }
 
   String _buildPrompt(DeviceContext context) {
-    return '''You are an expert visual analyst. Analyze this camera image and provide multiple distinct explanations of what the user is looking at.
+    return '''You are an expert visual analyst. Identify EVERY distinct object visible in this camera image with maximum specificity.
 
 ${context.toPromptText()}
 
-Return a JSON array of 3-8 explanation objects. Each should describe a DIFFERENT thing visible or relevant to the scene. Be specific and use the device context (location, news, time) to provide richer explanations.
+CRITICAL RULES:
+- Name EACH object by its EXACT brand, model, or product name (e.g. "Logitech MX Master 3 mouse" not "wireless mouse")
+- If text is visible, read it EXACTLY and translate if not English
+- Identify objects both NEAR and FAR in the scene
+- If you see packaging/logos, identify the brand and product
+- Get STRAIGHT TO THE POINT — no filler phrases
+- Use location/news context to identify landmarks, businesses, events
 
-For each explanation, get STRAIGHT TO THE POINT in the headline, then provide more detail in summary and details.
-
-JSON format:
-[
-  {
-    "headline": "One clear sentence - what this is",
-    "summary": "2-3 sentences with key details",
-    "details": "Full paragraph with rich context, interesting facts, connections to local news if relevant",
-    "sources": ["camera", "location", "news", "time"],
-    "category": "landmark|event|sign|object|person|nature|vehicle|text|scene",
-    "confidence": 0.0-1.0
-  }
-]
-
-Rules:
-- headline must be punchy and immediately informative
-- Sort by relevance/interest (most interesting first)
-- Use location data to identify specific places, streets, businesses
-- If news headlines relate to what's visible, create an explanation connecting them
-- Include at least one explanation about the overall scene/setting
-- Be factual but engaging''';
+Return a JSON array of 3-8 explanation objects, sorted by visual prominence:
+[{"headline": "One clear sentence - what this is", "summary": "2-3 sentences with key details", "details": "Full paragraph with context", "sources": ["camera","location","news","time"], "category": "landmark|event|sign|object|person|nature|vehicle|text|scene|product", "confidence": 0.0-1.0}]''';
   }
 
   List<Explanation> _parseResponse(String text) {

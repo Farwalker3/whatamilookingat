@@ -3,11 +3,12 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:provider/provider.dart';
 import 'package:shimmer/shimmer.dart';
-import '../providers/analysis_provider.dart';
-import '../theme/app_theme.dart';
-import '../widgets/explanation_card.dart';
-import '../widgets/status_bar.dart';
-import 'settings_screen.dart';
+import 'package:whatamilookingat/providers/analysis_provider.dart';
+import 'package:whatamilookingat/theme/app_theme.dart';
+import 'package:whatamilookingat/widgets/explanation_card.dart';
+import 'package:whatamilookingat/widgets/history_panel.dart';
+import 'package:whatamilookingat/widgets/status_bar.dart';
+import 'package:whatamilookingat/screens/settings_screen.dart';
 
 /// Main camera screen with live preview, explanation overlay, and controls.
 class CameraScreen extends StatefulWidget {
@@ -63,7 +64,7 @@ class _CameraScreenState extends State<CameraScreen>
       final camera = _cameras[_currentCameraIndex];
       _cameraController = CameraController(
         camera,
-        ResolutionPreset.high,
+        ResolutionPreset.medium,
         enableAudio: false,
         imageFormatGroup: ImageFormatGroup.jpeg,
       );
@@ -126,7 +127,7 @@ class _CameraScreenState extends State<CameraScreen>
             left: 0,
             right: 0,
             child: Consumer<AnalysisProvider>(
-              builder: (_, provider, __) => StatusBar(
+              builder: (_, provider, _) => StatusBar(
                 locationName: provider.locationName,
                 isOnline: provider.isOnline,
                 isAnalyzing: provider.isAnalyzing,
@@ -160,6 +161,19 @@ class _CameraScreenState extends State<CameraScreen>
                     ),
                     const SizedBox(height: 12),
                     _buildIconButton(
+                      Icons.history_rounded,
+                      onTap: () {
+                        showModalBottomSheet(
+                          context: context,
+                          backgroundColor: Colors.transparent,
+                          isScrollControlled: true,
+                          builder: (_) => const HistoryPanel(),
+                        );
+                      },
+                      tooltip: 'History',
+                    ),
+                    const SizedBox(height: 12),
+                    _buildIconButton(
                       Icons.settings_rounded,
                       onTap: () {
                         Navigator.push(
@@ -183,7 +197,7 @@ class _CameraScreenState extends State<CameraScreen>
 
   Widget _buildCameraLayer() {
     return Consumer<AnalysisProvider>(
-      builder: (_, provider, __) {
+      builder: (_, provider, _) {
         // Show frozen image
         if (provider.isFrozen && provider.frozenImage != null) {
           return Image.memory(
@@ -258,7 +272,7 @@ class _CameraScreenState extends State<CameraScreen>
 
   Widget _buildBottomPanel() {
     return Consumer<AnalysisProvider>(
-      builder: (_, provider, __) {
+      builder: (_, provider, _) {
         return Container(
           padding: EdgeInsets.only(
             bottom: MediaQuery.of(context).padding.bottom + 12,
@@ -357,7 +371,7 @@ class _CameraScreenState extends State<CameraScreen>
           boxShadow: [
             BoxShadow(
               color: (provider.isFrozen ? AppTheme.textMuted : AppTheme.error)
-                  .withOpacity(0.3),
+                  .withValues(alpha: 0.3),
               blurRadius: 12,
             ),
           ],
@@ -386,9 +400,9 @@ class _CameraScreenState extends State<CameraScreen>
             width: 48,
             height: 48,
             decoration: BoxDecoration(
-              color: color.withOpacity(0.15),
+              color: color.withValues(alpha: 0.15),
               shape: BoxShape.circle,
-              border: Border.all(color: color.withOpacity(0.3), width: 1),
+              border: Border.all(color: color.withValues(alpha: 0.3), width: 1),
             ),
             child: Icon(icon, color: color, size: 22),
           ),
@@ -523,7 +537,7 @@ class _CameraScreenState extends State<CameraScreen>
           width: 40,
           height: 40,
           decoration: BoxDecoration(
-            color: AppTheme.surface.withOpacity(0.6),
+            color: AppTheme.surface.withValues(alpha: 0.6),
             shape: BoxShape.circle,
             border: Border.all(color: AppTheme.glassBorder, width: 1),
           ),

@@ -10,6 +10,12 @@ class DeviceContext {
   final DateTime timestamp;
   final List<String> newsHeadlines;
 
+  /// On-device ML Kit labels detected in the current frame.
+  final List<String> detectedLabels;
+
+  /// Headlines from recent analyses (self-learning memory).
+  final List<String> recentFindings;
+
   const DeviceContext({
     this.latitude,
     this.longitude,
@@ -20,6 +26,8 @@ class DeviceContext {
     this.heading,
     required this.timestamp,
     this.newsHeadlines = const [],
+    this.detectedLabels = const [],
+    this.recentFindings = const [],
   });
 
   bool get hasLocation => latitude != null && longitude != null;
@@ -48,6 +56,19 @@ class DeviceContext {
     if (city != null) buf.writeln('- City: $city');
     if (country != null) buf.writeln('- Country: $country');
     if (heading != null) buf.writeln('- Compass heading: ${heading!.toStringAsFixed(0)}°');
+
+    if (detectedLabels.isNotEmpty) {
+      buf.writeln('- On-device detected objects: ${detectedLabels.join(', ')}');
+    }
+
+    if (recentFindings.isNotEmpty) {
+      buf.writeln('- Previously identified in this session:');
+      for (final f in recentFindings.take(5)) {
+        buf.writeln('  • $f');
+      }
+      buf.writeln('  (Don\'t repeat these unless something changed)');
+    }
+
     if (newsHeadlines.isNotEmpty) {
       buf.writeln('- Local news headlines:');
       for (final h in newsHeadlines.take(5)) {

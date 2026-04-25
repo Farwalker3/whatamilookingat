@@ -5,26 +5,38 @@
 // gestures. You can also use WidgetTester to find child widgets in the widget
 // tree, read text, and verify that the values of widget properties are correct.
 
-import 'package:flutter/material.dart';
+
 import 'package:flutter_test/flutter_test.dart';
 
 import 'package:whatamilookingat/main.dart';
+import 'package:provider/provider.dart';
+import 'package:whatamilookingat/providers/analysis_provider.dart';
+import 'package:whatamilookingat/services/ai_rotation_manager.dart';
+import 'package:whatamilookingat/services/location_service.dart';
+import 'package:whatamilookingat/services/news_service.dart';
 
 void main() {
-  testWidgets('Counter increments smoke test', (WidgetTester tester) async {
-    // Build our app and trigger a frame.
-    await tester.pumpWidget(const MyApp());
+  testWidgets('App smoke test', (WidgetTester tester) async {
+    final locationService = LocationService();
+    final newsService = NewsService(apiKey: '');
+    final aiManager = AIRotationManager();
+    aiManager.initialize(geminiKey: '', groqKey: '', openRouterKey: '');
 
-    // Verify that our counter starts at 0.
-    expect(find.text('0'), findsOneWidget);
-    expect(find.text('1'), findsNothing);
+    await tester.pumpWidget(
+      MultiProvider(
+        providers: [
+          ChangeNotifierProvider(
+            create: (_) => AnalysisProvider(
+              aiManager: aiManager,
+              locationService: locationService,
+              newsService: newsService,
+            ),
+          ),
+        ],
+        child: const WhatAmILookingAtApp(),
+      ),
+    );
 
-    // Tap the '+' icon and trigger a frame.
-    await tester.tap(find.byIcon(Icons.add));
-    await tester.pump();
-
-    // Verify that our counter has incremented.
-    expect(find.text('0'), findsNothing);
-    expect(find.text('1'), findsOneWidget);
+    expect(find.text('Initializing camera...'), findsOneWidget);
   });
 }

@@ -2,12 +2,13 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:provider/provider.dart';
-import 'providers/analysis_provider.dart';
-import 'services/ai_rotation_manager.dart';
-import 'services/location_service.dart';
-import 'services/news_service.dart';
-import 'screens/camera_screen.dart';
-import 'theme/app_theme.dart';
+import 'package:whatamilookingat/providers/analysis_provider.dart';
+import 'package:whatamilookingat/services/ai_rotation_manager.dart';
+import 'package:whatamilookingat/services/location_service.dart';
+import 'package:whatamilookingat/services/news_service.dart';
+import 'package:whatamilookingat/screens/camera_screen.dart';
+import 'package:whatamilookingat/theme/app_theme.dart';
+
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -35,6 +36,7 @@ void main() async {
     geminiKey: dotenv.env['GEMINI_API_KEY'] ?? '',
     groqKey: dotenv.env['GROQ_API_KEY'] ?? '',
     openRouterKey: dotenv.env['OPENROUTER_API_KEY'] ?? '',
+    togetherKey: dotenv.env['TOGETHER_API_KEY'] ?? '',
   );
 
   runApp(

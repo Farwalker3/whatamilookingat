@@ -1,14 +1,16 @@
 import 'dart:async';
-import 'dart:typed_data';
+
 import 'package:camera/camera.dart';
 import 'package:connectivity_plus/connectivity_plus.dart';
 import 'package:flutter/foundation.dart';
+import 'package:image/image.dart' as img;
 import 'package:image_picker/image_picker.dart';
 import 'package:exif/exif.dart';
 import '../models/analysis_result.dart';
 import '../models/device_context.dart';
 import '../models/explanation.dart';
 import '../services/ai_rotation_manager.dart';
+import '../services/history_service.dart';
 import '../services/location_service.dart';
 import '../services/news_service.dart';
 import '../services/vision_service.dart';
@@ -19,14 +21,25 @@ class AnalysisProvider extends ChangeNotifier {
   final LocationService _locationService;
   final NewsService _newsService;
   final VisionService _visionService = VisionService();
+  final HistoryService _historyService = HistoryService();
 
-  // Loop interval (2s for maximum speed with Groq)
-  static const _analysisInterval = Duration(seconds: 2);
-  
+  // Adaptive intervals
+  static const _fastInterval = Duration(seconds: 2);
+  static const _slowInterval = Duration(seconds: 5);
+  Duration _currentInterval = _fastInterval;
+
   // Context cache (speed optimization)
   DeviceContext? _cachedContext;
   DateTime? _lastContextUpdate;
   static const _contextCacheDuration = Duration(minutes: 1);
+
+  // Scene-change detection
+  List<String> _previousLabels = [];
+  int _staticFrameCount = 0;
+  static const _staticThreshold = 2; // frames before slowing down
+
+  // Self-learning memory
+  List<String> _recentFindings = [];
 
   // State
   List<Explanation> _explanations = [];
@@ -43,7 +56,7 @@ class AnalysisProvider extends ChangeNotifier {
 
   // Live analysis loop
   Timer? _analysisTimer;
-  bool _isLiveMode = true;
+
   CameraController? _cameraController;
 
   // Getters
@@ -63,6 +76,11 @@ class AnalysisProvider extends ChangeNotifier {
   bool get hasExplanations => _explanations.isNotEmpty;
   int get explanationCount => _explanations.length;
 
+  // History getters
+  HistoryService get historyService => _historyService;
+  List<AnalysisResult> get history => _historyService.history;
+  int get historyCount => _historyService.count;
+
   AnalysisProvider({
     required AIRotationManager aiManager,
     required LocationService locationService,
@@ -71,6 +89,11 @@ class AnalysisProvider extends ChangeNotifier {
         _locationService = locationService,
         _newsService = newsService {
     _checkConnectivity();
+    // Lazy-load history in background (non-blocking)
+    _historyService.load().then((_) {
+      _recentFindings = _historyService.getRecentHeadlines();
+      notifyListeners();
+    });
   }
 
   /// Set camera controller for frame capture.
@@ -80,12 +103,11 @@ class AnalysisProvider extends ChangeNotifier {
 
   /// Start the live analysis loop.
   void startLiveAnalysis() {
-    _isLiveMode = true;
     _isFrozen = false;
     _frozenImage = null;
     _analysisTimer?.cancel();
     _analysisTimer = Timer.periodic(
-      _analysisInterval,
+      _currentInterval,
       (_) => _analyzeCurrentFrame(),
     );
     // Run immediately too
@@ -95,7 +117,6 @@ class AnalysisProvider extends ChangeNotifier {
 
   /// Stop live analysis.
   void stopLiveAnalysis() {
-    _isLiveMode = false;
     _analysisTimer?.cancel();
     _analysisTimer = null;
     notifyListeners();
@@ -115,7 +136,7 @@ class AnalysisProvider extends ChangeNotifier {
         notifyListeners();
 
         // Run one final analysis on the frozen image
-        await _runAnalysis(_frozenImage!);
+        await _runAnalysis(imageBytes: _frozenImage!);
         return _frozenImage;
       }
     } catch (e) {
@@ -180,18 +201,30 @@ class AnalysisProvider extends ChangeNotifier {
             country: geocode['country'],
             timestamp: DateTime.now(),
             newsHeadlines: news,
+            recentFindings: _recentFindings,
           );
         }
       } catch (_) {
         // EXIF parsing failed, use current device context
       }
 
-      await _runAnalysis(bytes, overrideContext: exifContext);
+      await _runAnalysis(imageBytes: bytes, overrideContext: exifContext);
     } catch (e) {
       _errorMessage = 'Failed to load image: $e';
       _isAnalyzing = false;
       notifyListeners();
     }
+  }
+
+  /// Load a specific history item into the explanation cards.
+  void loadHistoryItem(int index) {
+    if (index < 0 || index >= _historyService.count) return;
+    final result = _historyService.history[index];
+    _explanations = result.explanations;
+    _currentIndex = 0;
+    _providerName = '${result.providerUsed} (history)';
+    _lastResult = result;
+    notifyListeners();
   }
 
   /// Navigate to next explanation.
@@ -242,29 +275,64 @@ class AnalysisProvider extends ChangeNotifier {
 
     try {
       final xFile = await _cameraController!.takePicture();
-      final bytes = await xFile.readAsBytes();
-      await _runAnalysis(bytes);
+      await _runAnalysis(xFile: xFile);
     } catch (_) {
       // Frame capture failed
     }
   }
 
-  Future<void> _runAnalysis(Uint8List imageBytes,
-      {DeviceContext? overrideContext}) async {
+  Future<void> _runAnalysis({
+    XFile? xFile,
+    Uint8List? imageBytes,
+    DeviceContext? overrideContext,
+  }) async {
+    final Uint8List? rawBytes = imageBytes ?? await xFile?.readAsBytes();
+    if (rawBytes == null) return;
+
+    // === Step 1: Fast ML Kit detection (instant, on-device) ===
+    List<String> currentLabels = [];
+    if (xFile != null) {
+      currentLabels = await _visionService.detectLabelsFromPath(xFile.path);
+    } else {
+      currentLabels = await _visionService.detectLabelsFromBytes(rawBytes);
+    }
+
+    if (currentLabels.isNotEmpty) {
+      _liveLabels = currentLabels.take(4).join(' • ');
+      notifyListeners();
+    }
+
+    // === Step 2: Scene-change detection (skip if static) ===
+    if (!_isFrozen && _previousLabels.isNotEmpty) {
+      final similarity = _calculateLabelSimilarity(_previousLabels, currentLabels);
+      if (similarity > 0.7) {
+        _staticFrameCount++;
+        if (_staticFrameCount > _staticThreshold) {
+          // Scene hasn't changed — slow down and skip expensive AI call
+          _adaptInterval(_slowInterval);
+          _previousLabels = currentLabels;
+          debugPrint('[Analysis] Scene static (${(similarity * 100).toInt()}% similar), skipping AI call');
+          return;
+        }
+      } else {
+        // Scene changed — reset to fast mode
+        _staticFrameCount = 0;
+        _adaptInterval(_fastInterval);
+        debugPrint('[Analysis] Scene changed (${(similarity * 100).toInt()}% similar), running AI');
+      }
+    }
+    _previousLabels = currentLabels;
+
     _isAnalyzing = true;
     _errorMessage = null;
     notifyListeners();
 
     try {
-      // Parallel Step 1: Fast object detection for instant feedback
-      _runFastDetection(imageBytes);
+      // === Step 3: Compress image for faster upload ===
+      final Uint8List compressedBytes = await compute(_compressImage, rawBytes);
 
-      // Parallel Step 2: Build context (Location + News)
-      final contextFuture = overrideContext != null 
-          ? Future.value(overrideContext) 
-          : _getOptimizedContext();
-      
-      final context = await contextFuture;
+      // === Step 4: Build context (parallel with compression) ===
+      final context = overrideContext ?? await _getOptimizedContext(currentLabels);
 
       if (context.hasLocation) {
         _locationName = context.placeName?.isNotEmpty == true
@@ -274,18 +342,41 @@ class AnalysisProvider extends ChangeNotifier {
                 : context.locationSummary;
       }
 
-      final (results, provider) = await _aiManager.analyzeImage(
-        imageBytes: imageBytes,
-        context: context,
-        isOffline: !_isOnline,
-      );
+      // === Step 5: AI analysis with timeout ===
+      debugPrint('[Analysis] Calling AI manager with isOffline=${!_isOnline}');
+      final (results, provider) = await _aiManager
+          .analyzeImage(
+            imageBytes: compressedBytes,
+            context: context,
+            isOffline: !_isOnline,
+          )
+          .timeout(
+            const Duration(seconds: 15),
+            onTimeout: () {
+              debugPrint('[Analysis] AI call timed out, using ML Kit labels only');
+              // Return ML Kit labels as basic explanations if AI times out
+              return (
+                currentLabels.map((l) => Explanation(
+                  headline: l,
+                  summary: 'Detected on-device',
+                  details: 'Fast detection result while waiting for AI analysis.',
+                  sources: ['camera'],
+                  category: 'object',
+                  confidence: 0.6,
+                )).toList(),
+                'On-device (timeout)',
+              );
+            },
+          );
+      debugPrint('[Analysis] Got ${results.length} results from $provider');
 
       if (results.isNotEmpty) {
         _explanations = results;
         _currentIndex = 0;
         _providerName = provider;
         _liveLabels = ''; // Clear fast labels when deep analysis is done
-        _lastResult = AnalysisResult(
+
+        final analysisResult = AnalysisResult(
           explanations: results,
           locationName: _locationName,
           latitude: context.latitude,
@@ -294,6 +385,16 @@ class AnalysisProvider extends ChangeNotifier {
           providerUsed: provider,
           isOffline: !_isOnline,
         );
+        _lastResult = analysisResult;
+
+        // Save to history (non-blocking)
+        _historyService.add(analysisResult);
+
+        // Update self-learning memory
+        _recentFindings = results
+            .map((e) => e.headline)
+            .take(5)
+            .toList();
       }
     } catch (e) {
       _errorMessage = 'Analysis failed: ${e.toString().split('\n').first}';
@@ -303,42 +404,82 @@ class AnalysisProvider extends ChangeNotifier {
     }
   }
 
-  /// Very fast check to get simple object labels immediately.
-  Future<void> _runFastDetection(Uint8List imageBytes) async {
+  /// Compress image to ~800px max dimension for faster upload.
+  static Uint8List _compressImage(Uint8List bytes) {
     try {
-      // Use on-device ML Kit for instant computer vision (No API call!)
-      final labels = await _visionService.detectLabelsFromBytes(imageBytes);
+      final decoded = img.decodeImage(bytes);
+      if (decoded == null) return bytes;
 
-      if (labels.isNotEmpty && _isAnalyzing) {
-        _liveLabels = labels.take(4).join(' • ');
-        notifyListeners();
-      }
+      // Only compress if larger than target
+      if (decoded.width <= 800 && decoded.height <= 800) return bytes;
+
+      final resized = img.copyResize(
+        decoded,
+        width: decoded.width > decoded.height ? 800 : null,
+        height: decoded.height >= decoded.width ? 800 : null,
+        interpolation: img.Interpolation.linear,
+      );
+
+      return Uint8List.fromList(img.encodeJpg(resized, quality: 75));
     } catch (_) {
-      // Silent fail for fast detection
+      return bytes;
     }
   }
 
-  Future<DeviceContext> _getOptimizedContext() async {
+  /// Calculate how similar two sets of labels are (0.0 = different, 1.0 = identical).
+  double _calculateLabelSimilarity(List<String> a, List<String> b) {
+    if (a.isEmpty && b.isEmpty) return 1.0;
+    if (a.isEmpty || b.isEmpty) return 0.0;
+
+    final setA = a.map((l) => l.toLowerCase()).toSet();
+    final setB = b.map((l) => l.toLowerCase()).toSet();
+    final intersection = setA.intersection(setB).length;
+    final union = setA.union(setB).length;
+
+    return union > 0 ? intersection / union : 0.0;
+  }
+
+  /// Adapt the analysis interval based on scene activity.
+  void _adaptInterval(Duration newInterval) {
+    if (_currentInterval == newInterval) return;
+    _currentInterval = newInterval;
+    _analysisTimer?.cancel();
+    _analysisTimer = Timer.periodic(
+      _currentInterval,
+      (_) => _analyzeCurrentFrame(),
+    );
+    debugPrint('[Analysis] Interval adapted to ${_currentInterval.inSeconds}s');
+  }
+
+  Future<DeviceContext> _getOptimizedContext([List<String> labels = const []]) async {
     if (_cachedContext != null && _lastContextUpdate != null) {
       final age = DateTime.now().difference(_lastContextUpdate!);
       if (age < _contextCacheDuration) {
-        return _cachedContext!;
+        // Return cached context but with fresh labels and findings
+        return DeviceContext(
+          latitude: _cachedContext!.latitude,
+          longitude: _cachedContext!.longitude,
+          placeName: _cachedContext!.placeName,
+          street: _cachedContext!.street,
+          city: _cachedContext!.city,
+          country: _cachedContext!.country,
+          heading: _cachedContext!.heading,
+          timestamp: DateTime.now(),
+          newsHeadlines: _cachedContext!.newsHeadlines,
+          detectedLabels: labels,
+          recentFindings: _recentFindings,
+        );
       }
     }
 
     final position = await _locationService.getCurrentPosition();
-    if (position == null) return _cachedContext ?? await _buildContext();
+    if (position == null) return _cachedContext ?? await _buildContext(labels);
 
-    // Parallel fetch
-    final geocodeFuture = _locationService.reverseGeocode(
+    final geocode = await _locationService.reverseGeocode(
         position.latitude, position.longitude);
     
-    final geocode = await geocodeFuture;
-    
-    final newsFuture = _newsService.getLocalNews(
+    final news = await _newsService.getLocalNews(
         countryCode: geocode['countryCode']);
-
-    final news = await newsFuture;
 
     _cachedContext = DeviceContext(
       latitude: position.latitude,
@@ -350,16 +491,23 @@ class AnalysisProvider extends ChangeNotifier {
       heading: _locationService.getHeadingFromPosition(),
       timestamp: DateTime.now(),
       newsHeadlines: news,
+      detectedLabels: labels,
+      recentFindings: _recentFindings,
     );
     _lastContextUpdate = DateTime.now();
     
     return _cachedContext!;
   }
 
-  Future<DeviceContext> _buildContext() async {
+  Future<DeviceContext> _buildContext([List<String> labels = const []]) async {
     final position = await _locationService.getCurrentPosition();
     if (position == null) {
-      return DeviceContext(timestamp: DateTime.now(), newsHeadlines: []);
+      return DeviceContext(
+        timestamp: DateTime.now(),
+        newsHeadlines: [],
+        detectedLabels: labels,
+        recentFindings: _recentFindings,
+      );
     }
 
     final geocode = await _locationService.reverseGeocode(
@@ -381,6 +529,8 @@ class AnalysisProvider extends ChangeNotifier {
       heading: _locationService.getHeadingFromPosition(),
       timestamp: DateTime.now(),
       newsHeadlines: news,
+      detectedLabels: labels,
+      recentFindings: _recentFindings,
     );
   }
 

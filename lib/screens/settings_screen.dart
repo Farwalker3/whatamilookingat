@@ -14,6 +14,7 @@ class _SettingsScreenState extends State<SettingsScreen> {
   late TextEditingController _geminiController;
   late TextEditingController _groqController;
   late TextEditingController _openrouterController;
+  late TextEditingController _togetherController;
   late TextEditingController _newsController;
   bool _showKeys = false;
 
@@ -29,6 +30,9 @@ class _SettingsScreenState extends State<SettingsScreen> {
     _openrouterController = TextEditingController(
       text: dotenv.env['OPENROUTER_API_KEY'] ?? '',
     );
+    _togetherController = TextEditingController(
+      text: dotenv.env['TOGETHER_API_KEY'] ?? '',
+    );
     _newsController = TextEditingController(
       text: dotenv.env['NEWS_API_KEY'] ?? '',
     );
@@ -39,6 +43,7 @@ class _SettingsScreenState extends State<SettingsScreen> {
     _geminiController.dispose();
     _groqController.dispose();
     _openrouterController.dispose();
+    _togetherController.dispose();
     _newsController.dispose();
     super.dispose();
   }
@@ -104,6 +109,12 @@ class _SettingsScreenState extends State<SettingsScreen> {
             _openrouterController,
             'openrouter.ai',
             'Free models, no credit card',
+          ),
+          _buildApiKeyField(
+            'Together AI API Key',
+            _togetherController,
+            'api.together.xyz',
+            'Free \$25 credit, Llama 4 vision',
           ),
 
           const SizedBox(height: 24),
@@ -200,8 +211,8 @@ class _SettingsScreenState extends State<SettingsScreen> {
                   ),
                   decoration: BoxDecoration(
                     color: controller.text.isNotEmpty
-                        ? AppTheme.accent.withOpacity(0.15)
-                        : AppTheme.error.withOpacity(0.15),
+                        ? AppTheme.accent.withValues(alpha: 0.15)
+                        : AppTheme.error.withValues(alpha: 0.15),
                     borderRadius: BorderRadius.circular(6),
                   ),
                   child: Text(
@@ -273,9 +284,9 @@ class _SettingsScreenState extends State<SettingsScreen> {
     return Container(
       padding: const EdgeInsets.all(14),
       decoration: BoxDecoration(
-        color: color.withOpacity(0.08),
+        color: color.withValues(alpha: 0.08),
         borderRadius: BorderRadius.circular(14),
-        border: Border.all(color: color.withOpacity(0.2), width: 1),
+        border: Border.all(color: color.withValues(alpha: 0.2), width: 1),
       ),
       child: Row(
         crossAxisAlignment: CrossAxisAlignment.start,
@@ -286,7 +297,7 @@ class _SettingsScreenState extends State<SettingsScreen> {
             child: Text(
               text,
               style: TextStyle(
-                color: color.withOpacity(0.9),
+                color: color.withValues(alpha: 0.9),
                 fontSize: 12,
                 height: 1.5,
               ),

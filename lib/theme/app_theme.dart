@@ -106,12 +106,12 @@ class AppTheme {
 
   /// Glassmorphic card decoration.
   static BoxDecoration get glassCard => BoxDecoration(
-        color: surface.withOpacity(0.85),
+        color: surface.withValues(alpha: 0.85),
         borderRadius: BorderRadius.circular(20),
         border: Border.all(color: glassBorder, width: 1),
         boxShadow: [
           BoxShadow(
-            color: Colors.black.withOpacity(0.3),
+            color: Colors.black.withValues(alpha: 0.3),
             blurRadius: 20,
             offset: const Offset(0, 8),
           ),

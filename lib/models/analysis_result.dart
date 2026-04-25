@@ -21,4 +21,30 @@ class AnalysisResult {
   });
 
   bool get hasExplanations => explanations.isNotEmpty;
+
+  Map<String, dynamic> toJson() => {
+        'explanations': explanations.map((e) => e.toJson()).toList(),
+        'locationName': locationName,
+        'latitude': latitude,
+        'longitude': longitude,
+        'timestamp': timestamp.toIso8601String(),
+        'providerUsed': providerUsed,
+        'isOffline': isOffline,
+      };
+
+  factory AnalysisResult.fromJson(Map<String, dynamic> json) {
+    return AnalysisResult(
+      explanations: (json['explanations'] as List<dynamic>?)
+              ?.map((e) => Explanation.fromJson(e as Map<String, dynamic>))
+              .toList() ??
+          [],
+      locationName: json['locationName'] as String?,
+      latitude: (json['latitude'] as num?)?.toDouble(),
+      longitude: (json['longitude'] as num?)?.toDouble(),
+      timestamp: DateTime.tryParse(json['timestamp'] as String? ?? '') ??
+          DateTime.now(),
+      providerUsed: json['providerUsed'] as String? ?? 'unknown',
+      isOffline: json['isOffline'] as bool? ?? false,
+    );
+  }
 }

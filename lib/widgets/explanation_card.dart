@@ -74,12 +74,12 @@ class _ExplanationCardState extends State<ExplanationCard>
           filter: ImageFilter.blur(sigmaX: 20, sigmaY: 20),
           child: Container(
             decoration: BoxDecoration(
-              color: AppTheme.surface.withOpacity(0.85),
+              color: AppTheme.surface.withValues(alpha: 0.85),
               borderRadius: BorderRadius.circular(20),
               border: Border.all(color: AppTheme.glassBorder, width: 1),
               boxShadow: [
                 BoxShadow(
-                  color: Colors.black.withOpacity(0.3),
+                  color: Colors.black.withValues(alpha: 0.3),
                   blurRadius: 20,
                   offset: const Offset(0, 8),
                 ),
@@ -280,10 +280,10 @@ class _ExplanationCardState extends State<ExplanationCard>
     return Container(
       padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 3),
       decoration: BoxDecoration(
-        color: AppTheme.primary.withOpacity(0.1),
+        color: AppTheme.primary.withValues(alpha: 0.1),
         borderRadius: BorderRadius.circular(8),
         border: Border.all(
-          color: AppTheme.primary.withOpacity(0.2),
+          color: AppTheme.primary.withValues(alpha: 0.2),
           width: 1,
         ),
       ),

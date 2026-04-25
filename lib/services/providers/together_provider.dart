@@ -5,15 +5,14 @@ import '../../models/device_context.dart';
 import '../../models/explanation.dart';
 import '../ai_provider.dart';
 
-/// Groq AI provider — fastest inference (~300ms), 30 RPM free.
-/// Uses Llama 4 Scout with vision capabilities.
-class GroqProvider extends AIProvider with RateLimitTracker {
+/// Together AI provider — free $25 credit, Llama 4 Scout vision.
+class TogetherProvider extends AIProvider with RateLimitTracker {
   final String apiKey;
 
-  GroqProvider({required this.apiKey});
+  TogetherProvider({required this.apiKey});
 
   @override
-  String get name => 'Groq (Llama 4)';
+  String get name => 'Together (Llama 4)';
 
   @override
   bool get isAvailable => apiKey.isNotEmpty && !isCoolingDown;
@@ -27,33 +26,35 @@ class GroqProvider extends AIProvider with RateLimitTracker {
       final base64Image = base64Encode(imageBytes);
       final prompt = _buildPrompt(context);
 
-      final response = await http.post(
-        Uri.parse('https://api.groq.com/openai/v1/chat/completions'),
-        headers: {
-          'Authorization': 'Bearer $apiKey',
-          'Content-Type': 'application/json',
-        },
-        body: jsonEncode({
-          'model': 'meta-llama/llama-4-scout-17b-16e-instruct',
-          'messages': [
-            {
-              'role': 'user',
-              'content': [
-                {'type': 'text', 'text': prompt},
+      final response = await http
+          .post(
+            Uri.parse('https://api.together.xyz/v1/chat/completions'),
+            headers: {
+              'Authorization': 'Bearer $apiKey',
+              'Content-Type': 'application/json',
+            },
+            body: jsonEncode({
+              'model': 'meta-llama/Llama-4-Scout-17B-16E-Instruct',
+              'messages': [
                 {
-                  'type': 'image_url',
-                  'image_url': {
-                    'url': 'data:image/jpeg;base64,$base64Image',
-                  },
+                  'role': 'user',
+                  'content': [
+                    {'type': 'text', 'text': prompt},
+                    {
+                      'type': 'image_url',
+                      'image_url': {
+                        'url': 'data:image/jpeg;base64,$base64Image',
+                      },
+                    },
+                  ],
                 },
               ],
-            },
-          ],
-          'temperature': 0.4,
-          'max_tokens': 2048,
-          'response_format': {'type': 'json_object'},
-        }),
-      );
+              'temperature': 0.4,
+              'max_tokens': 2048,
+              'response_format': {'type': 'json_object'},
+            }),
+          )
+          .timeout(const Duration(seconds: 15));
 
       if (response.statusCode == 429) {
         markRateLimited();
@@ -61,7 +62,7 @@ class GroqProvider extends AIProvider with RateLimitTracker {
       }
 
       if (response.statusCode != 200) {
-        throw Exception('Groq API error: ${response.statusCode}');
+        throw Exception('Together API error: ${response.statusCode}');
       }
 
       resetCooldown();
@@ -85,7 +86,6 @@ CRITICAL RULES:
 - Identify objects both NEAR and FAR in the scene
 - If you see packaging/logos, identify the brand and product
 - Get STRAIGHT TO THE POINT — no filler phrases
-- Use location/news context to identify landmarks, businesses, events
 
 Return JSON: {"explanations": [{"headline": "...", "summary": "...", "details": "...", "sources": ["camera","location","news","time"], "category": "landmark|event|sign|object|person|nature|vehicle|text|scene|product", "confidence": 0.0-1.0}]}
 
@@ -95,17 +95,14 @@ Format: 3-8 objects, sorted by visual prominence. headline=one punchy sentence, 
   List<Explanation> _parseResponse(String text) {
     try {
       String jsonStr = text.trim();
-      
-      // Extract JSON if wrapped in markdown or other text
+
       final jsonMatch = RegExp(r'\{.*\}', dotAll: true).firstMatch(jsonStr);
-      
       if (jsonMatch != null) {
         jsonStr = jsonMatch.group(0)!;
       }
 
       final decoded = jsonDecode(jsonStr);
 
-      // Handle both array and object-with-array format
       List<dynamic> items;
       if (decoded is List) {
         items = decoded;

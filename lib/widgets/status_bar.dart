@@ -31,7 +31,7 @@ class StatusBar extends StatelessWidget {
             child: Container(
               padding: const EdgeInsets.symmetric(horizontal: 14, vertical: 10),
               decoration: BoxDecoration(
-                color: AppTheme.surface.withOpacity(0.7),
+                color: AppTheme.surface.withValues(alpha: 0.7),
                 borderRadius: BorderRadius.circular(16),
                 border: Border.all(color: AppTheme.glassBorder, width: 1),
               ),
@@ -65,7 +65,7 @@ class StatusBar extends StatelessWidget {
                         vertical: 3,
                       ),
                       decoration: BoxDecoration(
-                        color: AppTheme.warning.withOpacity(0.2),
+                        color: AppTheme.warning.withValues(alpha: 0.2),
                         borderRadius: BorderRadius.circular(8),
                       ),
                       child: const Row(
@@ -99,7 +99,7 @@ class StatusBar extends StatelessWidget {
                       boxShadow: [
                         BoxShadow(
                           color: (isOnline ? AppTheme.accent : AppTheme.error)
-                              .withOpacity(0.5),
+                              .withValues(alpha: 0.5),
                           blurRadius: 6,
                         ),
                       ],
