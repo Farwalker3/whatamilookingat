@@ -36,7 +36,18 @@ jobs:
         run: flutter pub get
 
       - name: Setup environment variables
-        run: cp .env.example .env
+        env:
+          GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
+          GROQ_API_KEY: ${{ secrets.GROQ_API_KEY }}
+          OPENROUTER_API_KEY: ${{ secrets.OPENROUTER_API_KEY }}
+          TOGETHER_API_KEY: ${{ secrets.TOGETHER_API_KEY }}
+          NEWS_API_KEY: ${{ secrets.NEWS_API_KEY }}
+        run: |
+          echo "GEMINI_API_KEY=$GEMINI_API_KEY" > .env
+          echo "GROQ_API_KEY=$GROQ_API_KEY" >> .env
+          echo "OPENROUTER_API_KEY=$OPENROUTER_API_KEY" >> .env
+          echo "TOGETHER_API_KEY=$TOGETHER_API_KEY" >> .env
+          echo "NEWS_API_KEY=$NEWS_API_KEY" >> .env
 
       - name: Build APK
         run: flutter build apk --release
