@@ -1,11 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:provider/provider.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import '../providers/analysis_provider.dart';
 import '../theme/app_theme.dart';
 
-/// Settings screen for API key management and preferences.
+/// Settings screen for preferences.
 class SettingsScreen extends StatefulWidget {
   const SettingsScreen({super.key});
 
@@ -14,50 +13,26 @@ class SettingsScreen extends StatefulWidget {
 }
 
 class _SettingsScreenState extends State<SettingsScreen> {
-  late TextEditingController _geminiController;
-  late TextEditingController _groqController;
-  late TextEditingController _openrouterController;
-  late TextEditingController _togetherController;
   late TextEditingController _newsController;
-  bool _showKeys = false;
 
   @override
   void initState() {
     super.initState();
-    _geminiController = TextEditingController(text: dotenv.env['GEMINI_API_KEY'] ?? '');
-    _groqController = TextEditingController(text: dotenv.env['GROQ_API_KEY'] ?? '');
-    _openrouterController = TextEditingController(text: dotenv.env['OPENROUTER_API_KEY'] ?? '');
-    _togetherController = TextEditingController(text: dotenv.env['TOGETHER_API_KEY'] ?? '');
-    _newsController = TextEditingController(text: dotenv.env['NEWS_API_KEY'] ?? '');
-    _loadKeys();
+    _newsController = TextEditingController();
+    _loadNewsKey();
   }
 
-  Future<void> _loadKeys() async {
+  Future<void> _loadNewsKey() async {
     final prefs = await SharedPreferences.getInstance();
-    if (prefs.getString('GEMINI_API_KEY') != null) {
-      _geminiController.text = prefs.getString('GEMINI_API_KEY')!;
-    }
-    if (prefs.getString('GROQ_API_KEY') != null) {
-      _groqController.text = prefs.getString('GROQ_API_KEY')!;
-    }
-    if (prefs.getString('OPENROUTER_API_KEY') != null) {
-      _openrouterController.text = prefs.getString('OPENROUTER_API_KEY')!;
-    }
-    if (prefs.getString('TOGETHER_API_KEY') != null) {
-      _togetherController.text = prefs.getString('TOGETHER_API_KEY')!;
-    }
-    if (prefs.getString('NEWS_API_KEY') != null) {
-      _newsController.text = prefs.getString('NEWS_API_KEY')!;
+    final saved = prefs.getString('NEWS_API_KEY');
+    if (saved != null) {
+      _newsController.text = saved;
     }
     setState(() {});
   }
 
   @override
   void dispose() {
-    _geminiController.dispose();
-    _groqController.dispose();
-    _openrouterController.dispose();
-    _togetherController.dispose();
     _newsController.dispose();
     super.dispose();
   }
@@ -77,62 +52,12 @@ class _SettingsScreenState extends State<SettingsScreen> {
       body: ListView(
         padding: const EdgeInsets.all(16),
         children: [
-          // API Keys Section
           _buildSectionHeader('AI Providers', Icons.smart_toy_rounded),
           const SizedBox(height: 8),
           _buildInfoCard(
-            'The app rotates between multiple AI providers to avoid '
-            'draining any single account. Configure as many as you can '
-            'for the best experience.',
-            icon: Icons.info_outline_rounded,
+            'Cloud AI calls now go through the shared Vercel proxy. No API keys are required in the app setup flow.',
+            icon: Icons.cloud_done_rounded,
             color: AppTheme.primary,
-          ),
-          const SizedBox(height: 12),
-
-          Row(
-            mainAxisAlignment: MainAxisAlignment.end,
-            children: [
-              TextButton.icon(
-                onPressed: () => setState(() => _showKeys = !_showKeys),
-                icon: Icon(
-                  _showKeys ? Icons.visibility_off : Icons.visibility,
-                  size: 16,
-                ),
-                label: Text(_showKeys ? 'Hide keys' : 'Show keys'),
-                style: TextButton.styleFrom(
-                  foregroundColor: AppTheme.textMuted,
-                ),
-              ),
-            ],
-          ),
-
-          _buildApiKeyField(
-            'Gemini API Key',
-            _geminiController,
-            'aistudio.google.com',
-            'Required for best quality context analysis',
-            'GEMINI_API_KEY',
-          ),
-          _buildApiKeyField(
-            'Groq API Key',
-            _groqController,
-            'console.groq.com',
-            'Required for lightning fast detection',
-            'GROQ_API_KEY',
-          ),
-          _buildApiKeyField(
-            'OpenRouter API Key',
-            _openrouterController,
-            'openrouter.ai',
-            'Free models, no credit card',
-            'OPENROUTER_API_KEY',
-          ),
-          _buildApiKeyField(
-            'Together AI API Key',
-            _togetherController,
-            'api.together.xyz',
-            'Free \$25 credit, Llama 4 vision',
-            'TOGETHER_API_KEY',
           ),
 
           const SizedBox(height: 24),
@@ -172,21 +97,15 @@ class _SettingsScreenState extends State<SettingsScreen> {
           const SizedBox(height: 8),
           _buildInfoCard(
             'What Am I Looking At? v1.0.0\n\n'
-            'An AI-powered smart camera that explains what you see '
-            'using your device\'s camera, location, local news, and '
-            'multiple AI providers.\n\n'
-            'All AI processing is done via free API tiers. No data '
-            'is stored on external servers beyond what the AI APIs '
-            'require for processing.',
+            'An AI-powered smart camera that explains what you see using your device\'s camera, location, local news, and cloud AI through a Vercel proxy.\n\n'
+            'AI provider credentials are managed server-side, so the app works without manual setup for those keys.',
             icon: Icons.camera_rounded,
             color: AppTheme.secondary,
           ),
 
           const SizedBox(height: 24),
           _buildInfoCard(
-            '⚠️ Note: API keys entered here are stored only on this device. '
-            'For production use, keys should be configured in the .env file '
-            'before building the app.',
+            'Only the NewsData.io key remains optional in settings. Cloud AI credentials are not stored on the device.',
             icon: Icons.security_rounded,
             color: AppTheme.warning,
           ),
@@ -280,7 +199,7 @@ class _SettingsScreenState extends State<SettingsScreen> {
             const SizedBox(height: 8),
             TextField(
               controller: controller,
-              obscureText: !_showKeys,
+              obscureText: false,
               style: const TextStyle(
                 color: AppTheme.textPrimary,
                 fontSize: 13,
