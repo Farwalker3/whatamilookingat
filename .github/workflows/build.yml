@@ -8,8 +8,11 @@ on:
 
 jobs:
   build:
-    name: Build Release APK
+    name: Build and Release APK
     runs-on: ubuntu-latest
+
+    permissions:
+      contents: write
 
     steps:
       - name: Checkout repository
@@ -44,3 +47,14 @@ jobs:
           name: whatamilookingat-release-apk
           path: build/app/outputs/flutter-apk/app-release.apk
           retention-days: 7
+
+      - name: Update Latest Release
+        uses: softprops/action-gh-release@v2
+        with:
+          tag_name: latest
+          name: Latest Development Build
+          body: "Automated build from the latest commit on the main branch."
+          files: build/app/outputs/flutter-apk/app-release.apk
+          prerelease: true
+        env:
+          GITHUB_TOKEN: \${{ secrets.GITHUB_TOKEN }}
