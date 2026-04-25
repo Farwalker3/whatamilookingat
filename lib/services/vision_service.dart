@@ -12,15 +12,13 @@ class VisionService {
   Future<void> initialize() async {
     if (_isInitialized) return;
 
-    // Initialize Object Detector
     final options = ObjectDetectorOptions(
-      mode: DetectionMode.single,
+      mode: DetectionMode.stream,
       classifyObjects: true,
       multipleObjects: true,
     );
     _objectDetector = ObjectDetector(options: options);
 
-    // Initialize Text Recognizer
     _textRecognizer = TextRecognizer(script: TextRecognitionScript.latin);
 
     _isInitialized = true;
@@ -34,7 +32,6 @@ class VisionService {
       final inputImage = _buildInputImage(image, sensorOrientation);
       if (inputImage == null) return [];
 
-      // Run detection in parallel
       final results = await Future.wait([
         _objectDetector.processImage(inputImage),
         _textRecognizer.processImage(inputImage),
@@ -45,7 +42,6 @@ class VisionService {
 
       final labels = <String>{};
 
-      // Add object labels
       for (final obj in objects) {
         for (final label in obj.labels) {
           if (label.confidence > 0.5) {
@@ -54,9 +50,7 @@ class VisionService {
         }
       }
 
-      // Add prominent text snippets exactly
       if (visionText.text.isNotEmpty) {
-        // Clean up text and remove excessive newlines for brevity in context
         final cleanedText = visionText.text.replaceAll('\n', ' ').replaceAll(RegExp(r'\s+'), ' ').trim();
         if (cleanedText.isNotEmpty) {
           labels.add('EXACT OCR TEXT IN IMAGE: """$cleanedText""" (Treat this as absolute truth, DO NOT guess)');
@@ -90,7 +84,6 @@ class VisionService {
     try {
       final inputImage = InputImage.fromFilePath(path);
 
-      // Run detection in parallel
       final results = await Future.wait([
         _objectDetector.processImage(inputImage),
         _textRecognizer.processImage(inputImage),
@@ -101,7 +94,6 @@ class VisionService {
 
       final labels = <String>{};
 
-      // Add object labels
       for (final obj in objects) {
         for (final label in obj.labels) {
           if (label.confidence > 0.5) {
@@ -110,7 +102,6 @@ class VisionService {
         }
       }
 
-      // Add prominent text snippets exactly
       if (visionText.text.isNotEmpty) {
         final cleanedText = visionText.text.replaceAll('\n', ' ').replaceAll(RegExp(r'\s+'), ' ').trim();
         if (cleanedText.isNotEmpty) {
@@ -132,9 +123,9 @@ class VisionService {
       final inputImage = InputImage.fromBytes(
         bytes: bytes,
         metadata: InputImageMetadata(
-          size: const Size(640, 480), // Approximated
+          size: const Size(640, 480),
           rotation: InputImageRotation.rotation0deg,
-          format: InputImageFormat.bgra8888, // Standard for bytes
+          format: InputImageFormat.bgra8888,
           bytesPerRow: 640 * 4,
         ),
       );
@@ -184,7 +175,6 @@ class VisionService {
       final InputImageFormat format =
           InputImageFormatValue.fromRawValue(image.format.raw) ??
               InputImageFormat.nv21;
-
 
       final inputImageMetadata = InputImageMetadata(
         size: imageSize,
