@@ -1,0 +1,205 @@
+﻿Resolving dependencies...
+Downloading packages...
+  camera 0.11.4 (0.12.0+1 available)
+  camera_android_camerax 0.6.30 (0.7.1+2 available)
+  camera_avfoundation 0.9.23+2 (0.10.1 available)
+  characters 1.4.0 (1.4.1 available)
+  connectivity_plus 6.1.5 (7.1.1 available)
+  flutter_dotenv 5.2.1 (6.0.0 available)
+  matcher 0.12.17 (0.12.19 available)
+  material_color_utilities 0.11.1 (0.13.0 available)
+  meta 1.17.0 (1.18.2 available)
+  package_info_plus 9.0.1 (10.0.0 available)
+  package_info_plus_platform_interface 3.2.1 (4.0.0 available)
+  permission_handler 11.4.0 (12.0.1 available)
+  permission_handler_android 12.1.0 (13.0.1 available)
+  share_plus 10.1.4 (13.0.0 available)
+  share_plus_platform_interface 5.0.2 (7.0.0 available)
+  test_api 0.7.7 (0.7.11 available)
+  vector_math 2.2.0 (2.3.0 available)
+  win32 5.15.0 (6.0.1 available)
+Got dependencies!
+18 packages have newer versions incompatible with dependency constraints.
+Try `flutter pub outdated` for more information.
+Launching lib\main.dart on SM F926U in debug mode...
+Running Gradle task 'assembleDebug'...                          
+flutter : Warning: 
+Flutter support for 
+your project's Gradle 
+version (8.4.0) will 
+soon be dropped. 
+Please upgrade your 
+Gradle version to a 
+version of at least 
+8.7.0 soon.
+At line:1 char:22
++ ... ub upgrade; 
+flutter run -d 
+RFCRC0TWAPJ 2>&1 > buil
+d_error_final_8.txt ...
++                 ~~~~~
+~~~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~~~~
+~~~~~~
+    + CategoryInfo     
+         : NotSpecifi  
+  ed: (Warning: Flut   
+ te...ast 8.7.0 soo    
+n.:String) [], Rem    
+oteException
+    + FullyQualifiedEr 
+   rorId : NativeComm  
+  andError
+ 
+Alternatively, use the 
+flag "--android-skip-bu
+ild-dependency-validati
+on" to bypass this 
+check.
+
+Potential fix: Your 
+project's gradle 
+version is typically 
+defined in the gradle 
+wrapper file. By 
+default, this can be 
+found at C:\Users\Farwa
+\Documents\whatamilooki
+ngat\android/gradle/wra
+pper/gradle-wrapper.pro
+perties. 
+For more information, 
+see https://docs.gradle
+.org/current/userguide/
+gradle_wrapper.html.
+
+Warning: Flutter 
+support for your 
+project's Android 
+Gradle Plugin version 
+(Android Gradle Plugin 
+version 8.1.1) will 
+soon be dropped. 
+Please upgrade your 
+Android Gradle Plugin 
+version to a version 
+of at least Android 
+Gradle Plugin version 
+8.6.0 soon.
+Alternatively, use the 
+flag "--android-skip-bu
+ild-dependency-validati
+on" to bypass this 
+check.
+
+Potential fix: Your 
+project's AGP version 
+is typically defined 
+in the plugins block 
+of the 
+`settings.gradle` file 
+(C:\Users\Farwa\Documen
+ts\whatamilookingat\and
+roid/settings.gradle), 
+by a plugin with the 
+id of com.android.appli
+cation. 
+If you don't see a 
+plugins block, your 
+project was likely 
+created with an older 
+template version. In 
+this case it is most 
+likely defined in the 
+top-level build.gradle 
+file (C:\Users\Farwa\Do
+cuments\whatamilookinga
+t\android/build.gradle)
+ by the following line 
+in the dependencies 
+block of the 
+buildscript: 
+"classpath 'com.android
+.tools.build:gradle:<ve
+rsion>'".
+
+Warning: Flutter 
+support for your 
+project's Kotlin 
+version (1.9.22) will 
+soon be dropped. 
+Please upgrade your 
+Kotlin version to a 
+version of at least 
+2.1.0 soon.
+Alternatively, use the 
+flag "--android-skip-bu
+ild-dependency-validati
+on" to bypass this 
+check.
+
+Potential fix: Your 
+project's KGP version 
+is typically defined 
+in the plugins block 
+of the 
+`settings.gradle` file 
+(C:\Users\Farwa\Documen
+ts\whatamilookingat\and
+roid/settings.gradle), 
+by a plugin with the 
+id of org.jetbrains.kot
+lin.android. 
+If you don't see a 
+plugins block, your 
+project was likely 
+created with an older 
+template version, in 
+which case it is most 
+likely defined in the 
+top-level build.gradle 
+file (C:\Users\Farwa\Do
+cuments\whatamilookinga
+t\android/build.gradle)
+ by the 
+ext.kotlin_version 
+property.
+
+Warning: The plugin camera_android_camerax requires Android SDK version 36 or higher.
+For more information about build configuration, see https://flutter.dev/to/review-gradle-config.
+
+FAILURE: Build failed 
+with an exception.
+
+* What went wrong:
+Build_gradle
+> Failed to instrument 
+class Build_gradle in C
+lassLoaderScopeIdentifi
+er.Id{coreAndPlugins:se
+ttings[:]:buildSrc[:]:k
+otlin-dsl:C:\Users\Farw
+a\AppData\Local\Pub\Cac
+he\hosted\pub.dev\flutt
+er_plugin_android_lifec
+ycle-2.0.34\android\bui
+ld.gradle.kts:Project/T
+opLevel/stage1(local)}
+
+* Try:
+> Run with 
+--stacktrace option to 
+get the stack trace.
+> Run with --info or 
+--debug option to get 
+more log output.
+> Run with --scan to 
+get full insights.
+> Get more help at http
+s://help.gradle.org.
+
+BUILD FAILED in 3s
+Running Gradle task 'assembleDebug'...                              4.7s
+Error: Gradle task 
+assembleDebug failed 
+with exit code 1

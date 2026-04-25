@@ -8,6 +8,7 @@ import 'package:whatamilookingat/services/location_service.dart';
 import 'package:whatamilookingat/services/news_service.dart';
 import 'package:whatamilookingat/screens/camera_screen.dart';
 import 'package:whatamilookingat/theme/app_theme.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 
 void main() async {
@@ -25,18 +26,19 @@ void main() async {
     DeviceOrientation.portraitUp,
   ]);
 
-  // Initialize services
+  final prefs = await SharedPreferences.getInstance();
+
   final locationService = LocationService();
   final newsService = NewsService(
-    apiKey: dotenv.env['NEWS_API_KEY'] ?? '',
+    apiKey: prefs.getString('NEWS_API_KEY') ?? dotenv.env['NEWS_API_KEY'] ?? '',
   );
 
   final aiManager = AIRotationManager();
   aiManager.initialize(
-    geminiKey: dotenv.env['GEMINI_API_KEY'] ?? '',
-    groqKey: dotenv.env['GROQ_API_KEY'] ?? '',
-    openRouterKey: dotenv.env['OPENROUTER_API_KEY'] ?? '',
-    togetherKey: dotenv.env['TOGETHER_API_KEY'] ?? '',
+    geminiKey: prefs.getString('GEMINI_API_KEY') ?? dotenv.env['GEMINI_API_KEY'] ?? '',
+    groqKey: prefs.getString('GROQ_API_KEY') ?? dotenv.env['GROQ_API_KEY'] ?? '',
+    openRouterKey: prefs.getString('OPENROUTER_API_KEY') ?? dotenv.env['OPENROUTER_API_KEY'] ?? '',
+    togetherKey: prefs.getString('TOGETHER_API_KEY') ?? dotenv.env['TOGETHER_API_KEY'] ?? '',
   );
 
   runApp(

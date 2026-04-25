@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:provider/provider.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 import '../providers/analysis_provider.dart';
 import '../theme/app_theme.dart';
 
@@ -23,21 +24,32 @@ class _SettingsScreenState extends State<SettingsScreen> {
   @override
   void initState() {
     super.initState();
-    _geminiController = TextEditingController(
-      text: dotenv.env['GEMINI_API_KEY'] ?? '',
-    );
-    _groqController = TextEditingController(
-      text: dotenv.env['GROQ_API_KEY'] ?? '',
-    );
-    _openrouterController = TextEditingController(
-      text: dotenv.env['OPENROUTER_API_KEY'] ?? '',
-    );
-    _togetherController = TextEditingController(
-      text: dotenv.env['TOGETHER_API_KEY'] ?? '',
-    );
-    _newsController = TextEditingController(
-      text: dotenv.env['NEWS_API_KEY'] ?? '',
-    );
+    _geminiController = TextEditingController(text: dotenv.env['GEMINI_API_KEY'] ?? '');
+    _groqController = TextEditingController(text: dotenv.env['GROQ_API_KEY'] ?? '');
+    _openrouterController = TextEditingController(text: dotenv.env['OPENROUTER_API_KEY'] ?? '');
+    _togetherController = TextEditingController(text: dotenv.env['TOGETHER_API_KEY'] ?? '');
+    _newsController = TextEditingController(text: dotenv.env['NEWS_API_KEY'] ?? '');
+    _loadKeys();
+  }
+
+  Future<void> _loadKeys() async {
+    final prefs = await SharedPreferences.getInstance();
+    if (prefs.getString('GEMINI_API_KEY') != null) {
+      _geminiController.text = prefs.getString('GEMINI_API_KEY')!;
+    }
+    if (prefs.getString('GROQ_API_KEY') != null) {
+      _groqController.text = prefs.getString('GROQ_API_KEY')!;
+    }
+    if (prefs.getString('OPENROUTER_API_KEY') != null) {
+      _openrouterController.text = prefs.getString('OPENROUTER_API_KEY')!;
+    }
+    if (prefs.getString('TOGETHER_API_KEY') != null) {
+      _togetherController.text = prefs.getString('TOGETHER_API_KEY')!;
+    }
+    if (prefs.getString('NEWS_API_KEY') != null) {
+      _newsController.text = prefs.getString('NEWS_API_KEY')!;
+    }
+    setState(() {});
   }
 
   @override
@@ -98,25 +110,29 @@ class _SettingsScreenState extends State<SettingsScreen> {
             'Gemini API Key',
             _geminiController,
             'aistudio.google.com',
-            '15 RPM, best quality',
+            'Required for best quality context analysis',
+            'GEMINI_API_KEY',
           ),
           _buildApiKeyField(
             'Groq API Key',
             _groqController,
             'console.groq.com',
-            '30 RPM, fastest speed',
+            'Required for lightning fast detection',
+            'GROQ_API_KEY',
           ),
           _buildApiKeyField(
             'OpenRouter API Key',
             _openrouterController,
             'openrouter.ai',
             'Free models, no credit card',
+            'OPENROUTER_API_KEY',
           ),
           _buildApiKeyField(
             'Together AI API Key',
             _togetherController,
             'api.together.xyz',
             'Free \$25 credit, Llama 4 vision',
+            'TOGETHER_API_KEY',
           ),
 
           const SizedBox(height: 24),
@@ -127,6 +143,7 @@ class _SettingsScreenState extends State<SettingsScreen> {
             _newsController,
             'newsdata.io',
             '200 req/day, local news',
+            'NEWS_API_KEY',
           ),
 
           const SizedBox(height: 24),
@@ -202,6 +219,7 @@ class _SettingsScreenState extends State<SettingsScreen> {
     TextEditingController controller,
     String hint,
     String description,
+    String storageKey,
   ) {
     return Padding(
       padding: const EdgeInsets.only(bottom: 12),
@@ -294,7 +312,11 @@ class _SettingsScreenState extends State<SettingsScreen> {
                   borderSide: const BorderSide(color: AppTheme.primary),
                 ),
               ),
-              onChanged: (_) => setState(() {}),
+              onChanged: (val) async {
+                setState(() {});
+                final prefs = await SharedPreferences.getInstance();
+                await prefs.setString(storageKey, val);
+              },
             ),
           ],
         ),

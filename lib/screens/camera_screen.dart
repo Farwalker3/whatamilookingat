@@ -74,7 +74,7 @@ class _CameraScreenState extends State<CameraScreen>
         camera,
         ResolutionPreset.medium,
         enableAudio: false,
-        imageFormatGroup: ImageFormatGroup.jpeg,
+        imageFormatGroup: Platform.isAndroid ? ImageFormatGroup.yuv420 : ImageFormatGroup.bgra8888,
       );
 
       await _cameraController!.initialize();

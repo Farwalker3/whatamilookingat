@@ -1,0 +1,2495 @@
+﻿[ +764 ms] Artifact Instance of 'MaterialFonts' is not required, skipping update.
+[  +12 ms] Artifact Instance of 'GradleWrapper' is not required, skipping update.
+[   +2 ms] Artifact Instance of 'AndroidGenSnapshotArtifacts' is not required, skipping update.
+[        ] Artifact Instance of 'AndroidInternalBuildArtifacts' is not required, skipping update.
+[        ] Artifact Instance of 'IOSEngineArtifacts' is not required, skipping update.
+[        ] Artifact Instance of 'FlutterWebSdk' is not required, skipping update.
+[   +3 ms] Artifact Instance of 'LegacyCanvasKitRemover' is not required, skipping update.
+[        ] Artifact Instance of 'FlutterSdk' is not required, skipping update.
+[        ] Artifact Instance of 'WindowsEngineArtifacts' is not required, skipping update.
+[        ] Artifact Instance of 'MacOSEngineArtifacts' is not required, skipping update.
+[        ] Artifact Instance of 'LinuxEngineArtifacts' is not required, skipping update.
+[        ] Artifact Instance of 'LinuxFuchsiaSDKArtifacts' is not required, skipping update.
+[        ] Artifact Instance of 'MacOSFuchsiaSDKArtifacts' is not required, skipping update.
+[        ] Artifact Instance of 'FlutterRunnerSDKArtifacts' is not required, skipping update.
+[        ] Artifact Instance of 'FlutterRunnerDebugSymbols' is not required, skipping update.
+[        ] Artifact Instance of 'IosUsbArtifacts' is not required, skipping update.
+[        ] Artifact Instance of 'IosUsbArtifacts' is not required, skipping update.
+[        ] Artifact Instance of 'IosUsbArtifacts' is not required, skipping update.
+[        ] Artifact Instance of 'IosUsbArtifacts' is not required, skipping update.
+[        ] Artifact Instance of 'IosUsbArtifacts' is not required, skipping update.
+[        ] Artifact Instance of 'IosUsbArtifacts' is not required, skipping update.
+[        ] Artifact Instance of 'FontSubsetArtifacts' is not required, skipping update.
+[        ] Artifact Instance of 'PubDependencies' is not required, skipping update.
+[   +4 ms] executing: [C:\Users\Farwa\AppData\Local\Programs\flutter/] git -c log.showSignature=false log HEAD -n 1 --pretty=format:%ad --date=iso
+[ +230 ms] Exit code 0 from: git -c log.showSignature=false log HEAD -n 1 --pretty=format:%ad --date=iso
+[        ] 2025-12-11 11:50:07 -0500
+[  +51 ms] Artifact Instance of 'AndroidGenSnapshotArtifacts' is not required, skipping update.
+[        ] Artifact Instance of 'AndroidInternalBuildArtifacts' is not required, skipping update.
+[        ] Artifact Instance of 'IOSEngineArtifacts' is not required, skipping update.
+[        ] Artifact Instance of 'FlutterWebSdk' is not required, skipping update.
+[        ] Artifact Instance of 'FlutterEngineStamp' is not required, skipping update.
+[        ] Artifact Instance of 'LegacyCanvasKitRemover' is not required, skipping update.
+[  +11 ms] Artifact Instance of 'WindowsEngineArtifacts' is not required, skipping update.
+[        ] Artifact Instance of 'MacOSEngineArtifacts' is not required, skipping update.
+[        ] Artifact Instance of 'LinuxEngineArtifacts' is not required, skipping update.
+[        ] Artifact Instance of 'LinuxFuchsiaSDKArtifacts' is not required, skipping update.
+[   +1 ms] Artifact Instance of 'MacOSFuchsiaSDKArtifacts' is not required, skipping update.
+[        ] Artifact Instance of 'FlutterRunnerSDKArtifacts' is not required, skipping update.
+[        ] Artifact Instance of 'FlutterRunnerDebugSymbols' is not required, skipping update.
+[ +307 ms] Artifact Instance of 'MaterialFonts' is not required, skipping update.
+[        ] Artifact Instance of 'GradleWrapper' is not required, skipping update.
+[  +25 ms] Artifact Instance of 'AndroidInternalBuildArtifacts' is not required, skipping update.
+[   +1 ms] Artifact Instance of 'IOSEngineArtifacts' is not required, skipping update.
+[   +1 ms] Artifact Instance of 'FlutterWebSdk' is not required, skipping update.
+[   +1 ms] Artifact Instance of 'FlutterEngineStamp' is not required, skipping update.
+[   +1 ms] Artifact Instance of 'LegacyCanvasKitRemover' is not required, skipping update.
+[   +1 ms] Artifact Instance of 'FlutterSdk' is not required, skipping update.
+[        ] Artifact Instance of 'WindowsEngineArtifacts' is not required, skipping update.
+[        ] Artifact Instance of 'MacOSEngineArtifacts' is not required, skipping update.
+[        ] Artifact Instance of 'LinuxEngineArtifacts' is not required, skipping update.
+[        ] Artifact Instance of 'LinuxFuchsiaSDKArtifacts' is not required, skipping update.
+[        ] Artifact Instance of 'MacOSFuchsiaSDKArtifacts' is not required, skipping update.
+[        ] Artifact Instance of 'FlutterRunnerSDKArtifacts' is not required, skipping update.
+[        ] Artifact Instance of 'FlutterRunnerDebugSymbols' is not required, skipping update.
+[        ] Artifact Instance of 'IosUsbArtifacts' is not required, skipping update.
+[        ] Artifact Instance of 'IosUsbArtifacts' is not required, skipping update.
+[        ] Artifact Instance of 'IosUsbArtifacts' is not required, skipping update.
+[        ] Artifact Instance of 'IosUsbArtifacts' is not required, skipping update.
+[        ] Artifact Instance of 'IosUsbArtifacts' is not required, skipping update.
+[        ] Artifact Instance of 'IosUsbArtifacts' is not required, skipping update.
+[        ] Artifact Instance of 'FontSubsetArtifacts' is not required, skipping update.
+[        ] Artifact Instance of 'PubDependencies' is not required, skipping update.
+[ +265 ms] Skipping pub get: version match.
+[ +296 ms] Found plugin share_plus at C:\Users\Farwa\AppData\Local\Pub\Cache\hosted\pub.dev\share_plus-10.1.4\
+[  +68 ms] Found plugin url_launcher_windows at C:\Users\Farwa\AppData\Local\Pub\Cache\hosted\pub.dev\url_launcher_windows-3.1.5\
+[  +33 ms] Found plugin url_launcher_web at C:\Users\Farwa\AppData\Local\Pub\Cache\hosted\pub.dev\url_launcher_web-2.4.2\
+[  +23 ms] Found plugin url_launcher_linux at C:\Users\Farwa\AppData\Local\Pub\Cache\hosted\pub.dev\url_launcher_linux-3.2.2\
+[  +52 ms] Found plugin path_provider at C:\Users\Farwa\AppData\Local\Pub\Cache\hosted\pub.dev\path_provider-2.1.5\
+[   +9 ms] Found plugin path_provider_windows at C:\Users\Farwa\AppData\Local\Pub\Cache\hosted\pub.dev\path_provider_windows-2.3.0\
+[  +30 ms] Found plugin path_provider_linux at C:\Users\Farwa\AppData\Local\Pub\Cache\hosted\pub.dev\path_provider_linux-2.2.1\
+[  +15 ms] Found plugin path_provider_foundation at C:\Users\Farwa\AppData\Local\Pub\Cache\hosted\pub.dev\path_provider_foundation-2.6.0\
+[  +54 ms] Found plugin path_provider_android at C:\Users\Farwa\AppData\Local\Pub\Cache\hosted\pub.dev\path_provider_android-2.3.1\
+[  +11 ms] Found plugin jni_flutter at C:\Users\Farwa\AppData\Local\Pub\Cache\hosted\pub.dev\jni_flutter-1.0.1\
+[   +8 ms] Found plugin jni at C:\Users\Farwa\AppData\Local\Pub\Cache\hosted\pub.dev\jni-1.0.0\
+[  +37 ms] Found plugin permission_handler at C:\Users\Farwa\AppData\Local\Pub\Cache\hosted\pub.dev\permission_handler-11.4.0\
+[   +5 ms] Found plugin permission_handler_windows at C:\Users\Farwa\AppData\Local\Pub\Cache\hosted\pub.dev\permission_handler_windows-0.2.1\
+[  +13 ms] Found plugin permission_handler_html at C:\Users\Farwa\AppData\Local\Pub\Cache\hosted\pub.dev\permission_handler_html-0.1.3+5\
+[   +4 ms] Found plugin permission_handler_apple at C:\Users\Farwa\AppData\Local\Pub\Cache\hosted\pub.dev\permission_handler_apple-9.4.7\
+[  +10 ms] Found plugin permission_handler_android at C:\Users\Farwa\AppData\Local\Pub\Cache\hosted\pub.dev\permission_handler_android-12.1.0\
+[   +8 ms] Found plugin image_picker at C:\Users\Farwa\AppData\Local\Pub\Cache\hosted\pub.dev\image_picker-1.2.1\
+[   +9 ms] Found plugin image_picker_windows at C:\Users\Farwa\AppData\Local\Pub\Cache\hosted\pub.dev\image_picker_windows-0.2.2\
+[  +24 ms] Found plugin file_selector_windows at C:\Users\Farwa\AppData\Local\Pub\Cache\hosted\pub.dev\file_selector_windows-0.9.3+5\
+[  +12 ms] Found plugin image_picker_macos at C:\Users\Farwa\AppData\Local\Pub\Cache\hosted\pub.dev\image_picker_macos-0.2.2+1\
+[   +4 ms] Found plugin file_selector_macos at C:\Users\Farwa\AppData\Local\Pub\Cache\hosted\pub.dev\file_selector_macos-0.9.5\
+[   +4 ms] Found plugin image_picker_linux at C:\Users\Farwa\AppData\Local\Pub\Cache\hosted\pub.dev\image_picker_linux-0.2.2\
+[   +4 ms] Found plugin file_selector_linux at C:\Users\Farwa\AppData\Local\Pub\Cache\hosted\pub.dev\file_selector_linux-0.9.4\
+[   +6 ms] Found plugin image_picker_ios at C:\Users\Farwa\AppData\Local\Pub\Cache\hosted\pub.dev\image_picker_ios-0.8.13+6\
+[   +6 ms] Found plugin image_picker_for_web at C:\Users\Farwa\AppData\Local\Pub\Cache\hosted\pub.dev\image_picker_for_web-3.1.1\
+[   +5 ms] Found plugin image_picker_android at C:\Users\Farwa\AppData\Local\Pub\Cache\hosted\pub.dev\image_picker_android-0.8.13+16\
+[   +6 ms] Found plugin flutter_plugin_android_lifecycle at C:\Users\Farwa\AppData\Local\Pub\Cache\hosted\pub.dev\flutter_plugin_android_lifecycle-2.0.34\
+[  +25 ms] Found plugin google_mlkit_text_recognition at C:\Users\Farwa\AppData\Local\Pub\Cache\hosted\pub.dev\google_mlkit_text_recognition-0.15.1\
+[   +5 ms] Found plugin google_mlkit_commons at C:\Users\Farwa\AppData\Local\Pub\Cache\hosted\pub.dev\google_mlkit_commons-0.11.1\
+[   +8 ms] Found plugin google_mlkit_object_detection at C:\Users\Farwa\AppData\Local\Pub\Cache\hosted\pub.dev\google_mlkit_object_detection-0.15.1\
+[   +6 ms] Found plugin geolocator at C:\Users\Farwa\AppData\Local\Pub\Cache\hosted\pub.dev\geolocator-14.0.2\
+[   +5 ms] Found plugin geolocator_windows at C:\Users\Farwa\AppData\Local\Pub\Cache\hosted\pub.dev\geolocator_windows-0.2.5\
+[   +6 ms] Found plugin geolocator_web at C:\Users\Farwa\AppData\Local\Pub\Cache\hosted\pub.dev\geolocator_web-4.1.3\
+[   +3 ms] Found plugin geolocator_linux at C:\Users\Farwa\AppData\Local\Pub\Cache\hosted\pub.dev\geolocator_linux-0.2.4\
+[   +4 ms] Found plugin package_info_plus at C:\Users\Farwa\AppData\Local\Pub\Cache\hosted\pub.dev\package_info_plus-9.0.1\
+[  +14 ms] Found plugin geolocator_apple at C:\Users\Farwa\AppData\Local\Pub\Cache\hosted\pub.dev\geolocator_apple-2.3.13\
+[   +6 ms] Found plugin geolocator_android at C:\Users\Farwa\AppData\Local\Pub\Cache\hosted\pub.dev\geolocator_android-5.0.2\
+[  +24 ms] Found plugin connectivity_plus at C:\Users\Farwa\AppData\Local\Pub\Cache\hosted\pub.dev\connectivity_plus-6.1.5\
+[  +12 ms] Found plugin camera at C:\Users\Farwa\AppData\Local\Pub\Cache\hosted\pub.dev\camera-0.11.4\
+[   +4 ms] Found plugin camera_web at C:\Users\Farwa\AppData\Local\Pub\Cache\hosted\pub.dev\camera_web-0.3.5+3\
+[  +13 ms] Found plugin camera_avfoundation at C:\Users\Farwa\AppData\Local\Pub\Cache\hosted\pub.dev\camera_avfoundation-0.9.23+2\
+[   +7 ms] Found plugin camera_android_camerax at C:\Users\Farwa\AppData\Local\Pub\Cache\hosted\pub.dev\camera_android_camerax-0.6.30\
+[ +196 ms] Found plugin share_plus at C:\Users\Farwa\AppData\Local\Pub\Cache\hosted\pub.dev\share_plus-10.1.4\
+[  +12 ms] Found plugin url_launcher_windows at C:\Users\Farwa\AppData\Local\Pub\Cache\hosted\pub.dev\url_launcher_windows-3.1.5\
+[   +7 ms] Found plugin url_launcher_web at C:\Users\Farwa\AppData\Local\Pub\Cache\hosted\pub.dev\url_launcher_web-2.4.2\
+[   +5 ms] Found plugin url_launcher_linux at C:\Users\Farwa\AppData\Local\Pub\Cache\hosted\pub.dev\url_launcher_linux-3.2.2\
+[  +19 ms] Found plugin path_provider at C:\Users\Farwa\AppData\Local\Pub\Cache\hosted\pub.dev\path_provider-2.1.5\
+[   +4 ms] Found plugin path_provider_windows at C:\Users\Farwa\AppData\Local\Pub\Cache\hosted\pub.dev\path_provider_windows-2.3.0\
+[   +8 ms] Found plugin path_provider_linux at C:\Users\Farwa\AppData\Local\Pub\Cache\hosted\pub.dev\path_provider_linux-2.2.1\
+[   +4 ms] Found plugin path_provider_foundation at C:\Users\Farwa\AppData\Local\Pub\Cache\hosted\pub.dev\path_provider_foundation-2.6.0\
+[  +37 ms] Found plugin path_provider_android at C:\Users\Farwa\AppData\Local\Pub\Cache\hosted\pub.dev\path_provider_android-2.3.1\
+[   +3 ms] Found plugin jni_flutter at C:\Users\Farwa\AppData\Local\Pub\Cache\hosted\pub.dev\jni_flutter-1.0.1\
+[   +3 ms] Found plugin jni at C:\Users\Farwa\AppData\Local\Pub\Cache\hosted\pub.dev\jni-1.0.0\
+[  +23 ms] Found plugin permission_handler at C:\Users\Farwa\AppData\Local\Pub\Cache\hosted\pub.dev\permission_handler-11.4.0\
+[   +2 ms] Found plugin permission_handler_windows at C:\Users\Farwa\AppData\Local\Pub\Cache\hosted\pub.dev\permission_handler_windows-0.2.1\
+[   +7 ms] Found plugin permission_handler_html at C:\Users\Farwa\AppData\Local\Pub\Cache\hosted\pub.dev\permission_handler_html-0.1.3+5\
+[   +2 ms] Found plugin permission_handler_apple at C:\Users\Farwa\AppData\Local\Pub\Cache\hosted\pub.dev\permission_handler_apple-9.4.7\
+[   +4 ms] Found plugin permission_handler_android at C:\Users\Farwa\AppData\Local\Pub\Cache\hosted\pub.dev\permission_handler_android-12.1.0\
+[   +3 ms] Found plugin image_picker at C:\Users\Farwa\AppData\Local\Pub\Cache\hosted\pub.dev\image_picker-1.2.1\
+[   +3 ms] Found plugin image_picker_windows at C:\Users\Farwa\AppData\Local\Pub\Cache\hosted\pub.dev\image_picker_windows-0.2.2\
+[  +11 ms] Found plugin file_selector_windows at C:\Users\Farwa\AppData\Local\Pub\Cache\hosted\pub.dev\file_selector_windows-0.9.3+5\
+[   +6 ms] Found plugin image_picker_macos at C:\Users\Farwa\AppData\Local\Pub\Cache\hosted\pub.dev\image_picker_macos-0.2.2+1\
+[   +2 ms] Found plugin file_selector_macos at C:\Users\Farwa\AppData\Local\Pub\Cache\hosted\pub.dev\file_selector_macos-0.9.5\
+[   +2 ms] Found plugin image_picker_linux at C:\Users\Farwa\AppData\Local\Pub\Cache\hosted\pub.dev\image_picker_linux-0.2.2\
+[   +2 ms] Found plugin file_selector_linux at C:\Users\Farwa\AppData\Local\Pub\Cache\hosted\pub.dev\file_selector_linux-0.9.4\
+[   +7 ms] Found plugin image_picker_ios at C:\Users\Farwa\AppData\Local\Pub\Cache\hosted\pub.dev\image_picker_ios-0.8.13+6\
+[   +4 ms] Found plugin image_picker_for_web at C:\Users\Farwa\AppData\Local\Pub\Cache\hosted\pub.dev\image_picker_for_web-3.1.1\
+[   +3 ms] Found plugin image_picker_android at C:\Users\Farwa\AppData\Local\Pub\Cache\hosted\pub.dev\image_picker_android-0.8.13+16\
+[   +7 ms] Found plugin flutter_plugin_android_lifecycle at C:\Users\Farwa\AppData\Local\Pub\Cache\hosted\pub.dev\flutter_plugin_android_lifecycle-2.0.34\
+[  +20 ms] Found plugin google_mlkit_text_recognition at C:\Users\Farwa\AppData\Local\Pub\Cache\hosted\pub.dev\google_mlkit_text_recognition-0.15.1\
+[   +3 ms] Found plugin google_mlkit_commons at C:\Users\Farwa\AppData\Local\Pub\Cache\hosted\pub.dev\google_mlkit_commons-0.11.1\
+[   +2 ms] Found plugin google_mlkit_object_detection at C:\Users\Farwa\AppData\Local\Pub\Cache\hosted\pub.dev\google_mlkit_object_detection-0.15.1\
+[  +10 ms] Found plugin geolocator at C:\Users\Farwa\AppData\Local\Pub\Cache\hosted\pub.dev\geolocator-14.0.2\
+[   +3 ms] Found plugin geolocator_windows at C:\Users\Farwa\AppData\Local\Pub\Cache\hosted\pub.dev\geolocator_windows-0.2.5\
+[   +7 ms] Found plugin geolocator_web at C:\Users\Farwa\AppData\Local\Pub\Cache\hosted\pub.dev\geolocator_web-4.1.3\
+[   +6 ms] Found plugin geolocator_linux at C:\Users\Farwa\AppData\Local\Pub\Cache\hosted\pub.dev\geolocator_linux-0.2.4\
+[   +2 ms] Found plugin package_info_plus at C:\Users\Farwa\AppData\Local\Pub\Cache\hosted\pub.dev\package_info_plus-9.0.1\
+[  +15 ms] Found plugin geolocator_apple at C:\Users\Farwa\AppData\Local\Pub\Cache\hosted\pub.dev\geolocator_apple-2.3.13\
+[   +2 ms] Found plugin geolocator_android at C:\Users\Farwa\AppData\Local\Pub\Cache\hosted\pub.dev\geolocator_android-5.0.2\
+[  +23 ms] Found plugin connectivity_plus at C:\Users\Farwa\AppData\Local\Pub\Cache\hosted\pub.dev\connectivity_plus-6.1.5\
+[  +11 ms] Found plugin camera at C:\Users\Farwa\AppData\Local\Pub\Cache\hosted\pub.dev\camera-0.11.4\
+[   +4 ms] Found plugin camera_web at C:\Users\Farwa\AppData\Local\Pub\Cache\hosted\pub.dev\camera_web-0.3.5+3\
+[   +9 ms] Found plugin camera_avfoundation at C:\Users\Farwa\AppData\Local\Pub\Cache\hosted\pub.dev\camera_avfoundation-0.9.23+2\
+[   +3 ms] Found plugin camera_android_camerax at C:\Users\Farwa\AppData\Local\Pub\Cache\hosted\pub.dev\camera_android_camerax-0.6.30\
+[  +34 ms] Skipping generating web_plugin_registrant.dart because it is up-to-date.
+[ +128 ms] Found plugin share_plus at C:\Users\Farwa\AppData\Local\Pub\Cache\hosted\pub.dev\share_plus-10.1.4\
+[  +15 ms] Found plugin url_launcher_windows at C:\Users\Farwa\AppData\Local\Pub\Cache\hosted\pub.dev\url_launcher_windows-3.1.5\
+[  +24 ms] Found plugin url_launcher_web at C:\Users\Farwa\AppData\Local\Pub\Cache\hosted\pub.dev\url_launcher_web-2.4.2\
+[   +9 ms] Found plugin url_launcher_linux at C:\Users\Farwa\AppData\Local\Pub\Cache\hosted\pub.dev\url_launcher_linux-3.2.2\
+[  +37 ms] Found plugin path_provider at C:\Users\Farwa\AppData\Local\Pub\Cache\hosted\pub.dev\path_provider-2.1.5\
+[   +5 ms] Found plugin path_provider_windows at C:\Users\Farwa\AppData\Local\Pub\Cache\hosted\pub.dev\path_provider_windows-2.3.0\
+[  +14 ms] Found plugin path_provider_linux at C:\Users\Farwa\AppData\Local\Pub\Cache\hosted\pub.dev\path_provider_linux-2.2.1\
+[   +7 ms] Found plugin path_provider_foundation at C:\Users\Farwa\AppData\Local\Pub\Cache\hosted\pub.dev\path_provider_foundation-2.6.0\
+[  +47 ms] Found plugin path_provider_android at C:\Users\Farwa\AppData\Local\Pub\Cache\hosted\pub.dev\path_provider_android-2.3.1\
+[  +10 ms] Found plugin jni_flutter at C:\Users\Farwa\AppData\Local\Pub\Cache\hosted\pub.dev\jni_flutter-1.0.1\
+[   +6 ms] Found plugin jni at C:\Users\Farwa\AppData\Local\Pub\Cache\hosted\pub.dev\jni-1.0.0\
+[  +25 ms] Found plugin permission_handler at C:\Users\Farwa\AppData\Local\Pub\Cache\hosted\pub.dev\permission_handler-11.4.0\
+[   +5 ms] Found plugin permission_handler_windows at C:\Users\Farwa\AppData\Local\Pub\Cache\hosted\pub.dev\permission_handler_windows-0.2.1\
+[   +7 ms] Found plugin permission_handler_html at C:\Users\Farwa\AppData\Local\Pub\Cache\hosted\pub.dev\permission_handler_html-0.1.3+5\
+[   +7 ms] Found plugin permission_handler_apple at C:\Users\Farwa\AppData\Local\Pub\Cache\hosted\pub.dev\permission_handler_apple-9.4.7\
+[   +5 ms] Found plugin permission_handler_android at C:\Users\Farwa\AppData\Local\Pub\Cache\hosted\pub.dev\permission_handler_android-12.1.0\
+[   +4 ms] Found plugin image_picker at C:\Users\Farwa\AppData\Local\Pub\Cache\hosted\pub.dev\image_picker-1.2.1\
+[   +6 ms] Found plugin image_picker_windows at C:\Users\Farwa\AppData\Local\Pub\Cache\hosted\pub.dev\image_picker_windows-0.2.2\
+[  +20 ms] Found plugin file_selector_windows at C:\Users\Farwa\AppData\Local\Pub\Cache\hosted\pub.dev\file_selector_windows-0.9.3+5\
+[   +7 ms] Found plugin image_picker_macos at C:\Users\Farwa\AppData\Local\Pub\Cache\hosted\pub.dev\image_picker_macos-0.2.2+1\
+[   +6 ms] Found plugin file_selector_macos at C:\Users\Farwa\AppData\Local\Pub\Cache\hosted\pub.dev\file_selector_macos-0.9.5\
+[   +4 ms] Found plugin image_picker_linux at C:\Users\Farwa\AppData\Local\Pub\Cache\hosted\pub.dev\image_picker_linux-0.2.2\
+[   +7 ms] Found plugin file_selector_linux at C:\Users\Farwa\AppData\Local\Pub\Cache\hosted\pub.dev\file_selector_linux-0.9.4\
+[  +14 ms] Found plugin image_picker_ios at C:\Users\Farwa\AppData\Local\Pub\Cache\hosted\pub.dev\image_picker_ios-0.8.13+6\
+[  +10 ms] Found plugin image_picker_for_web at C:\Users\Farwa\AppData\Local\Pub\Cache\hosted\pub.dev\image_picker_for_web-3.1.1\
+[   +7 ms] Found plugin image_picker_android at C:\Users\Farwa\AppData\Local\Pub\Cache\hosted\pub.dev\image_picker_android-0.8.13+16\
+[   +5 ms] Found plugin flutter_plugin_android_lifecycle at C:\Users\Farwa\AppData\Local\Pub\Cache\hosted\pub.dev\flutter_plugin_android_lifecycle-2.0.34\
+[  +21 ms] Found plugin google_mlkit_text_recognition at C:\Users\Farwa\AppData\Local\Pub\Cache\hosted\pub.dev\google_mlkit_text_recognition-0.15.1\
+[   +7 ms] Found plugin google_mlkit_commons at C:\Users\Farwa\AppData\Local\Pub\Cache\hosted\pub.dev\google_mlkit_commons-0.11.1\
+[   +7 ms] Found plugin google_mlkit_object_detection at C:\Users\Farwa\AppData\Local\Pub\Cache\hosted\pub.dev\google_mlkit_object_detection-0.15.1\
+[  +11 ms] Found plugin geolocator at C:\Users\Farwa\AppData\Local\Pub\Cache\hosted\pub.dev\geolocator-14.0.2\
+[   +6 ms] Found plugin geolocator_windows at C:\Users\Farwa\AppData\Local\Pub\Cache\hosted\pub.dev\geolocator_windows-0.2.5\
+[   +7 ms] Found plugin geolocator_web at C:\Users\Farwa\AppData\Local\Pub\Cache\hosted\pub.dev\geolocator_web-4.1.3\
+[   +7 ms] Found plugin geolocator_linux at C:\Users\Farwa\AppData\Local\Pub\Cache\hosted\pub.dev\geolocator_linux-0.2.4\
+[   +4 ms] Found plugin package_info_plus at C:\Users\Farwa\AppData\Local\Pub\Cache\hosted\pub.dev\package_info_plus-9.0.1\
+[  +32 ms] Found plugin geolocator_apple at C:\Users\Farwa\AppData\Local\Pub\Cache\hosted\pub.dev\geolocator_apple-2.3.13\
+[   +6 ms] Found plugin geolocator_android at C:\Users\Farwa\AppData\Local\Pub\Cache\hosted\pub.dev\geolocator_android-5.0.2\
+[  +31 ms] Found plugin connectivity_plus at C:\Users\Farwa\AppData\Local\Pub\Cache\hosted\pub.dev\connectivity_plus-6.1.5\
+[  +14 ms] Found plugin camera at C:\Users\Farwa\AppData\Local\Pub\Cache\hosted\pub.dev\camera-0.11.4\
+[   +5 ms] Found plugin camera_web at C:\Users\Farwa\AppData\Local\Pub\Cache\hosted\pub.dev\camera_web-0.3.5+3\
+[  +13 ms] Found plugin camera_avfoundation at C:\Users\Farwa\AppData\Local\Pub\Cache\hosted\pub.dev\camera_avfoundation-0.9.23+2\
+[   +8 ms] Found plugin camera_android_camerax at C:\Users\Farwa\AppData\Local\Pub\Cache\hosted\pub.dev\camera_android_camerax-0.6.30\
+[  +54 ms] Generating C:\Users\Farwa\Documents\whatamilookingat\android\app\src\main\java\io\flutter\plugins\GeneratedPluginRegistrant.java
+[   +5 ms] Skipping generating GeneratedPluginRegistrant.java because it is up-to-date.
+[  +19 ms] Skipping generating generated_plugin_registrant.h because it is up-to-date.
+[   +6 ms] Skipping generating generated_plugin_registrant.cc because it is up-to-date.
+[   +6 ms] Skipping generating generated_plugins.cmake because it is up-to-date.
+[   +9 ms] Skipping generating generated_plugin_registrant.h because it is up-to-date.
+[   +6 ms] Skipping generating generated_plugin_registrant.cc because it is up-to-date.
+[   +6 ms] Skipping generating generated_plugins.cmake because it is up-to-date.
+[   +8 ms] Skipping generating GeneratedPluginRegistrant.h because it is up-to-date.
+[   +7 ms] Skipping generating GeneratedPluginRegistrant.m because it is up-to-date.
+[   +7 ms] Skipping generating GeneratedPluginRegistrant.swift because it is up-to-date.
+[ +430 ms] executing: C:\Program Files\Android\Android Studio\jre\bin\java -version
+[ +340 ms] Exit code 0 from: C:\Program Files\Android\Android Studio\jre\bin\java -version
+[        ] openjdk version "11.0.10" 2021-01-19
+           OpenJDK Runtime Environment (build 11.0.10+0-b96-7249189)
+           OpenJDK 64-Bit Server VM (build 11.0.10+0-b96-7249189, mixed mode)
+[   +2 ms] executing: C:/Program Files/Android/Android Studio\jre\bin\java -version
+[ +305 ms] Exit code 0 from: C:/Program Files/Android/Android Studio\jre\bin\java -version
+[        ] openjdk version "11.0.10" 2021-01-19
+           OpenJDK Runtime Environment (build 11.0.10+0-b96-7249189)
+           OpenJDK 64-Bit Server VM (build 11.0.10+0-b96-7249189, mixed mode)
+[  +14 ms] Top-level Gradle build file not found, skipping migration of task "clean".
+[   +2 ms] Version of Android Studio is less than Flamingo (the first impacted version), no migration attempted.
+[  +38 ms] CMake project not found, skipping support Android 15 16k page size migration.
+[  +14 ms] Using gradle from C:\Users\Farwa\Documents\whatamilookingat\android\gradlew.bat.
+[  +30 ms] LocalFile: 'C:\Users\Farwa\Documents\whatamilookingat\android\build.gradle.kts' doesn't provide an AGP version. Checking settings.
+[   +3 ms] LocalFile: 'C:\Users\Farwa\Documents\whatamilookingat\android\settings.gradle.kts' provides AGP version: 8.11.1
+[  +60 ms] Running Gradle task 'assembleDebug'...
+[   +2 ms] executing: [C:\Users\Farwa\Documents\whatamilookingat\android/] C:\Users\Farwa\Documents\whatamilookingat\android\gradlew.bat --full-stacktrace --info -Pverbose=true -Ptarget-platform=android-arm,android-arm64,android-x64 -Ptarget=lib\main.dart -Pbase-application-name=android.app.Application -Pdart-defines=RkxVVFRFUl9WRVJTSU9OPTMuMzguNQ==,RkxVVFRFUl9DSEFOTkVMPXN0YWJsZQ==,RkxVVFRFUl9HSVRfVVJMPWh0dHBzOi8vZ2l0aHViLmNvbS9mbHV0dGVyL2ZsdXR0ZXIuZ2l0,RkxVVFRFUl9GUkFNRVdPUktfUkVWSVNJT049ZjZmZjE1MjlmZA==,RkxVVFRFUl9FTkdJTkVfUkVWSVNJT049MTUyN2FlMGVjNQ==,RkxVVFRFUl9EQVJUX1ZFUlNJT049My4xMC40 -Pdart-obfuscation=false -Ptrack-widget-creation=true -Ptree-shake-icons=false assembleDebug
+[+2521 ms] Initialized native services in: C:\Users\Farwa\.gradle\native
+[   +2 ms] Initialized jansi services in: C:\Users\Farwa\.gradle\native
+[+1988 ms] The client will now receive all logging from the daemon (pid: 14356). The daemon log file: C:\Users\Farwa\.gradle\daemon\8.14\daemon-14356.out.log
+[   +1 ms] Starting 9th build in daemon [uptime: 38 mins 13.124 secs, performance: 100%, GC rate: 0.00/s, heap usage: 0% of 8 GiB, non-heap usage: 7% of 4 GiB]
+[   +1 ms] Using 16 worker leases.
+[        ] Invalidating in-memory cache of C:\Users\Farwa\Documents\whatamilookingat\android\.gradle\8.14\fileHashes\fileHashes.bin
+[ +102 ms] Invalidating in-memory cache of C:\Users\Farwa\Documents\whatamilookingat\android\.gradle\8.14\fileHashes\resourceHashesCache.bin
+[   +1 ms] Now considering [C:\Users\Farwa\Documents\whatamilookingat\android, C:\Users\Farwa\AppData\Local\Programs\flutter\packages\flutter_tools\gradle] as hierarchies to watch
+[        ] Watching the file system is configured to be enabled if available
+[  +95 ms] File system watching is active
+[        ] Starting Build
+[  +96 ms] Now considering [C:\Users\Farwa\AppData\Local\Programs\flutter\packages\flutter_tools\gradle, C:\Users\Farwa\Documents\whatamilookingat\android] as hierarchies to watch
+[        ] Invalidating in-memory cache of C:\Users\Farwa\AppData\Local\Programs\flutter\packages\flutter_tools\gradle\.gradle\buildOutputCleanup\outputFiles.bin
+[ +706 ms] > Configure project :gradle
+[        ] Evaluating project ':gradle' using build file 'C:\Users\Farwa\AppData\Local\Programs\flutter\packages\flutter_tools\gradle\build.gradle.kts'.
+[        ] Resolved plugin [id: 'org.gradle.java-gradle-plugin']
+[   +1 ms] Resolved plugin [id: 'org.gradle.groovy']
+[        ] Resolved plugin [id: 'org.gradle.kotlin.kotlin-dsl', version: '5.2.0']
+[        ] Resolved plugin [id: 'org.jetbrains.kotlin.jvm', version: '1.9.20']
+[        ] Invalidating in-memory cache of C:\Users\Farwa\.gradle\caches\journal-1\file-access.bin
+[   +1 ms] Invalidating in-memory cache of C:\Users\Farwa\.gradle\caches\8.14\fileHashes\fileHashes.bin
+[   +1 ms] Invalidating in-memory cache of C:\Users\Farwa\.gradle\caches\8.14\fileHashes\resourceHashesCache.bin
+[        ] Using Kotlin Gradle Plugin gradle85 variant
+[        ] kotlin scripting plugin: created the scripting discovery configuration: kotlinScriptDef
+[        ] kotlin scripting plugin: created the scripting discovery configuration: testKotlinScriptDef
+[        ] file or directory 'C:\Users\Farwa\AppData\Local\Programs\flutter\packages\flutter_tools\gradle\src\main\java', not found
+[        ] Resolved plugin [id: 'dev.flutter.flutter-plugin-loader', version: '1.0.0']
+[        ] Resolved plugin [id: 'com.android.application', version: '8.11.1', apply: false]
+[        ] Resolved plugin [id: 'org.jetbrains.kotlin.android', version: '2.2.20', apply: false]
+[  +79 ms] Resolve mutations for :gradle:checkKotlinGradlePluginConfigurationErrors (Thread[Execution worker,5,main]) started.
+[        ] :gradle:checkKotlinGradlePluginConfigurationErrors (Thread[Execution worker,5,main]) started.
+[        ] Invalidating in-memory cache of C:\Users\Farwa\AppData\Local\Programs\flutter\packages\flutter_tools\gradle\.gradle\8.14\executionHistory\executionHistory.bin
+[   +1 ms] > Task :gradle:checkKotlinGradlePluginConfigurationErrors SKIPPED
+[   +1 ms] Skipping task ':gradle:checkKotlinGradlePluginConfigurationErrors' as task onlyIf 'errorDiagnostics are present' is false.
+[        ] Resolve mutations for :gradle:compileKotlin (Thread[Execution worker,5,main]) started.
+[        ] :gradle:compileKotlin (Thread[Execution worker,5,main]) started.
+[ +290 ms] > Task :gradle:compileKotlin UP-TO-DATE
+[        ] Caching disabled for task ':gradle:compileKotlin' because:
+[        ]   Build cache is disabled
+[        ] Skipping task ':gradle:compileKotlin' as it is up-to-date.
+[        ] Resolve mutations for :gradle:compileJava (Thread[Execution worker,5,main]) started.
+[        ] :gradle:compileJava (Thread[Execution worker,5,main]) started.
+[   +1 ms] > Task :gradle:compileJava NO-SOURCE
+[        ] Skipping task ':gradle:compileJava' as it has no source files and no previous output files.
+[        ] Resolve mutations for :gradle:compileGroovy (Thread[Execution worker,5,main]) started.
+[        ] :gradle:compileGroovy (Thread[Execution worker,5,main]) started.
+[   +1 ms] > Task :gradle:compileGroovy NO-SOURCE
+[        ] Skipping task ':gradle:compileGroovy' as it has no source files and no previous output files.
+[        ] Resolve mutations for :gradle:pluginDescriptors (Thread[Execution worker,5,main]) started.
+[        ] :gradle:pluginDescriptors (Thread[Execution worker,5,main]) started.
+[        ] > Task :gradle:pluginDescriptors UP-TO-DATE
+[        ] Caching disabled for task ':gradle:pluginDescriptors' because:
+[        ]   Build cache is disabled
+[        ]   Not worth caching
+[        ] Skipping task ':gradle:pluginDescriptors' as it is up-to-date.
+[        ] Resolve mutations for :gradle:processResources (Thread[Execution worker,5,main]) started.
+[        ] :gradle:processResources (Thread[Execution worker,5,main]) started.
+[ +111 ms] > Task :gradle:processResources
+[        ] Caching disabled for task ':gradle:processResources' because:
+[        ]   Build cache is disabled
+[        ]   Not worth caching
+[        ] Task ':gradle:processResources' is not up-to-date because:
+[        ]   Value of input property 'rootSpec$1.filteringCharset' has changed for task ':gradle:processResources'
+[        ]   Value of input property 'rootSpec$2.filteringCharset' has changed for task ':gradle:processResources'
+[        ] file or directory 'C:\Users\Farwa\AppData\Local\Programs\flutter\packages\flutter_tools\gradle\src\main\resources', not found
+[        ] Resolve mutations for :gradle:classes (Thread[Execution worker,5,main]) started.
+[        ] :gradle:classes (Thread[Execution worker,5,main]) started.
+[        ] > Task :gradle:classes
+[        ] Skipping task ':gradle:classes' as it has no actions.
+[        ] Resolve mutations for :gradle:jar (Thread[Execution worker Thread 6,5,main]) started.
+[        ] :gradle:jar (Thread[Execution worker Thread 6,5,main]) started.
+[ +375 ms] > Task :gradle:jar
+[   +2 ms] Caching disabled for task ':gradle:jar' because:
+[   +1 ms]   Build cache is disabled
+[   +1 ms]   Not worth caching
+[        ] Task ':gradle:jar' is not up-to-date because:
+[        ]   Value of input property 'rootSpec$1.filteringCharset' has changed for task ':gradle:jar'
+[        ]   Value of input property 'rootSpec$2$1.filteringCharset' has changed for task ':gradle:jar'
+[        ]   Value of input property 'rootSpec$2.filteringCharset' has changed for task ':gradle:jar'
+[        ] file or directory 'C:\Users\Farwa\AppData\Local\Programs\flutter\packages\flutter_tools\gradle\build\classes\java\main', not found
+[        ] file or directory 'C:\Users\Farwa\AppData\Local\Programs\flutter\packages\flutter_tools\gradle\build\classes\groovy\main', not found
+[ +593 ms] Settings evaluated using settings file 'C:\Users\Farwa\Documents\whatamilookingat\android\settings.gradle.kts'.
+[  +93 ms] Projects loaded. Root project using build file 'C:\Users\Farwa\Documents\whatamilookingat\android\build.gradle.kts'.
+[        ] Included projects: [root project 'android', project ':app', project ':camera_android_camerax', project ':connectivity_plus', project ':flutter_plugin_android_lifecycle', project ':geolocator_android', project ':google_mlkit_commons', project ':google_mlkit_object_detection', project ':google_mlkit_text_recognition', project ':image_picker_android', project ':jni', project ':jni_flutter', project ':package_info_plus', project ':permission_handler_android', project ':share_plus']
+[ +903 ms] > Configure project :app
+[   +1 ms] Evaluating project ':app' using build file 'C:\Users\Farwa\Documents\whatamilookingat\android\app\build.gradle.kts'.
+[        ] Resolved plugin [id: 'com.android.application']
+[        ] Resolved plugin [id: 'kotlin-android']
+[        ] Resolved plugin [id: 'dev.flutter.flutter-gradle-plugin']
+[        ] Using default execution profile
+[   +1 ms] Build 8bfe56aa-209b-4fb2-acaa-d5d015f83156 is started
+[        ] Using Kotlin Gradle Plugin gradle813 variant
+[   +1 ms] C/C++: android.ndkVersion from module build.gradle is [28.2.13676358]
+[        ] C/C++: android.ndkPath from module build.gradle is not set
+[   +1 ms] C/C++: ndk.dir in local.properties is not set
+[        ] C/C++: Not considering ANDROID_NDK_HOME because support was removed after deprecation period.
+[        ] C/C++: sdkFolder is C:\Users\Farwa\AppData\Local\Android\sdk
+[        ] C/C++: android.ndkVersion from module build.gradle is [28.2.13676358]
+[        ] C/C++: android.ndkPath from module build.gradle is not set
+[        ] C/C++: ndk.dir in local.properties is not set
+[        ] C/C++: Not considering ANDROID_NDK_HOME because support was removed after deprecation period.
+[        ] C/C++: sdkFolder is C:\Users\Farwa\AppData\Local\Android\sdk
+[        ] C/C++: android.ndkVersion from module build.gradle is [28.2.13676358]
+[        ] C/C++: android.ndkPath from module build.gradle is not set
+[        ] C/C++: ndk.dir in local.properties is not set
+[        ] C/C++: Not considering ANDROID_NDK_HOME because support was removed after deprecation period.
+[        ] C/C++: sdkFolder is C:\Users\Farwa\AppData\Local\Android\sdk
+[        ] C/C++: android.ndkVersion from module build.gradle is [28.2.13676358]
+[        ] C/C++: android.ndkPath from module build.gradle is not set
+[        ] C/C++: ndk.dir in local.properties is not set
+[        ] C/C++: Not considering ANDROID_NDK_HOME because support was removed after deprecation period.
+[        ] C/C++: sdkFolder is C:\Users\Farwa\AppData\Local\Android\sdk
+[        ] C/C++: android.ndkVersion from module build.gradle is [28.2.13676358]
+[        ] C/C++: android.ndkPath from module build.gradle is not set
+[        ] C/C++: ndk.dir in local.properties is not set
+[        ] C/C++: Not considering ANDROID_NDK_HOME because support was removed after deprecation period.
+[        ] C/C++: sdkFolder is C:\Users\Farwa\AppData\Local\Android\sdk
+[   +1 ms] C/C++: android.ndkVersion from module build.gradle is [28.2.13676358]
+[        ] C/C++: android.ndkPath from module build.gradle is not set
+[        ] C/C++: ndk.dir in local.properties is not set
+[        ] C/C++: Not considering ANDROID_NDK_HOME because support was removed after deprecation period.
+[        ] C/C++: sdkFolder is C:\Users\Farwa\AppData\Local\Android\sdk
+[        ] C/C++: android.ndkVersion from module build.gradle is [28.2.13676358]
+[        ] C/C++: android.ndkPath from module build.gradle is not set
+[        ] C/C++: ndk.dir in local.properties is not set
+[        ] C/C++: Not considering ANDROID_NDK_HOME because support was removed after deprecation period.
+[        ] C/C++: sdkFolder is C:\Users\Farwa\AppData\Local\Android\sdk
+[        ] C/C++: android.ndkVersion from module build.gradle is [28.2.13676358]
+[        ] C/C++: android.ndkPath from module build.gradle is not set
+[        ] C/C++: ndk.dir in local.properties is not set
+[        ] C/C++: Not considering ANDROID_NDK_HOME because support was removed after deprecation period.
+[        ] C/C++: sdkFolder is C:\Users\Farwa\AppData\Local\Android\sdk
+[        ] C/C++: android.ndkVersion from module build.gradle is [28.2.13676358]
+[        ] C/C++: android.ndkPath from module build.gradle is not set
+[        ] C/C++: ndk.dir in local.properties is not set
+[        ] C/C++: Not considering ANDROID_NDK_HOME because support was removed after deprecation period.
+[        ] C/C++: sdkFolder is C:\Users\Farwa\AppData\Local\Android\sdk
+[        ] C/C++: android.ndkVersion from module build.gradle is [28.2.13676358]
+[        ] C/C++: android.ndkPath from module build.gradle is not set
+[        ] C/C++: ndk.dir in local.properties is not set
+[        ] C/C++: Not considering ANDROID_NDK_HOME because support was removed after deprecation period.
+[        ] C/C++: sdkFolder is C:\Users\Farwa\AppData\Local\Android\sdk
+[   +5 ms] C/C++: android.ndkVersion from module build.gradle is [28.2.13676358]
+[        ] C/C++: android.ndkPath from module build.gradle is not set
+[        ] C/C++: ndk.dir in local.properties is not set
+[        ] C/C++: Not considering ANDROID_NDK_HOME because support was removed after deprecation period.
+[        ] C/C++: sdkFolder is C:\Users\Farwa\AppData\Local\Android\sdk
+[        ] C/C++: android.ndkVersion from module build.gradle is [28.2.13676358]
+[        ] C/C++: android.ndkPath from module build.gradle is not set
+[        ] C/C++: ndk.dir in local.properties is not set
+[        ] C/C++: Not considering ANDROID_NDK_HOME because support was removed after deprecation period.
+[        ] C/C++: sdkFolder is C:\Users\Farwa\AppData\Local\Android\sdk
+[        ] C/C++: android.ndkVersion from module build.gradle is [28.2.13676358]
+[        ] C/C++: android.ndkPath from module build.gradle is not set
+[        ] C/C++: ndk.dir in local.properties is not set
+[        ] C/C++: Not considering ANDROID_NDK_HOME because support was removed after deprecation period.
+[        ] C/C++: sdkFolder is C:\Users\Farwa\AppData\Local\Android\sdk
+[        ] C/C++: android.ndkVersion from module build.gradle is [28.2.13676358]
+[        ] C/C++: android.ndkPath from module build.gradle is not set
+[        ] C/C++: ndk.dir in local.properties is not set
+[        ] C/C++: Not considering ANDROID_NDK_HOME because support was removed after deprecation period.
+[        ] C/C++: sdkFolder is C:\Users\Farwa\AppData\Local\Android\sdk
+[        ] C/C++: android.ndkVersion from module build.gradle is [28.2.13676358]
+[        ] C/C++: android.ndkPath from module build.gradle is not set
+[        ] C/C++: ndk.dir in local.properties is not set
+[        ] C/C++: Not considering ANDROID_NDK_HOME because support was removed after deprecation period.
+[        ] C/C++: sdkFolder is C:\Users\Farwa\AppData\Local\Android\sdk
+[        ] C/C++: android.ndkVersion from module build.gradle is [28.2.13676358]
+[        ] C/C++: android.ndkPath from module build.gradle is not set
+[        ] C/C++: ndk.dir in local.properties is not set
+[        ] C/C++: Not considering ANDROID_NDK_HOME because support was removed after deprecation period.
+[        ] C/C++: sdkFolder is C:\Users\Farwa\AppData\Local\Android\sdk
+[        ] C/C++: android.ndkVersion from module build.gradle is [28.2.13676358]
+[   +3 ms] C/C++: android.ndkPath from module build.gradle is not set
+[   +1 ms] C/C++: ndk.dir in local.properties is not set
+[        ] C/C++: Not considering ANDROID_NDK_HOME because support was removed after deprecation period.
+[        ] C/C++: sdkFolder is C:\Users\Farwa\AppData\Local\Android\sdk
+[        ] C/C++: android.ndkVersion from module build.gradle is [28.2.13676358]
+[        ] C/C++: android.ndkPath from module build.gradle is not set
+[        ] C/C++: ndk.dir in local.properties is not set
+[        ] C/C++: Not considering ANDROID_NDK_HOME because support was removed after deprecation period.
+[        ] C/C++: sdkFolder is C:\Users\Farwa\AppData\Local\Android\sdk
+[        ] C/C++: android.ndkVersion from module build.gradle is [28.2.13676358]
+[        ] C/C++: android.ndkPath from module build.gradle is not set
+[        ] C/C++: ndk.dir in local.properties is not set
+[        ] C/C++: Not considering ANDROID_NDK_HOME because support was removed after deprecation period.
+[        ] C/C++: sdkFolder is C:\Users\Farwa\AppData\Local\Android\sdk
+[        ] > Configure project :
+[        ] Evaluating root project 'android' using build file 'C:\Users\Farwa\Documents\whatamilookingat\android\build.gradle.kts'.
+[ +345 ms] > Configure project :camera_android_camerax
+[   +1 ms] Evaluating project ':camera_android_camerax' using build file 'C:\Users\Farwa\AppData\Local\Pub\Cache\hosted\pub.dev\camera_android_camerax-0.6.30\android\build.gradle'.
+[        ] Using default execution profile
+[        ] Using Kotlin Gradle Plugin gradle813 variant
+[        ] Warning: The plugin camera_android_camerax requires Android SDK version 36 or higher.
+[        ] For more information about build configuration, see https://flutter.dev/to/review-gradle-config.
+[ +406 ms] > Configure project :connectivity_plus
+[        ] Evaluating project ':connectivity_plus' using build file 'C:\Users\Farwa\AppData\Local\Pub\Cache\hosted\pub.dev\connectivity_plus-6.1.5\android\build.gradle'.
+[        ] Using default execution profile
+[ +202 ms] > Configure project :flutter_plugin_android_lifecycle
+[        ] Evaluating project ':flutter_plugin_android_lifecycle' using build file 'C:\Users\Farwa\AppData\Local\Pub\Cache\hosted\pub.dev\flutter_plugin_android_lifecycle-2.0.34\android\build.gradle.kts'.
+[        ] Resolved plugin [id: 'com.android.library']
+[        ] Using default execution profile
+[        ] Warning: The plugin flutter_plugin_android_lifecycle requires Android SDK version 36 or higher.
+[        ] For more information about build configuration, see https://flutter.dev/to/review-gradle-config.
+[ +189 ms] > Configure project :geolocator_android
+[        ] Evaluating project ':geolocator_android' using build file 'C:\Users\Farwa\AppData\Local\Pub\Cache\hosted\pub.dev\geolocator_android-5.0.2\android\build.gradle'.
+[        ] Using default execution profile
+[        ] Warning: The plugin geolocator_android requires Android SDK version 36 or higher.
+[        ] For more information about build configuration, see https://flutter.dev/to/review-gradle-config.
+[ +202 ms] > Configure project :google_mlkit_commons
+[        ] Evaluating project ':google_mlkit_commons' using build file 'C:\Users\Farwa\AppData\Local\Pub\Cache\hosted\pub.dev\google_mlkit_commons-0.11.1\android\build.gradle'.
+[        ] Using default execution profile
+[        ] Warning: The plugin google_mlkit_commons requires Android SDK version 35 or higher.
+[        ] For more information about build configuration, see https://flutter.dev/to/review-gradle-config.
+[  +95 ms] > Configure project :google_mlkit_object_detection
+[        ] Evaluating project ':google_mlkit_object_detection' using build file 'C:\Users\Farwa\AppData\Local\Pub\Cache\hosted\pub.dev\google_mlkit_object_detection-0.15.1\android\build.gradle'.
+[        ] Using default execution profile
+[        ] Warning: The plugin google_mlkit_object_detection requires Android SDK version 35 or higher.
+[        ] For more information about build configuration, see https://flutter.dev/to/review-gradle-config.
+[ +104 ms] > Configure project :google_mlkit_text_recognition
+[        ] Evaluating project ':google_mlkit_text_recognition' using build file 'C:\Users\Farwa\AppData\Local\Pub\Cache\hosted\pub.dev\google_mlkit_text_recognition-0.15.1\android\build.gradle'.
+[        ] Using default execution profile
+[        ] Warning: The plugin google_mlkit_text_recognition requires Android SDK version 35 or higher.
+[        ] For more information about build configuration, see https://flutter.dev/to/review-gradle-config.
+[ +190 ms] > Configure project :image_picker_android
+[        ] Evaluating project ':image_picker_android' using build file 'C:\Users\Farwa\AppData\Local\Pub\Cache\hosted\pub.dev\image_picker_android-0.8.13+16\android\build.gradle.kts'.
+[        ] Resolved plugin [id: 'com.android.library']
+[        ] Using default execution profile
+[        ] Warning: The plugin image_picker_android requires Android SDK version 36 or higher.
+[        ] For more information about build configuration, see https://flutter.dev/to/review-gradle-config.
+[ +502 ms] > Configure project :jni
+[        ] Evaluating project ':jni' using build file 'C:\Users\Farwa\AppData\Local\Pub\Cache\hosted\pub.dev\jni-1.0.0\android\build.gradle'.
+[        ] Using default execution profile
+[        ] Warning: The plugin jni requires Android SDK version 35 or higher.
+[        ] For more information about build configuration, see https://flutter.dev/to/review-gradle-config.
+[        ] C/C++: android.ndkVersion from module build.gradle is [28.2.13676358]
+[        ] C/C++: android.ndkPath from module build.gradle is not set
+[        ] C/C++: ndk.dir in local.properties is not set
+[        ] C/C++: Not considering ANDROID_NDK_HOME because support was removed after deprecation period.
+[        ] C/C++: sdkFolder is C:\Users\Farwa\AppData\Local\Android\sdk
+[        ] C/C++: android.ndkVersion from module build.gradle is [28.2.13676358]
+[        ] C/C++: android.ndkPath from module build.gradle is not set
+[        ] C/C++: ndk.dir in local.properties is not set
+[        ] C/C++: Not considering ANDROID_NDK_HOME because support was removed after deprecation period.
+[        ] C/C++: sdkFolder is C:\Users\Farwa\AppData\Local\Android\sdk
+[        ] C/C++: android.ndkVersion from module build.gradle is [28.2.13676358]
+[        ] C/C++: android.ndkPath from module build.gradle is not set
+[        ] C/C++: ndk.dir in local.properties is not set
+[        ] C/C++: Not considering ANDROID_NDK_HOME because support was removed after deprecation period.
+[        ] C/C++: sdkFolder is C:\Users\Farwa\AppData\Local\Android\sdk
+[        ] C/C++: android.ndkVersion from module build.gradle is [28.2.13676358]
+[        ] C/C++: android.ndkPath from module build.gradle is not set
+[        ] C/C++: ndk.dir in local.properties is not set
+[        ] C/C++: Not considering ANDROID_NDK_HOME because support was removed after deprecation period.
+[        ] C/C++: sdkFolder is C:\Users\Farwa\AppData\Local\Android\sdk
+[        ] C/C++: android.ndkVersion from module build.gradle is [28.2.13676358]
+[        ] C/C++: android.ndkPath from module build.gradle is not set
+[        ] C/C++: ndk.dir in local.properties is not set
+[        ] C/C++: Not considering ANDROID_NDK_HOME because support was removed after deprecation period.
+[        ] C/C++: sdkFolder is C:\Users\Farwa\AppData\Local\Android\sdk
+[        ] C/C++: android.ndkVersion from module build.gradle is [28.2.13676358]
+[        ] C/C++: android.ndkPath from module build.gradle is not set
+[        ] C/C++: ndk.dir in local.properties is not set
+[        ] C/C++: Not considering ANDROID_NDK_HOME because support was removed after deprecation period.
+[        ] C/C++: sdkFolder is C:\Users\Farwa\AppData\Local\Android\sdk
+[   +1 ms] C/C++: android.ndkVersion from module build.gradle is [28.2.13676358]
+[        ] C/C++: android.ndkPath from module build.gradle is not set
+[        ] C/C++: ndk.dir in local.properties is not set
+[        ] C/C++: Not considering ANDROID_NDK_HOME because support was removed after deprecation period.
+[   +1 ms] C/C++: sdkFolder is C:\Users\Farwa\AppData\Local\Android\sdk
+[        ] C/C++: android.ndkVersion from module build.gradle is [28.2.13676358]
+[   +1 ms] C/C++: android.ndkPath from module build.gradle is not set
+[        ] C/C++: ndk.dir in local.properties is not set
+[        ] C/C++: Not considering ANDROID_NDK_HOME because support was removed after deprecation period.
+[        ] C/C++: sdkFolder is C:\Users\Farwa\AppData\Local\Android\sdk
+[        ] C/C++: android.ndkVersion from module build.gradle is [28.2.13676358]
+[        ] C/C++: android.ndkPath from module build.gradle is not set
+[        ] C/C++: ndk.dir in local.properties is not set
+[        ] C/C++: Not considering ANDROID_NDK_HOME because support was removed after deprecation period.
+[        ] C/C++: sdkFolder is C:\Users\Farwa\AppData\Local\Android\sdk
+[        ] C/C++: android.ndkVersion from module build.gradle is [28.2.13676358]
+[        ] C/C++: android.ndkPath from module build.gradle is not set
+[        ] C/C++: ndk.dir in local.properties is not set
+[        ] C/C++: Not considering ANDROID_NDK_HOME because support was removed after deprecation period.
+[   +1 ms] C/C++: sdkFolder is C:\Users\Farwa\AppData\Local\Android\sdk
+[        ] C/C++: android.ndkVersion from module build.gradle is [28.2.13676358]
+[   +2 ms] C/C++: android.ndkPath from module build.gradle is not set
+[        ] C/C++: ndk.dir in local.properties is not set
+[        ] C/C++: Not considering ANDROID_NDK_HOME because support was removed after deprecation period.
+[        ] C/C++: sdkFolder is C:\Users\Farwa\AppData\Local\Android\sdk
+[        ] C/C++: android.ndkVersion from module build.gradle is [28.2.13676358]
+[        ] C/C++: android.ndkPath from module build.gradle is not set
+[        ] C/C++: ndk.dir in local.properties is not set
+[        ] C/C++: Not considering ANDROID_NDK_HOME because support was removed after deprecation period.
+[        ] C/C++: sdkFolder is C:\Users\Farwa\AppData\Local\Android\sdk
+[        ] C/C++: android.ndkVersion from module build.gradle is [28.2.13676358]
+[        ] C/C++: android.ndkPath from module build.gradle is not set
+[        ] C/C++: ndk.dir in local.properties is not set
+[        ] C/C++: Not considering ANDROID_NDK_HOME because support was removed after deprecation period.
+[        ] C/C++: sdkFolder is C:\Users\Farwa\AppData\Local\Android\sdk
+[        ] C/C++: android.ndkVersion from module build.gradle is [28.2.13676358]
+[        ] C/C++: android.ndkPath from module build.gradle is not set
+[        ] C/C++: ndk.dir in local.properties is not set
+[        ] C/C++: Not considering ANDROID_NDK_HOME because support was removed after deprecation period.
+[        ] C/C++: sdkFolder is C:\Users\Farwa\AppData\Local\Android\sdk
+[        ] C/C++: android.ndkVersion from module build.gradle is [28.2.13676358]
+[        ] C/C++: android.ndkPath from module build.gradle is not set
+[        ] C/C++: ndk.dir in local.properties is not set
+[        ] C/C++: Not considering ANDROID_NDK_HOME because support was removed after deprecation period.
+[        ] C/C++: sdkFolder is C:\Users\Farwa\AppData\Local\Android\sdk
+[        ] C/C++: android.ndkVersion from module build.gradle is [28.2.13676358]
+[        ] C/C++: android.ndkPath from module build.gradle is not set
+[        ] C/C++: ndk.dir in local.properties is not set
+[        ] C/C++: Not considering ANDROID_NDK_HOME because support was removed after deprecation period.
+[        ] C/C++: sdkFolder is C:\Users\Farwa\AppData\Local\Android\sdk
+[        ] C/C++: android.ndkVersion from module build.gradle is [28.2.13676358]
+[        ] C/C++: android.ndkPath from module build.gradle is not set
+[        ] C/C++: ndk.dir in local.properties is not set
+[        ] C/C++: Not considering ANDROID_NDK_HOME because support was removed after deprecation period.
+[        ] C/C++: sdkFolder is C:\Users\Farwa\AppData\Local\Android\sdk
+[        ] C/C++: android.ndkVersion from module build.gradle is [28.2.13676358]
+[        ] C/C++: android.ndkPath from module build.gradle is not set
+[        ] C/C++: ndk.dir in local.properties is not set
+[        ] C/C++: Not considering ANDROID_NDK_HOME because support was removed after deprecation period.
+[   +2 ms] C/C++: sdkFolder is C:\Users\Farwa\AppData\Local\Android\sdk
+[        ] C/C++: android.ndkVersion from module build.gradle is [28.2.13676358]
+[        ] C/C++: android.ndkPath from module build.gradle is not set
+[        ] C/C++: ndk.dir in local.properties is not set
+[        ] C/C++: Not considering ANDROID_NDK_HOME because support was removed after deprecation period.
+[        ] C/C++: sdkFolder is C:\Users\Farwa\AppData\Local\Android\sdk
+[  +51 ms] > Configure project :jni_flutter
+[        ] Evaluating project ':jni_flutter' using build file 'C:\Users\Farwa\AppData\Local\Pub\Cache\hosted\pub.dev\jni_flutter-1.0.1\android\build.gradle'.
+[        ] Using default execution profile
+[        ] Warning: The plugin jni_flutter requires Android SDK version 35 or higher.
+[        ] For more information about build configuration, see https://flutter.dev/to/review-gradle-config.
+[ +500 ms] > Configure project :package_info_plus
+[        ] Evaluating project ':package_info_plus' using build file 'C:\Users\Farwa\AppData\Local\Pub\Cache\hosted\pub.dev\package_info_plus-9.0.1\android\build.gradle'.
+[        ] Using default execution profile
+[        ] Using Kotlin Gradle Plugin gradle813 variant
+[        ] Warning: The plugin package_info_plus requires Android SDK version 36 or higher.
+[        ] For more information about build configuration, see https://flutter.dev/to/review-gradle-config.
+[ +309 ms] > Configure project :permission_handler_android
+[        ] Evaluating project ':permission_handler_android' using build file 'C:\Users\Farwa\AppData\Local\Pub\Cache\hosted\pub.dev\permission_handler_android-12.1.0\android\build.gradle'.
+[        ] Using default execution profile
+[ +390 ms] > Configure project :share_plus
+[        ] Evaluating project ':share_plus' using build file 'C:\Users\Farwa\AppData\Local\Pub\Cache\hosted\pub.dev\share_plus-10.1.4\android\build.gradle'.
+[        ] Using default execution profile
+[        ] Using Kotlin Gradle Plugin gradle813 variant
+[        ] All projects evaluated.
+[        ] Task name matched 'assembleDebug'
+[        ] Selected primary task 'assembleDebug' from project :
+[        ] Adding -Xuse-inline-scopes-numbers Kotlin compiler flag for task :app:compileDebugKotlin
+flutter : [   +1 ms] 
+Your project is 
+configured to compile 
+against Android SDK 
+34, but the following 
+plugin(s) require to 
+be compiled against a 
+higher Android SDK 
+version:
+At line:1 char:1
++ flutter build apk 
+--debug --verbose > 
+build_log.txt 2>&1
++ ~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~
+    + CategoryInfo     
+         : NotSpecifi  
+  ed: ([   +1 ms] Yo   
+ ur...id SDK versio    
+n::String) [], Rem    
+oteException
+    + FullyQualifiedEr 
+   rorId : NativeComm  
+  andError
+ 
+[   +2 ms] - 
+camera_android_camerax 
+compiles against 
+Android SDK 36
+[        ] - flutter_pl
+ugin_android_lifecycle 
+compiles against 
+Android SDK 36
+[        ] - 
+geolocator_android 
+compiles against 
+Android SDK 36
+[        ] - 
+google_mlkit_commons 
+compiles against 
+Android SDK 35
+[        ] - google_mlk
+it_object_detection 
+compiles against 
+Android SDK 35
+[        ] - google_mlk
+it_text_recognition 
+compiles against 
+Android SDK 35
+[        ] - 
+image_picker_android 
+compiles against 
+Android SDK 36
+[        ] - jni 
+compiles against 
+Android SDK 35
+[        ] - 
+jni_flutter compiles 
+against Android SDK 35
+[        ] - 
+package_info_plus 
+compiles against 
+Android SDK 36
+[        ] Fix this 
+issue by compiling 
+against the highest 
+Android SDK version 
+(they are backward 
+compatible).
+[        ] Add the 
+following to C:\Users\F
+arwa\Documents\whatamil
+ookingat\android\app\bu
+ild.gradle.kts:
+[        ]     android 
+{
+[        ]         
+compileSdk = 36
+[        ]         ...
+[        ]     }
+[+1913 ms] Tasks to be executed: [task ':app:DebugMinSdkCheck', task ':app:preBuild', task ':app:preDebugBuild', task ':app:mergeDebugNativeDebugMetadata', task ':app:checkKotlinGradlePluginConfigurationErrors', task ':app:compileFlutterBuildDebug', task ':app:packJniLibsflutterBuildDebug', task ':camera_android_camerax:preBuild', task ':camera_android_camerax:preDebugBuild', task ':camera_android_camerax:writeDebugAarMetadata', task ':connectivity_plus:preBuild', task ':connectivity_plus:preDebugBuild', task ':connectivity_plus:writeDebugAarMetadata', task ':flutter_plugin_android_lifecycle:preBuild', task ':flutter_plugin_android_lifecycle:preDebugBuild', task ':flutter_plugin_android_lifecycle:writeDebugAarMetadata', task ':geolocator_android:preBuild', task ':geolocator_android:preDebugBuild', task ':geolocator_android:writeDebugAarMetadata', task ':google_mlkit_commons:preBuild', task ':google_mlkit_commons:preDebugBuild', task ':google_mlkit_commons:writeDebugAarMetadata', task ':google_mlkit_object_detection:preBuild', task ':google_mlkit_object_detection:preDebugBuild', task ':google_mlkit_object_detection:writeDebugAarMetadata', task ':google_mlkit_text_recognition:preBuild', task ':google_mlkit_text_recognition:preDebugBuild', task ':google_mlkit_text_recognition:writeDebugAarMetadata', task ':image_picker_android:preBuild', task ':image_picker_android:preDebugBuild', task ':image_picker_android:writeDebugAarMetadata', task ':jni:preBuild', task ':jni:preDebugBuild', task ':jni:writeDebugAarMetadata', task ':jni_flutter:preBuild', task ':jni_flutter:preDebugBuild', task ':jni_flutter:writeDebugAarMetadata', task ':package_info_plus:preBuild', task ':package_info_plus:preDebugBuild', task ':package_info_plus:writeDebugAarMetadata', task ':permission_handler_android:preBuild', task ':permission_handler_android:preDebugBuild', task ':permission_handler_android:writeDebugAarMetadata', task ':share_plus:preBuild', task ':share_plus:preDebugBuild', task ':share_plus:writeDebugAarMetadata', task ':app:checkDebugAarMetadata', task ':app:cleanMergeDebugAssets', task ':app:mergeDebugShaders', task ':app:compileDebugShaders', task ':app:generateDebugAssets', task ':camera_android_camerax:mergeDebugShaders', task ':camera_android_camerax:compileDebugShaders', task ':camera_android_camerax:generateDebugAssets', task ':camera_android_camerax:mergeDebugAssets', task ':connectivity_plus:mergeDebugShaders', task ':connectivity_plus:compileDebugShaders', task ':connectivity_plus:generateDebugAssets', task ':connectivity_plus:mergeDebugAssets', task ':flutter_plugin_android_lifecycle:mergeDebugShaders', task ':flutter_plugin_android_lifecycle:compileDebugShaders', task ':flutter_plugin_android_lifecycle:generateDebugAssets', task ':flutter_plugin_android_lifecycle:mergeDebugAssets', task ':geolocator_android:mergeDebugShaders', task ':geolocator_android:compileDebugShaders', task ':geolocator_android:generateDebugAssets', task ':geolocator_android:mergeDebugAssets', task ':google_mlkit_commons:mergeDebugShaders', task ':google_mlkit_commons:compileDebugShaders', task ':google_mlkit_commons:generateDebugAssets', task ':google_mlkit_commons:mergeDebugAssets', task ':google_mlkit_object_detection:mergeDebugShaders', task ':google_mlkit_object_detection:compileDebugShaders', task ':google_mlkit_object_detection:generateDebugAssets', task ':google_mlkit_object_detection:mergeDebugAssets', task ':google_mlkit_text_recognition:mergeDebugShaders', task ':google_mlkit_text_recognition:compileDebugShaders', task ':google_mlkit_text_recognition:generateDebugAssets', task ':google_mlkit_text_recognition:mergeDebugAssets', task ':image_picker_android:mergeDebugShaders', task ':image_picker_android:compileDebugShaders', task ':image_picker_android:generateDebugAssets', task ':image_picker_android:mergeDebugAssets', task ':jni:mergeDebugShaders', task ':jni:compileDebugShaders', task ':jni:generateDebugAssets', task ':jni:mergeDebugAssets', task ':jni_flutter:mergeDebugShaders', task ':jni_flutter:compileDebugShaders', task ':jni_flutter:generateDebugAssets', task ':jni_flutter:mergeDebugAssets', task ':package_info_plus:mergeDebugShaders', task ':package_info_plus:compileDebugShaders', task ':package_info_plus:generateDebugAssets', task ':package_info_plus:mergeDebugAssets', task ':permission_handler_android:mergeDebugShaders', task ':permission_handler_android:compileDebugShaders', task ':permission_handler_android:generateDebugAssets', task ':permission_handler_android:mergeDebugAssets', task ':share_plus:mergeDebugShaders', task ':share_plus:compileDebugShaders', task ':share_plus:generateDebugAssets', task ':share_plus:mergeDebugAssets', task ':app:mergeDebugAssets', task ':app:copyFlutterAssetsDebug', task ':app:generateDebugResValues', task ':camera_android_camerax:generateDebugResValues', task ':camera_android_camerax:generateDebugResources', task ':camera_android_camerax:packageDebugResources', task ':connectivity_plus:generateDebugResValues', task ':connectivity_plus:generateDebugResources', task ':connectivity_plus:packageDebugResources', task ':flutter_plugin_android_lifecycle:generateDebugResValues', task ':flutter_plugin_android_lifecycle:generateDebugResources', task ':flutter_plugin_android_lifecycle:packageDebugResources', task ':geolocator_android:generateDebugResValues', task ':geolocator_android:generateDebugResources', task ':geolocator_android:packageDebugResources', task ':google_mlkit_commons:generateDebugResValues', task ':google_mlkit_commons:generateDebugResources', task ':google_mlkit_commons:packageDebugResources', task ':google_mlkit_object_detection:generateDebugResValues', task ':google_mlkit_object_detection:generateDebugResources', task ':google_mlkit_object_detection:packageDebugResources', task ':google_mlkit_text_recognition:generateDebugResValues', task ':google_mlkit_text_recognition:generateDebugResources', task ':google_mlkit_text_recognition:packageDebugResources', task ':image_picker_android:generateDebugResValues', task ':image_picker_android:generateDebugResources', task ':image_picker_android:packageDebugResources', task ':jni:generateDebugResValues', task ':jni:generateDebugResources', task ':jni:packageDebugResources', task ':jni_flutter:generateDebugResValues', task ':jni_flutter:generateDebugResources', task ':jni_flutter:packageDebugResources', task ':package_info_plus:generateDebugResValues', task ':package_info_plus:generateDebugResources', task ':package_info_plus:packageDebugResources', task ':permission_handler_android:generateDebugResValues', task ':permission_handler_android:generateDebugResources', task ':permission_handler_android:packageDebugResources', task ':share_plus:generateDebugResValues', task ':share_plus:generateDebugResources', task ':share_plus:packageDebugResources', task ':app:mapDebugSourceSetPaths', task ':app:generateDebugResources', task ':app:mergeDebugResources', task ':app:packageDebugResources', task ':app:parseDebugLocalResources', task ':app:createDebugCompatibleScreenManifests', task ':app:extractDeepLinksDebug', task ':camera_android_camerax:extractDeepLinksDebug', task ':camera_android_camerax:processDebugManifest', task ':connectivity_plus:extractDeepLinksDebug', task ':connectivity_plus:processDebugManifest', task ':flutter_plugin_android_lifecycle:extractDeepLinksDebug', task ':flutter_plugin_android_lifecycle:processDebugManifest', task ':geolocator_android:extractDeepLinksDebug', task ':geolocator_android:processDebugManifest', task ':google_mlkit_commons:extractDeepLinksDebug', task ':google_mlkit_commons:processDebugManifest', task ':google_mlkit_object_detection:extractDeepLinksDebug', task ':google_mlkit_object_detection:processDebugManifest', task ':google_mlkit_text_recognition:extractDeepLinksDebug', task ':google_mlkit_text_recognition:processDebugManifest', task ':image_picker_android:extractDeepLinksDebug', task ':image_picker_android:processDebugManifest', task ':jni:extractDeepLinksDebug', task ':jni:processDebugManifest', task ':jni_flutter:extractDeepLinksDebug', task ':jni_flutter:processDebugManifest', task ':package_info_plus:extractDeepLinksDebug', task ':package_info_plus:processDebugManifest', task ':permission_handler_android:extractDeepLinksDebug', task ':permission_handler_android:processDebugManifest', task ':share_plus:extractDeepLinksDebug', task ':share_plus:processDebugManifest', task ':app:processDebugMainManifest', task ':app:outputDebugAppLinkSettings', task ':app:processDebugManifest', task ':app:processDebugManifestForPackage', task ':camera_android_camerax:compileDebugLibraryResources', task ':camera_android_camerax:parseDebugLocalResources', task ':camera_android_camerax:generateDebugRFile', task ':connectivity_plus:compileDebugLibraryResources', task ':connectivity_plus:parseDebugLocalResources', task ':connectivity_plus:generateDebugRFile', task ':flutter_plugin_android_lifecycle:compileDebugLibraryResources', task ':flutter_plugin_android_lifecycle:parseDebugLocalResources', task ':flutter_plugin_android_lifecycle:generateDebugRFile', task ':geolocator_android:compileDebugLibraryResources', task ':geolocator_android:parseDebugLocalResources', task ':geolocator_android:generateDebugRFile', task ':google_mlkit_commons:compileDebugLibraryResources', task ':google_mlkit_commons:parseDebugLocalResources', task ':google_mlkit_commons:generateDebugRFile', task ':google_mlkit_object_detection:compileDebugLibraryResources', task ':google_mlkit_object_detection:parseDebugLocalResources', task ':google_mlkit_object_detection:generateDebugRFile', task ':google_mlkit_text_recognition:compileDebugLibraryResources', task ':google_mlkit_text_recognition:parseDebugLocalResources', task ':google_mlkit_text_recognition:generateDebugRFile', task ':image_picker_android:compileDebugLibraryResources', task ':image_picker_android:parseDebugLocalResources', task ':image_picker_android:generateDebugRFile', task ':jni:compileDebugLibraryResources', task ':jni:parseDebugLocalResources', task ':jni:generateDebugRFile', task ':jni_flutter:compileDebugLibraryResources', task ':jni_flutter:parseDebugLocalResources', task ':jni_flutter:generateDebugRFile', task ':package_info_plus:compileDebugLibraryResources', task ':package_info_plus:parseDebugLocalResources', task ':package_info_plus:generateDebugRFile', task ':permission_handler_android:compileDebugLibraryResources', task ':permission_handler_android:parseDebugLocalResources', task ':permission_handler_android:generateDebugRFile', task ':share_plus:compileDebugLibraryResources', task ':share_plus:parseDebugLocalResources', task ':share_plus:generateDebugRFile', task ':app:processDebugResources', task ':camera_android_camerax:checkKotlinGradlePluginConfigurationErrors', task ':camera_android_camerax:compileDebugKotlin', task ':camera_android_camerax:javaPreCompileDebug', task ':camera_android_camerax:compileDebugJavaWithJavac', task ':camera_android_camerax:bundleLibCompileToJarDebug', task ':connectivity_plus:javaPreCompileDebug', task ':connectivity_plus:compileDebugJavaWithJavac', task ':connectivity_plus:bundleLibCompileToJarDebug', task ':flutter_plugin_android_lifecycle:javaPreCompileDebug', task ':flutter_plugin_android_lifecycle:compileDebugJavaWithJavac', task ':flutter_plugin_android_lifecycle:bundleLibCompileToJarDebug', task ':geolocator_android:javaPreCompileDebug', task ':geolocator_android:compileDebugJavaWithJavac', task ':geolocator_android:bundleLibCompileToJarDebug', task ':google_mlkit_commons:javaPreCompileDebug', task ':google_mlkit_commons:compileDebugJavaWithJavac', task ':google_mlkit_commons:bundleLibCompileToJarDebug', task ':google_mlkit_object_detection:javaPreCompileDebug', task ':google_mlkit_object_detection:compileDebugJavaWithJavac', task ':google_mlkit_object_detection:bundleLibCompileToJarDebug', task ':google_mlkit_text_recognition:javaPreCompileDebug', task ':google_mlkit_text_recognition:compileDebugJavaWithJavac', task ':google_mlkit_text_recognition:bundleLibCompileToJarDebug', task ':image_picker_android:javaPreCompileDebug', task ':image_picker_android:compileDebugJavaWithJavac', task ':image_picker_android:bundleLibCompileToJarDebug', task ':jni:javaPreCompileDebug', task ':jni:compileDebugJavaWithJavac', task ':jni:bundleLibCompileToJarDebug', task ':jni_flutter:javaPreCompileDebug', task ':jni_flutter:compileDebugJavaWithJavac', task ':jni_flutter:bundleLibCompileToJarDebug', task ':package_info_plus:checkKotlinGradlePluginConfigurationErrors', task ':package_info_plus:compileDebugKotlin', task ':package_info_plus:javaPreCompileDebug', task ':package_info_plus:compileDebugJavaWithJavac', task ':package_info_plus:bundleLibCompileToJarDebug', task ':permission_handler_android:javaPreCompileDebug', task ':permission_handler_android:compileDebugJavaWithJavac', task ':permission_handler_android:bundleLibCompileToJarDebug', task ':share_plus:checkKotlinGradlePluginConfigurationErrors', task ':share_plus:compileDebugKotlin', task ':share_plus:javaPreCompileDebug', task ':share_plus:compileDebugJavaWithJavac', task ':share_plus:bundleLibCompileToJarDebug', task ':app:compileDebugKotlin', task ':app:javaPreCompileDebug', task ':app:compileDebugJavaWithJavac', task ':app:compressDebugAssets', task ':camera_android_camerax:bundleLibRuntimeToJarDebug', task ':connectivity_plus:bundleLibRuntimeToJarDebug', task ':image_picker_android:bundleLibRuntimeToJarDebug', task ':flutter_plugin_android_lifecycle:bundleLibRuntimeToJarDebug', task ':geolocator_android:bundleLibRuntimeToJarDebug', task ':google_mlkit_object_detection:bundleLibRuntimeToJarDebug', task ':google_mlkit_text_recognition:bundleLibRuntimeToJarDebug', task ':google_mlkit_commons:bundleLibRuntimeToJarDebug', task ':jni_flutter:bundleLibRuntimeToJarDebug', task ':jni:bundleLibRuntimeToJarDebug', task ':package_info_plus:bundleLibRuntimeToJarDebug', task ':permission_handler_android:bundleLibRuntimeToJarDebug', task ':share_plus:bundleLibRuntimeToJarDebug', task ':app:desugarDebugFileDependencies', task ':app:dexBuilderDebug', task ':app:mergeDebugGlobalSynthetics', task ':app:processDebugJavaRes', task ':camera_android_camerax:processDebugJavaRes', task ':connectivity_plus:processDebugJavaRes', task ':flutter_plugin_android_lifecycle:processDebugJavaRes', task ':geolocator_android:processDebugJavaRes', task ':google_mlkit_commons:processDebugJavaRes', task ':google_mlkit_object_detection:processDebugJavaRes', task ':google_mlkit_text_recognition:processDebugJavaRes', task ':image_picker_android:processDebugJavaRes', task ':jni:processDebugJavaRes', task ':jni_flutter:processDebugJavaRes', task ':package_info_plus:processDebugJavaRes', task ':permission_handler_android:processDebugJavaRes', task ':share_plus:processDebugJavaRes', task ':app:mergeDebugJavaResource', task ':app:checkDebugDuplicateClasses', task ':app:mergeExtDexDebug', task ':camera_android_camerax:bundleLibRuntimeToDirDebug', task ':connectivity_plus:bundleLibRuntimeToDirDebug', task ':image_picker_android:bundleLibRuntimeToDirDebug', task ':flutter_plugin_android_lifecycle:bundleLibRuntimeToDirDebug', task ':geolocator_android:bundleLibRuntimeToDirDebug', task ':google_mlkit_object_detection:bundleLibRuntimeToDirDebug', task ':google_mlkit_text_recognition:bundleLibRuntimeToDirDebug', task ':google_mlkit_commons:bundleLibRuntimeToDirDebug', task ':jni_flutter:bundleLibRuntimeToDirDebug', task ':jni:bundleLibRuntimeToDirDebug', task ':package_info_plus:bundleLibRuntimeToDirDebug', task ':permission_handler_android:bundleLibRuntimeToDirDebug', task ':share_plus:bundleLibRuntimeToDirDebug', task ':app:mergeLibDexDebug', task ':app:mergeProjectDexDebug', task ':app:configureCMakeDebug[arm64-v8a]', task ':app:buildCMakeDebug[arm64-v8a]', task ':app:configureCMakeDebug[armeabi-v7a]', task ':app:buildCMakeDebug[armeabi-v7a]', task ':app:configureCMakeDebug[x86_64]', task ':app:buildCMakeDebug[x86_64]', task ':app:mergeDebugJniLibFolders', task ':camera_android_camerax:mergeDebugJniLibFolders', task ':camera_android_camerax:mergeDebugNativeLibs', task ':camera_android_camerax:copyDebugJniLibsProjectOnly', task ':connectivity_plus:mergeDebugJniLibFolders', task ':connectivity_plus:mergeDebugNativeLibs', task ':connectivity_plus:copyDebugJniLibsProjectOnly', task ':flutter_plugin_android_lifecycle:mergeDebugJniLibFolders', task ':flutter_plugin_android_lifecycle:mergeDebugNativeLibs', task ':flutter_plugin_android_lifecycle:copyDebugJniLibsProjectOnly', task ':geolocator_android:mergeDebugJniLibFolders', task ':geolocator_android:mergeDebugNativeLibs', task ':geolocator_android:copyDebugJniLibsProjectOnly', task ':google_mlkit_commons:mergeDebugJniLibFolders', task ':google_mlkit_commons:mergeDebugNativeLibs', task ':google_mlkit_commons:copyDebugJniLibsProjectOnly', task ':google_mlkit_object_detection:mergeDebugJniLibFolders', task ':google_mlkit_object_detection:mergeDebugNativeLibs', task ':google_mlkit_object_detection:copyDebugJniLibsProjectOnly', task ':google_mlkit_text_recognition:mergeDebugJniLibFolders', task ':google_mlkit_text_recognition:mergeDebugNativeLibs', task ':google_mlkit_text_recognition:copyDebugJniLibsProjectOnly', task ':image_picker_android:mergeDebugJniLibFolders', task ':image_picker_android:mergeDebugNativeLibs', task ':image_picker_android:copyDebugJniLibsProjectOnly', task ':jni:preProfileBuild', task ':jni:configureCMakeDebug[arm64-v8a]', task ':jni:buildCMakeDebug[arm64-v8a]', task ':jni:configureCMakeDebug[armeabi-v7a]', task ':jni:buildCMakeDebug[armeabi-v7a]', task ':jni:configureCMakeDebug[x86]', task ':jni:buildCMakeDebug[x86]', task ':jni:configureCMakeDebug[x86_64]', task ':jni:buildCMakeDebug[x86_64]', task ':jni:mergeDebugJniLibFolders', task ':jni:mergeDebugNativeLibs', task ':jni:copyDebugJniLibsProjectOnly', task ':jni_flutter:mergeDebugJniLibFolders', task ':jni_flutter:mergeDebugNativeLibs', task ':jni_flutter:copyDebugJniLibsProjectOnly', task ':package_info_plus:mergeDebugJniLibFolders', task ':package_info_plus:mergeDebugNativeLibs', task ':package_info_plus:copyDebugJniLibsProjectOnly', task ':permission_handler_android:mergeDebugJniLibFolders', task ':permission_handler_android:mergeDebugNativeLibs', task ':permission_handler_android:copyDebugJniLibsProjectOnly', task ':share_plus:mergeDebugJniLibFolders', task ':share_plus:mergeDebugNativeLibs', task ':share_plus:copyDebugJniLibsProjectOnly', task ':app:mergeDebugNativeLibs', task ':app:stripDebugDebugSymbols', task ':app:validateSigningDebug', task ':app:writeDebugAppMetadata', task ':app:writeDebugSigningConfigVersions', task ':app:packageDebug', task ':app:createDebugApkListingFileRedirect', task ':app:assembleDebug', task ':camera_android_camerax:stripDebugDebugSymbols', task ':camera_android_camerax:copyDebugJniLibsProjectAndLocalJars', task ':camera_android_camerax:extractDebugAnnotations', task ':camera_android_camerax:extractDeepLinksForAarDebug', task ':camera_android_camerax:mergeDebugGeneratedProguardFiles', task ':camera_android_camerax:mergeDebugConsumerProguardFiles', task ':camera_android_camerax:prepareDebugArtProfile', task ':camera_android_camerax:prepareLintJarForPublish', task ':camera_android_camerax:mergeDebugJavaResource', task ':camera_android_camerax:syncDebugLibJars', task ':camera_android_camerax:bundleDebugAar', task ':camera_android_camerax:assembleDebug', task ':connectivity_plus:stripDebugDebugSymbols', task ':connectivity_plus:copyDebugJniLibsProjectAndLocalJars', task ':connectivity_plus:extractDebugAnnotations', task ':connectivity_plus:extractDeepLinksForAarDebug', task ':connectivity_plus:mergeDebugGeneratedProguardFiles', task ':connectivity_plus:mergeDebugConsumerProguardFiles', task ':connectivity_plus:prepareDebugArtProfile', task ':connectivity_plus:prepareLintJarForPublish', task ':connectivity_plus:mergeDebugJavaResource', task ':connectivity_plus:syncDebugLibJars', task ':connectivity_plus:bundleDebugAar', task ':connectivity_plus:assembleDebug', task ':flutter_plugin_android_lifecycle:stripDebugDebugSymbols', task ':flutter_plugin_android_lifecycle:copyDebugJniLibsProjectAndLocalJars', task ':flutter_plugin_android_lifecycle:extractDebugAnnotations', task ':flutter_plugin_android_lifecycle:extractDeepLinksForAarDebug', task ':flutter_plugin_android_lifecycle:mergeDebugGeneratedProguardFiles', task ':flutter_plugin_android_lifecycle:mergeDebugConsumerProguardFiles', task ':flutter_plugin_android_lifecycle:prepareDebugArtProfile', task ':flutter_plugin_android_lifecycle:prepareLintJarForPublish', task ':flutter_plugin_android_lifecycle:mergeDebugJavaResource', task ':flutter_plugin_android_lifecycle:syncDebugLibJars', task ':flutter_plugin_android_lifecycle:bundleDebugAar', task ':flutter_plugin_android_lifecycle:assembleDebug', task ':geolocator_android:stripDebugDebugSymbols', task ':geolocator_android:copyDebugJniLibsProjectAndLocalJars', task ':geolocator_android:extractDebugAnnotations', task ':geolocator_android:extractDeepLinksForAarDebug', task ':geolocator_android:mergeDebugGeneratedProguardFiles', task ':geolocator_android:mergeDebugConsumerProguardFiles', task ':geolocator_android:prepareDebugArtProfile', task ':geolocator_android:prepareLintJarForPublish', task ':geolocator_android:mergeDebugJavaResource', task ':geolocator_android:syncDebugLibJars', task ':geolocator_android:bundleDebugAar', task ':geolocator_android:assembleDebug', task ':google_mlkit_commons:stripDebugDebugSymbols', task ':google_mlkit_commons:copyDebugJniLibsProjectAndLocalJars', task ':google_mlkit_commons:extractDebugAnnotations', task ':google_mlkit_commons:extractDeepLinksForAarDebug', task ':google_mlkit_commons:mergeDebugGeneratedProguardFiles', task ':google_mlkit_commons:mergeDebugConsumerProguardFiles', task ':google_mlkit_commons:prepareDebugArtProfile', task ':google_mlkit_commons:prepareLintJarForPublish', task ':google_mlkit_commons:mergeDebugJavaResource', task ':google_mlkit_commons:syncDebugLibJars', task ':google_mlkit_commons:bundleDebugAar', task ':google_mlkit_commons:assembleDebug', task ':google_mlkit_object_detection:stripDebugDebugSymbols', task ':google_mlkit_object_detection:copyDebugJniLibsProjectAndLocalJars', task ':google_mlkit_object_detection:extractDebugAnnotations', task ':google_mlkit_object_detection:extractDeepLinksForAarDebug', task ':google_mlkit_object_detection:mergeDebugGeneratedProguardFiles', task ':google_mlkit_object_detection:mergeDebugConsumerProguardFiles', task ':google_mlkit_object_detection:prepareDebugArtProfile', task ':google_mlkit_object_detection:prepareLintJarForPublish', task ':google_mlkit_object_detection:mergeDebugJavaResource', task ':google_mlkit_object_detection:syncDebugLibJars', task ':google_mlkit_object_detection:bundleDebugAar', task ':google_mlkit_object_detection:assembleDebug', task ':google_mlkit_text_recognition:stripDebugDebugSymbols', task ':google_mlkit_text_recognition:copyDebugJniLibsProjectAndLocalJars', task ':google_mlkit_text_recognition:extractDebugAnnotations', task ':google_mlkit_text_recognition:extractDeepLinksForAarDebug', task ':google_mlkit_text_recognition:mergeDebugGeneratedProguardFiles', task ':google_mlkit_text_recognition:mergeDebugConsumerProguardFiles', task ':google_mlkit_text_recognition:prepareDebugArtProfile', task ':google_mlkit_text_recognition:prepareLintJarForPublish', task ':google_mlkit_text_recognition:mergeDebugJavaResource', task ':google_mlkit_text_recognition:syncDebugLibJars', task ':google_mlkit_text_recognition:bundleDebugAar', task ':google_mlkit_text_recognition:assembleDebug', task ':image_picker_android:stripDebugDebugSymbols', task ':image_picker_android:copyDebugJniLibsProjectAndLocalJars', task ':image_picker_android:extractDebugAnnotations', task ':image_picker_android:extractDeepLinksForAarDebug', task ':image_picker_android:mergeDebugGeneratedProguardFiles', task ':image_picker_android:mergeDebugConsumerProguardFiles', task ':image_picker_android:prepareDebugArtProfile', task ':image_picker_android:prepareLintJarForPublish', task ':image_picker_android:mergeDebugJavaResource', task ':image_picker_android:syncDebugLibJars', task ':image_picker_android:bundleDebugAar', task ':image_picker_android:assembleDebug', task ':jni:stripDebugDebugSymbols', task ':jni:copyDebugJniLibsProjectAndLocalJars', task ':jni:extractDebugAnnotations', task ':jni:extractDeepLinksForAarDebug', task ':jni:mergeDebugGeneratedProguardFiles', task ':jni:mergeDebugConsumerProguardFiles', task ':jni:prepareDebugArtProfile', task ':jni:prepareLintJarForPublish', task ':jni:mergeDebugJavaResource', task ':jni:syncDebugLibJars', task ':jni:bundleDebugAar', task ':jni:assembleDebug', task ':jni_flutter:stripDebugDebugSymbols', task ':jni_flutter:copyDebugJniLibsProjectAndLocalJars', task ':jni_flutter:extractDebugAnnotations', task ':jni_flutter:extractDeepLinksForAarDebug', task ':jni_flutter:mergeDebugGeneratedProguardFiles', task ':jni_flutter:mergeDebugConsumerProguardFiles', task ':jni_flutter:prepareDebugArtProfile', task ':jni_flutter:prepareLintJarForPublish', task ':jni_flutter:mergeDebugJavaResource', task ':jni_flutter:syncDebugLibJars', task ':jni_flutter:bundleDebugAar', task ':jni_flutter:assembleDebug', task ':package_info_plus:stripDebugDebugSymbols', task ':package_info_plus:copyDebugJniLibsProjectAndLocalJars', task ':package_info_plus:extractDebugAnnotations', task ':package_info_plus:extractDeepLinksForAarDebug', task ':package_info_plus:mergeDebugGeneratedProguardFiles', task ':package_info_plus:mergeDebugConsumerProguardFiles', task ':package_info_plus:prepareDebugArtProfile', task ':package_info_plus:prepareLintJarForPublish', task ':package_info_plus:mergeDebugJavaResource', task ':package_info_plus:syncDebugLibJars', task ':package_info_plus:bundleDebugAar', task ':package_info_plus:assembleDebug', task ':permission_handler_android:stripDebugDebugSymbols', task ':permission_handler_android:copyDebugJniLibsProjectAndLocalJars', task ':permission_handler_android:extractDebugAnnotations', task ':permission_handler_android:extractDeepLinksForAarDebug', task ':permission_handler_android:mergeDebugGeneratedProguardFiles', task ':permission_handler_android:mergeDebugConsumerProguardFiles', task ':permission_handler_android:prepareDebugArtProfile', task ':permission_handler_android:prepareLintJarForPublish', task ':permission_handler_android:mergeDebugJavaResource', task ':permission_handler_android:syncDebugLibJars', task ':permission_handler_android:bundleDebugAar', task ':permission_handler_android:assembleDebug', task ':share_plus:stripDebugDebugSymbols', task ':share_plus:copyDebugJniLibsProjectAndLocalJars', task ':share_plus:extractDebugAnnotations', task ':share_plus:extractDeepLinksForAarDebug', task ':share_plus:mergeDebugGeneratedProguardFiles', task ':share_plus:mergeDebugConsumerProguardFiles', task ':share_plus:prepareDebugArtProfile', task ':share_plus:prepareLintJarForPublish', task ':share_plus:mergeDebugJavaResource', task ':share_plus:syncDebugLibJars', task ':share_plus:bundleDebugAar', task ':share_plus:assembleDebug']
+[   +4 ms] Tasks that were excluded: []
+[ +175 ms] work action Parameters of IdentityTransform (Thread[included builds,5,main]) started.
+[        ] work action Parameters of DexingNoClasspathTransform (Thread[included builds,5,main]) started.
+[        ] work action Parameters of DexingOutputSplitTransform (Thread[included builds,5,main]) started.
+[        ] work action Parameters of ClassesDirToClassesTransform (Thread[included builds,5,main]) started.
+[        ] work action Parameters of DexingOutputSplitTransform (Thread[included builds,5,main]) started.
+[        ] Resolve mutations for :app:DebugMinSdkCheck (Thread[included builds,5,main]) started.
+[        ] :app:DebugMinSdkCheck (Thread[included builds,5,main]) started.
+[        ] > Task :app:DebugMinSdkCheck
+[        ] Caching disabled for task ':app:DebugMinSdkCheck' because:
+[        ]   Build cache is disabled
+[        ] Task ':app:DebugMinSdkCheck' is not up-to-date because:
+[        ]   Task has not declared any outputs despite executing actions.
+[        ] Resolve mutations for :app:preBuild (Thread[included builds,5,main]) started.
+[        ] :app:preBuild (Thread[included builds,5,main]) started.
+[        ] > Task :app:preBuild UP-TO-DATE
+[        ] Skipping task ':app:preBuild' as it has no actions.
+[        ] Resolve mutations for :app:preDebugBuild (Thread[included builds,5,main]) started.
+[        ] :app:preDebugBuild (Thread[included builds,5,main]) started.
+[        ] > Task :app:preDebugBuild UP-TO-DATE
+[        ] Skipping task ':app:preDebugBuild' as it has no actions.
+[        ] Resolve mutations for :app:mergeDebugNativeDebugMetadata (Thread[included builds,5,main]) started.
+[        ] :app:mergeDebugNativeDebugMetadata (Thread[included builds,5,main]) started.
+[        ] > Task :app:mergeDebugNativeDebugMetadata NO-SOURCE
+[        ] Skipping task ':app:mergeDebugNativeDebugMetadata' as it has no source files and no previous output files.
+[        ] Resolve mutations for :app:checkKotlinGradlePluginConfigurationErrors (Thread[included builds,5,main]) started.
+[        ] :app:checkKotlinGradlePluginConfigurationErrors (Thread[included builds,5,main]) started.
+[        ] > Task :app:checkKotlinGradlePluginConfigurationErrors SKIPPED
+[        ] Skipping task ':app:checkKotlinGradlePluginConfigurationErrors' as task onlyIf 'errorDiagnostics are present' is false.
+[        ] Resolve mutations for :app:compileFlutterBuildDebug (Thread[included builds,5,main]) started.
+[  +91 ms] :app:compileFlutterBuildDebug (Thread[included builds,5,main]) started.
+[+2202 ms] > Task :app:compileFlutterBuildDebug
+[        ] Caching disabled for task ':app:compileFlutterBuildDebug' because:
+[        ]   Build cache is disabled
+[        ]   Caching has not been enabled for the task
+[        ] Task ':app:compileFlutterBuildDebug' is not up-to-date because:
+[        ]   Task has failed previously.
+[        ] Starting process 'command 'C:\Users\Farwa\AppData\Local\Programs\flutter\bin\flutter.bat''. Working directory: C:\Users\Farwa\Documents\whatamilookingat Command: C:\Users\Farwa\AppData\Local\Programs\flutter\bin\flutter.bat --verbose assemble --no-version-check --depfile C:\Users\Farwa\Documents\whatamilookingat\build\app\intermediates\flutter\debug/flutter_build.d --output C:\Users\Farwa\Documents\whatamilookingat\build\app\intermediates\flutter\debug -dTargetFile=lib\main.dart -dTargetPlatform=android -dBuildMode=debug -dTrackWidgetCreation=true --DartDefines=RkxVVFRFUl9WRVJTSU9OPTMuMzguNQ==,RkxVVFRFUl9DSEFOTkVMPXN0YWJsZQ==,RkxVVFRFUl9HSVRfVVJMPWh0dHBzOi8vZ2l0aHViLmNvbS9mbHV0dGVyL2ZsdXR0ZXIuZ2l0,RkxVVFRFUl9GUkFNRVdPUktfUkVWSVNJT049ZjZmZjE1MjlmZA==,RkxVVFRFUl9FTkdJTkVfUkVWSVNJT049MTUyN2FlMGVjNQ==,RkxVVFRFUl9EQVJUX1ZFUlNJT049My4xMC40 -dFlavor= -dAndroidArchs=android-arm android-arm64 android-x64 -dMinSdkVersion=24 debug_android_application
+[        ] Successfully started process 'command 'C:\Users\Farwa\AppData\Local\Programs\flutter\bin\flutter.bat''
+[+3004 ms] [ +721 ms] Artifact Instance of 'MaterialFonts' is not required, skipping update.
+[        ] [  +13 ms] Artifact Instance of 'GradleWrapper' is not required, skipping update.
+[        ] [        ] Artifact Instance of 'AndroidGenSnapshotArtifacts' is not required, skipping update.
+[        ] [        ] Artifact Instance of 'AndroidInternalBuildArtifacts' is not required, skipping update.
+[        ] [        ] Artifact Instance of 'IOSEngineArtifacts' is not required, skipping update.
+[        ] [   +1 ms] Artifact Instance of 'FlutterWebSdk' is not required, skipping update.
+[        ] [   +7 ms] Artifact Instance of 'LegacyCanvasKitRemover' is not required, skipping update.
+[        ] [        ] Artifact Instance of 'FlutterSdk' is not required, skipping update.
+[        ] [        ] Artifact Instance of 'WindowsEngineArtifacts' is not required, skipping update.
+[        ] [        ] Artifact Instance of 'MacOSEngineArtifacts' is not required, skipping update.
+[        ] [        ] Artifact Instance of 'LinuxEngineArtifacts' is not required, skipping update.
+[        ] [        ] Artifact Instance of 'LinuxFuchsiaSDKArtifacts' is not required, skipping update.
+[        ] [        ] Artifact Instance of 'MacOSFuchsiaSDKArtifacts' is not required, skipping update.
+[        ] [        ] Artifact Instance of 'FlutterRunnerSDKArtifacts' is not required, skipping update.
+[        ] [        ] Artifact Instance of 'FlutterRunnerDebugSymbols' is not required, skipping update.
+[        ] [        ] Artifact Instance of 'IosUsbArtifacts' is not required, skipping update.
+[        ] [        ] Artifact Instance of 'IosUsbArtifacts' is not required, skipping update.
+[        ] [        ] Artifact Instance of 'IosUsbArtifacts' is not required, skipping update.
+[        ] [        ] Artifact Instance of 'IosUsbArtifacts' is not required, skipping update.
+[        ] [        ] Artifact Instance of 'IosUsbArtifacts' is not required, skipping update.
+[        ] [        ] Artifact Instance of 'IosUsbArtifacts' is not required, skipping update.
+[        ] [        ] Artifact Instance of 'FontSubsetArtifacts' is not required, skipping update.
+[        ] [        ] Artifact Instance of 'PubDependencies' is not required, skipping update.
+[  +88 ms] [  +48 ms] Artifact Instance of 'AndroidGenSnapshotArtifacts' is not required, skipping update.
+[        ] [        ] Artifact Instance of 'AndroidInternalBuildArtifacts' is not required, skipping update.
+[        ] [        ] Artifact Instance of 'IOSEngineArtifacts' is not required, skipping update.
+[        ] [        ] Artifact Instance of 'FlutterWebSdk' is not required, skipping update.
+[        ] [        ] Artifact Instance of 'FlutterEngineStamp' is not required, skipping update.
+[        ] [        ] Artifact Instance of 'LegacyCanvasKitRemover' is not required, skipping update.
+[        ] [  +12 ms] Artifact Instance of 'WindowsEngineArtifacts' is not required, skipping update.
+[        ] [        ] Artifact Instance of 'MacOSEngineArtifacts' is not required, skipping update.
+[        ] [   +1 ms] Artifact Instance of 'LinuxEngineArtifacts' is not required, skipping update.
+[        ] [        ] Artifact Instance of 'LinuxFuchsiaSDKArtifacts' is not required, skipping update.
+[        ] [        ] Artifact Instance of 'MacOSFuchsiaSDKArtifacts' is not required, skipping update.
+[        ] [        ] Artifact Instance of 'FlutterRunnerSDKArtifacts' is not required, skipping update.
+[        ] [        ] Artifact Instance of 'FlutterRunnerDebugSymbols' is not required, skipping update.
+[ +295 ms] [ +338 ms] Artifact Instance of 'MaterialFonts' is not required, skipping update.
+[        ] [        ] Artifact Instance of 'GradleWrapper' is not required, skipping update.
+[        ] [  +20 ms] Artifact Instance of 'AndroidInternalBuildArtifacts' is not required, skipping update.
+[        ] [   +1 ms] Artifact Instance of 'IOSEngineArtifacts' is not required, skipping update.
+[  +95 ms] [        ] Artifact Instance of 'FlutterWebSdk' is not required, skipping update.
+[        ] [        ] Artifact Instance of 'FlutterEngineStamp' is not required, skipping update.
+[        ] [        ] Artifact Instance of 'LegacyCanvasKitRemover' is not required, skipping update.
+[        ] [        ] Artifact Instance of 'FlutterSdk' is not required, skipping update.
+[        ] [        ] Artifact Instance of 'WindowsEngineArtifacts' is not required, skipping update.
+[        ] [   +1 ms] Artifact Instance of 'MacOSEngineArtifacts' is not required, skipping update.
+[        ] [        ] Artifact Instance of 'LinuxEngineArtifacts' is not required, skipping update.
+[        ] [   +1 ms] Artifact Instance of 'LinuxFuchsiaSDKArtifacts' is not required, skipping update.
+[        ] [   +3 ms] Artifact Instance of 'MacOSFuchsiaSDKArtifacts' is not required, skipping update.
+[        ] [        ] Artifact Instance of 'FlutterRunnerSDKArtifacts' is not required, skipping update.
+[        ] [        ] Artifact Instance of 'FlutterRunnerDebugSymbols' is not required, skipping update.
+[        ] [        ] Artifact Instance of 'IosUsbArtifacts' is not required, skipping update.
+[        ] [        ] Artifact Instance of 'IosUsbArtifacts' is not required, skipping update.
+[        ] [        ] Artifact Instance of 'IosUsbArtifacts' is not required, skipping update.
+[        ] [   +1 ms] Artifact Instance of 'IosUsbArtifacts' is not required, skipping update.
+[        ] [        ] Artifact Instance of 'IosUsbArtifacts' is not required, skipping update.
+[        ] [        ] Artifact Instance of 'IosUsbArtifacts' is not required, skipping update.
+[        ] [        ] Artifact Instance of 'FontSubsetArtifacts' is not required, skipping update.
+[        ] [        ] Artifact Instance of 'PubDependencies' is not required, skipping update.
+[ +104 ms] [ +130 ms] Initializing file store
+[        ] [  +47 ms] Done initializing file store
+[ +193 ms] [ +156 ms] Skipping target: dart_build
+[        ] [   +6 ms] Skipping target: gen_dart_plugin_registrant
+[        ] [   +2 ms] Skipping target: install_code_assets
+[        ] [        ] Skipping target: gen_localizations
+[+4005 ms] [+3985 ms] kernel_snapshot_program: Starting due to {InvalidatedReasonKind.outputSetAddition: The following outputs were added to the output set: C:\Users\Farwa\Documents\whatamilookingat\.dart_tool\flutter_build\2221ee9858e79a411d43191fe80bb077\app.dill}
+[        ] [  +35 ms] C:\Users\Farwa\AppData\Local\Programs\flutter\bin\cache\dart-sdk\bin\dartaotruntime.exe C:\Users\Farwa\AppData\Local\Programs\flutter\bin\cache\dart-sdk\bin\snapshots\frontend_server_aot.dart.snapshot --sdk-root C:\Users\Farwa\AppData\Local\Programs\flutter\bin\cache\artifacts\engine\common\flutter_patched_sdk/ --target=flutter --no-print-incremental-dependencies -DFLUTTER_VERSION=3.38.5 -DFLUTTER_CHANNEL=stable -DFLUTTER_GIT_URL=https://github.com/flutter/flutter.git -DFLUTTER_FRAMEWORK_REVISION=f6ff1529fd -DFLUTTER_ENGINE_REVISION=1527ae0ec5 -DFLUTTER_DART_VERSION=3.10.4 -DFLUTTER_APP_FLAVOR= -Ddart.vm.profile=false -Ddart.vm.product=false --enable-asserts --track-widget-creation --no-link-platform --packages C:\Users\Farwa\Documents\whatamilookingat\.dart_tool\package_config.json --output-dill C:\Users\Farwa\Documents\whatamilookingat\.dart_tool\flutter_build\2221ee9858e79a411d43191fe80bb077\app.dill --depfile C:\Users\Farwa\Documents\whatamilookingat\.dart_tool\flutter_build\2221ee9858e79a411d43191fe80bb077\kernel_snapshot_program.d --incremental --initialize-from-dill C:\Users\Farwa\Documents\whatamilookingat\.dart_tool\flutter_build\2221ee9858e79a411d43191fe80bb077\app.dill --source file:///C:/Users/Farwa/Documents/whatamilookingat/.dart_tool/flutter_build/dart_plugin_registrant.dart --source package:flutter/src/dart_plugin_registrant.dart -Dflutter.dart_plugin_registrant=file:///C:/Users/Farwa/Documents/whatamilookingat/.dart_tool/flutter_build/dart_plugin_registrant.dart --verbosity=error package:whatamilookingat/main.dart
+[+6495 ms] [+6506 ms] l
+ib/services/vision_serv
+ice.dart:125:18: 
+Error: The method 'Inpu
+tImagePlaneMetadata' 
+isn't defined for the 
+type 'VisionService'.
+[        ] [   +5 ms]  
+- 'VisionService' is 
+from 'package:whatamilo
+okingat/services/vision
+_service.dart' ('lib/se
+rvices/vision_service.d
+art').
+[        ] [        ] 
+Try correcting the 
+name to the name of an 
+existing method, or 
+defining a method 
+named 'InputImagePlaneM
+etadata'.
+[        ] [        ]  
+         return InputIm
+agePlaneMetadata(
+[        ] [   +2 ms]  
+                
+^^^^^^^^^^^^^^^^^^^^^^^
+[ +897 ms] [ +896 ms] Persisting file store
+[  +97 ms] [  +53 ms] Done persisting file store
+[   +1 ms] [  +12 ms] 
+Target kernel_snapshot_
+program failed: 
+Exception
+[        ]            
+#0      
+KernelSnapshot.build (p
+ackage:flutter_tools/sr
+c/build_system/targets/
+common.dart:289:7)
+[        ]            
+<asynchronous 
+suspension>
+[   +1 ms]            
+#1      _BuildInstance.
+_invokeInternal (packag
+e:flutter_tools/src/bui
+ld_system/build_system.
+dart:895:9)
+[        ]            
+<asynchronous 
+suspension>
+[        ]            
+#2      
+Future.wait.<anonymous 
+closure> (dart:async/fu
+ture.dart:546:21)
+[        ]            
+<asynchronous 
+suspension>
+[        ]            
+#3      _BuildInstance.
+invokeTarget (package:f
+lutter_tools/src/build_
+system/build_system.dar
+t:833:32)
+[        ]            
+<asynchronous 
+suspension>
+[        ]            
+#4      FlutterBuildSys
+tem.build (package:flut
+ter_tools/src/build_sys
+tem/build_system.dart:6
+53:16)
+[        ]            
+<asynchronous 
+suspension>
+[        ]            
+#5      AssembleCommand
+.runCommand (package:fl
+utter_tools/src/command
+s/assemble.dart:361:32)
+[        ]            
+<asynchronous 
+suspension>
+[        ]            
+#6      FlutterCommand.
+run.<anonymous 
+closure> (package:flutt
+er_tools/src/runner/flu
+tter_command.dart:1559:
+27)
+[        ]            
+<asynchronous 
+suspension>
+[        ]            
+#7      AppContext.run.
+<anonymous closure> (pa
+ckage:flutter_tools/src
+/base/context.dart:154:
+19)
+[        ]            
+<asynchronous 
+suspension>
+[        ]            
+#8      CommandRunner.r
+unCommand (package:args
+/command_runner.dart:21
+2:13)
+[        ]            
+<asynchronous 
+suspension>
+[        ]            
+#9      FlutterCommandR
+unner.runCommand.<anony
+mous closure> (package:
+flutter_tools/src/runne
+r/flutter_command_runne
+r.dart:487:9)
+[        ]            
+<asynchronous 
+suspension>
+[        ]            
+#10     AppContext.run.
+<anonymous closure> (pa
+ckage:flutter_tools/src
+/base/context.dart:154:
+19)
+[        ]            
+<asynchronous 
+suspension>
+[        ]            
+#11     FlutterCommandR
+unner.runCommand (packa
+ge:flutter_tools/src/ru
+nner/flutter_command_ru
+nner.dart:422:5)
+[        ]            
+<asynchronous 
+suspension>
+[        ]            
+#12     run.<anonymous 
+closure>.<anonymous 
+closure> (package:flutt
+er_tools/runner.dart:10
+4:11)
+[        ]            
+<asynchronous 
+suspension>
+[        ]            
+#13     AppContext.run.
+<anonymous closure> (pa
+ckage:flutter_tools/src
+/base/context.dart:154:
+19)
+[        ]            
+<asynchronous 
+suspension>
+[        ]            
+#14     main (package:f
+lutter_tools/executable
+.dart:103:3)
+[        ]            
+<asynchronous 
+suspension>
+[  +94 ms] [  +43 ms] "flutter assemble" took 12,292ms.
+[ +395 ms] [ +415 ms] 
+[   +1 ms]            
+#0      throwToolExit (
+package:flutter_tools/s
+rc/base/common.dart:34:
+3)
+[        ]            
+#1      AssembleCommand
+.runCommand (package:fl
+utter_tools/src/command
+s/assemble.dart:379:7)
+[        ]            
+<asynchronous 
+suspension>
+[        ]            
+#2      FlutterCommand.
+run.<anonymous 
+closure> (package:flutt
+er_tools/src/runner/flu
+tter_command.dart:1559:
+27)
+[        ]            
+<asynchronous 
+suspension>
+[        ]            
+#3      AppContext.run.
+<anonymous closure> (pa
+ckage:flutter_tools/src
+/base/context.dart:154:
+19)
+[        ]            
+<asynchronous 
+suspension>
+[        ]            
+#4      CommandRunner.r
+unCommand (package:args
+/command_runner.dart:21
+2:13)
+[        ]            
+<asynchronous 
+suspension>
+[        ]            
+#5      FlutterCommandR
+unner.runCommand.<anony
+mous closure> (package:
+flutter_tools/src/runne
+r/flutter_command_runne
+r.dart:487:9)
+[        ]            
+<asynchronous 
+suspension>
+[        ]            
+#6      AppContext.run.
+<anonymous closure> (pa
+ckage:flutter_tools/src
+/base/context.dart:154:
+19)
+[        ]            
+<asynchronous 
+suspension>
+[        ]            
+#7      FlutterCommandR
+unner.runCommand (packa
+ge:flutter_tools/src/ru
+nner/flutter_command_ru
+nner.dart:422:5)
+[        ]            
+<asynchronous 
+suspension>
+[        ]            
+#8      run.<anonymous 
+closure>.<anonymous 
+closure> (package:flutt
+er_tools/runner.dart:10
+4:11)
+[        ]            
+<asynchronous 
+suspension>
+[   +1 ms]            
+#9      AppContext.run.
+<anonymous closure> (pa
+ckage:flutter_tools/src
+/base/context.dart:154:
+19)
+[        ]            
+<asynchronous 
+suspension>
+[        ]            
+#10     main (package:f
+lutter_tools/executable
+.dart:103:3)
+[        ]            
+<asynchronous 
+suspension>
+[        ] [   +1 ms] Running 1 shutdown hook
+[        ] [   +5 ms] Shutdown hooks complete
+[ +182 ms] [ +185 ms] exiting with code 1
+[ +205 ms] > Task :app:compileFlutterBuildDebug FAILED
+[ +598 ms] Build 8bfe56aa-209b-4fb2-acaa-d5d015f83156 is closed
+[  +97 ms] [Incubating] Problems report is available at: file:///C:/Users/Farwa/Documents/whatamilookingat/build/reports/problems/problems-report.html
+[   +2 ms] FAILURE: 
+Build failed with an 
+exception.
+[        ] * What went 
+wrong:
+[        ] Execution 
+failed for task ':app:c
+ompileFlutterBuildDebug
+'.
+[        ] > Process 
+'command 'C:\Users\Farw
+a\AppData\Local\Program
+s\flutter\bin\flutter.b
+at'' finished with 
+non-zero exit value 1
+[        ] * Try:
+[        ] > Run with 
+--debug option to get 
+more log output.
+[        ] > Run with 
+--scan to get full 
+insights.
+[        ] > Get more 
+help at https://help.gr
+adle.org.
+[        ] * Exception 
+is:
+[        ] org.gradle.a
+pi.tasks.TaskExecutionE
+xception: Execution 
+failed for task ':app:c
+ompileFlutterBuildDebug
+'.
+[        ] 	at org.grad
+le.api.internal.tasks.e
+xecution.ExecuteActions
+TaskExecuter.lambda$exe
+cuteIfValid$1(ExecuteAc
+tionsTaskExecuter.java:
+130)
+[        ] 	at org.grad
+le.internal.Try$Failure
+.ifSuccessfulOrElse(Try
+.java:293)
+[        ] 	at org.grad
+le.api.internal.tasks.e
+xecution.ExecuteActions
+TaskExecuter.executeIfV
+alid(ExecuteActionsTask
+Executer.java:128)
+[        ] 	at org.grad
+le.api.internal.tasks.e
+xecution.ExecuteActions
+TaskExecuter.execute(Ex
+ecuteActionsTaskExecute
+r.java:116)
+[   +1 ms] 	at org.grad
+le.api.internal.tasks.e
+xecution.ProblemsTaskPa
+thTrackingTaskExecuter.
+execute(ProblemsTaskPat
+hTrackingTaskExecuter.j
+ava:41)
+[        ] 	at org.grad
+le.api.internal.tasks.e
+xecution.FinalizeProper
+tiesTaskExecuter.execut
+e(FinalizePropertiesTas
+kExecuter.java:46)
+[        ] 	at org.grad
+le.api.internal.tasks.e
+xecution.ResolveTaskExe
+cutionModeExecuter.exec
+ute(ResolveTaskExecutio
+nModeExecuter.java:51)
+[        ] 	at org.grad
+le.api.internal.tasks.e
+xecution.SkipTaskWithNo
+ActionsExecuter.execute
+(SkipTaskWithNoActionsE
+xecuter.java:57)
+[        ] 	at org.grad
+le.api.internal.tasks.e
+xecution.SkipOnlyIfTask
+Executer.execute(SkipOn
+lyIfTaskExecuter.java:7
+4)
+[        ] 	at org.grad
+le.api.internal.tasks.e
+xecution.CatchException
+TaskExecuter.execute(Ca
+tchExceptionTaskExecute
+r.java:36)
+[        ] 	at org.grad
+le.api.internal.tasks.e
+xecution.EventFiringTas
+kExecuter$1.executeTask
+(EventFiringTaskExecute
+r.java:77)
+[        ] 	at org.grad
+le.api.internal.tasks.e
+xecution.EventFiringTas
+kExecuter$1.call(EventF
+iringTaskExecuter.java:
+55)
+[        ] 	at org.grad
+le.api.internal.tasks.e
+xecution.EventFiringTas
+kExecuter$1.call(EventF
+iringTaskExecuter.java:
+52)
+[   +1 ms] 	at org.grad
+le.internal.operations.
+DefaultBuildOperationRu
+nner$CallableBuildOpera
+tionWorker.execute(Defa
+ultBuildOperationRunner
+.java:210)
+[        ] 	at org.grad
+le.internal.operations.
+DefaultBuildOperationRu
+nner$CallableBuildOpera
+tionWorker.execute(Defa
+ultBuildOperationRunner
+.java:205)
+[        ] 	at org.grad
+le.internal.operations.
+DefaultBuildOperationRu
+nner$2.execute(DefaultB
+uildOperationRunner.jav
+a:67)
+[        ] 	at org.grad
+le.internal.operations.
+DefaultBuildOperationRu
+nner$2.execute(DefaultB
+uildOperationRunner.jav
+a:60)
+[        ] 	at org.grad
+le.internal.operations.
+DefaultBuildOperationRu
+nner.execute(DefaultBui
+ldOperationRunner.java:
+167)
+[        ] 	at org.grad
+le.internal.operations.
+DefaultBuildOperationRu
+nner.execute(DefaultBui
+ldOperationRunner.java:
+60)
+[        ] 	at org.grad
+le.internal.operations.
+DefaultBuildOperationRu
+nner.call(DefaultBuildO
+perationRunner.java:54)
+[        ] 	at org.grad
+le.api.internal.tasks.e
+xecution.EventFiringTas
+kExecuter.execute(Event
+FiringTaskExecuter.java
+:52)
+[        ] 	at org.grad
+le.execution.plan.Local
+TaskNodeExecutor.execut
+e(LocalTaskNodeExecutor
+.java:42)
+[        ] 	at org.grad
+le.execution.taskgraph.
+DefaultTaskExecutionGra
+ph$InvokeNodeExecutorsA
+ction.execute(DefaultTa
+skExecutionGraph.java:3
+31)
+[        ] 	at org.grad
+le.execution.taskgraph.
+DefaultTaskExecutionGra
+ph$InvokeNodeExecutorsA
+ction.execute(DefaultTa
+skExecutionGraph.java:3
+18)
+[        ] 	at org.grad
+le.execution.taskgraph.
+DefaultTaskExecutionGra
+ph$BuildOperationAwareE
+xecutionAction.lambda$e
+xecute$0(DefaultTaskExe
+cutionGraph.java:314)
+[        ] 	at org.grad
+le.internal.operations.
+CurrentBuildOperationRe
+f.with(CurrentBuildOper
+ationRef.java:85)
+[        ] 	at org.grad
+le.execution.taskgraph.
+DefaultTaskExecutionGra
+ph$BuildOperationAwareE
+xecutionAction.execute(
+DefaultTaskExecutionGra
+ph.java:314)
+[        ] 	at org.grad
+le.execution.taskgraph.
+DefaultTaskExecutionGra
+ph$BuildOperationAwareE
+xecutionAction.execute(
+DefaultTaskExecutionGra
+ph.java:303)
+[        ] 	at org.grad
+le.execution.plan.Defau
+ltPlanExecutor$Executor
+Worker.execute(DefaultP
+lanExecutor.java:459)
+[        ] 	at org.grad
+le.execution.plan.Defau
+ltPlanExecutor$Executor
+Worker.run(DefaultPlanE
+xecutor.java:376)
+[        ] 	at org.grad
+le.execution.plan.Defau
+ltPlanExecutor.process(
+DefaultPlanExecutor.jav
+a:111)
+[        ] 	at org.grad
+le.execution.taskgraph.
+DefaultTaskExecutionGra
+ph.executeWithServices(
+DefaultTaskExecutionGra
+ph.java:138)
+[        ] 	at org.grad
+le.execution.taskgraph.
+DefaultTaskExecutionGra
+ph.execute(DefaultTaskE
+xecutionGraph.java:123)
+[        ] 	at org.grad
+le.execution.SelectedTa
+skExecutionAction.execu
+te(SelectedTaskExecutio
+nAction.java:35)
+[        ] 	at org.grad
+le.execution.DryRunBuil
+dExecutionAction.execut
+e(DryRunBuildExecutionA
+ction.java:51)
+[        ] 	at org.grad
+le.execution.BuildOpera
+tionFiringBuildWorkerEx
+ecutor$ExecuteTasks.cal
+l(BuildOperationFiringB
+uildWorkerExecutor.java
+:54)
+[        ] 	at org.grad
+le.execution.BuildOpera
+tionFiringBuildWorkerEx
+ecutor$ExecuteTasks.cal
+l(BuildOperationFiringB
+uildWorkerExecutor.java
+:43)
+[        ] 	at org.grad
+le.internal.operations.
+DefaultBuildOperationRu
+nner$CallableBuildOpera
+tionWorker.execute(Defa
+ultBuildOperationRunner
+.java:210)
+[        ] 	at org.grad
+le.internal.operations.
+DefaultBuildOperationRu
+nner$CallableBuildOpera
+tionWorker.execute(Defa
+ultBuildOperationRunner
+.java:205)
+[        ] 	at org.grad
+le.internal.operations.
+DefaultBuildOperationRu
+nner$2.execute(DefaultB
+uildOperationRunner.jav
+a:67)
+[        ] 	at org.grad
+le.internal.operations.
+DefaultBuildOperationRu
+nner$2.execute(DefaultB
+uildOperationRunner.jav
+a:60)
+[        ] 	at org.grad
+le.internal.operations.
+DefaultBuildOperationRu
+nner.execute(DefaultBui
+ldOperationRunner.java:
+167)
+[        ] 	at org.grad
+le.internal.operations.
+DefaultBuildOperationRu
+nner.execute(DefaultBui
+ldOperationRunner.java:
+60)
+[        ] 	at org.grad
+le.internal.operations.
+DefaultBuildOperationRu
+nner.call(DefaultBuildO
+perationRunner.java:54)
+[        ] 	at org.grad
+le.execution.BuildOpera
+tionFiringBuildWorkerEx
+ecutor.execute(BuildOpe
+rationFiringBuildWorker
+Executor.java:40)
+[        ] 	at org.grad
+le.internal.build.Defau
+ltBuildLifecycleControl
+ler.lambda$executeTasks
+$10(DefaultBuildLifecyc
+leController.java:313)
+[        ] 	at org.grad
+le.internal.model.State
+TransitionController.do
+Transition(StateTransit
+ionController.java:266)
+[        ] 	at org.grad
+le.internal.model.State
+TransitionController.la
+mbda$tryTransition$8(St
+ateTransitionController
+.java:177)
+[        ] 	at org.grad
+le.internal.work.Defaul
+tSynchronizer.withLock(
+DefaultSynchronizer.jav
+a:46)
+[        ] 	at org.grad
+le.internal.model.State
+TransitionController.tr
+yTransition(StateTransi
+tionController.java:177
+)
+[        ] 	at org.grad
+le.internal.build.Defau
+ltBuildLifecycleControl
+ler.executeTasks(Defaul
+tBuildLifecycleControll
+er.java:304)
+[        ] 	at org.grad
+le.internal.build.Defau
+ltBuildWorkGraphControl
+ler$DefaultBuildWorkGra
+ph.runWork(DefaultBuild
+WorkGraphController.jav
+a:220)
+[        ] 	at org.grad
+le.internal.work.Defaul
+tWorkerLeaseService.wit
+hLocks(DefaultWorkerLea
+seService.java:263)
+[        ] 	at org.grad
+le.internal.work.Defaul
+tWorkerLeaseService.run
+AsWorkerThread(DefaultW
+orkerLeaseService.java:
+127)
+[        ] 	at org.grad
+le.composite.internal.D
+efaultBuildController.d
+oRun(DefaultBuildContro
+ller.java:181)
+[        ] 	at org.grad
+le.composite.internal.D
+efaultBuildController.a
+ccess$000(DefaultBuildC
+ontroller.java:50)
+[        ] 	at org.grad
+le.composite.internal.D
+efaultBuildController$B
+uildOpRunnable.lambda$r
+un$0(DefaultBuildContro
+ller.java:198)
+[        ] 	at org.grad
+le.internal.operations.
+CurrentBuildOperationRe
+f.with(CurrentBuildOper
+ationRef.java:85)
+[        ] 	at org.grad
+le.composite.internal.D
+efaultBuildController$B
+uildOpRunnable.run(Defa
+ultBuildController.java
+:198)
+[        ] 	at java.bas
+e/java.util.concurrent.
+Executors$RunnableAdapt
+er.call(Executors.java:
+539)
+[        ] 	at java.bas
+e/java.util.concurrent.
+FutureTask.run(FutureTa
+sk.java:264)
+[   +1 ms] 	at org.grad
+le.internal.concurrent.
+ExecutorPolicy$CatchAnd
+RecordFailures.onExecut
+e(ExecutorPolicy.java:6
+4)
+[        ] 	at org.grad
+le.internal.concurrent.
+AbstractManagedExecutor
+$1.run(AbstractManagedE
+xecutor.java:48)
+[        ] 	at java.bas
+e/java.util.concurrent.
+ThreadPoolExecutor.runW
+orker(ThreadPoolExecuto
+r.java:1136)
+[        ] 	at java.bas
+e/java.util.concurrent.
+ThreadPoolExecutor$Work
+er.run(ThreadPoolExecut
+or.java:635)
+[        ] 	at java.bas
+e/java.lang.Thread.run(
+Thread.java:840)
+[        ] Caused by: o
+rg.gradle.process.inter
+nal.ExecException: 
+Process 'command 'C:\Us
+ers\Farwa\AppData\Local
+\Programs\flutter\bin\f
+lutter.bat'' finished 
+with non-zero exit 
+value 1
+[        ] 	at org.grad
+le.process.internal.Def
+aultExecHandle$ExecResu
+ltImpl.assertNormalExit
+Value(DefaultExecHandle
+.java:442)
+[        ] 	at org.grad
+le.process.internal.Def
+aultExecAction.execute(
+DefaultExecAction.java:
+49)
+[        ] 	at org.grad
+le.process.internal.Def
+aultExecActionFactory.e
+xec(DefaultExecActionFa
+ctory.java:216)
+[        ] 	at org.grad
+le.process.internal.Def
+aultExecOperations.exec
+(DefaultExecOperations.
+java:37)
+[   +1 ms] 	at com.flut
+ter.gradle.tasks.BaseFl
+utterTaskHelper.buildBu
+ndle(BaseFlutterTaskHel
+per.kt:159)
+[   +1 ms] 	at com.flut
+ter.gradle.tasks.BaseFl
+utterTask.buildBundle(B
+aseFlutterTask.kt:143)
+[   +1 ms] 	at com.flut
+ter.gradle.tasks.Flutte
+rTaskHelper.build$gradl
+e(FlutterTaskHelper.kt:
+90)
+[        ] 	at com.flut
+ter.gradle.tasks.Flutte
+rTask.build(FlutterTask
+.kt:51)
+[        ] 	at java.bas
+e/jdk.internal.reflect.
+NativeMethodAccessorImp
+l.invoke0(Native 
+Method)
+[        ] 	at java.bas
+e/jdk.internal.reflect.
+NativeMethodAccessorImp
+l.invoke(NativeMethodAc
+cessorImpl.java:77)
+[        ] 	at java.bas
+e/jdk.internal.reflect.
+DelegatingMethodAccesso
+rImpl.invoke(Delegating
+MethodAccessorImpl.java
+:43)
+[        ] 	at java.bas
+e/java.lang.reflect.Met
+hod.invoke(Method.java:
+569)
+[        ] 	at org.grad
+le.internal.reflect.Jav
+aMethod.invoke(JavaMeth
+od.java:125)
+[        ] 	at org.grad
+le.api.internal.project
+.taskfactory.StandardTa
+skAction.doExecute(Stan
+dardTaskAction.java:58)
+[        ] 	at org.grad
+le.api.internal.project
+.taskfactory.StandardTa
+skAction.execute(Standa
+rdTaskAction.java:51)
+[        ] 	at org.grad
+le.api.internal.project
+.taskfactory.StandardTa
+skAction.execute(Standa
+rdTaskAction.java:29)
+[        ] 	at org.grad
+le.api.internal.tasks.e
+xecution.TaskExecution$
+3.run(TaskExecution.jav
+a:244)
+[        ] 	at org.grad
+le.internal.operations.
+DefaultBuildOperationRu
+nner$1.execute(DefaultB
+uildOperationRunner.jav
+a:30)
+[        ] 	at org.grad
+le.internal.operations.
+DefaultBuildOperationRu
+nner$1.execute(DefaultB
+uildOperationRunner.jav
+a:27)
+[        ] 	at org.grad
+le.internal.operations.
+DefaultBuildOperationRu
+nner$2.execute(DefaultB
+uildOperationRunner.jav
+a:67)
+[        ] 	at org.grad
+le.internal.operations.
+DefaultBuildOperationRu
+nner$2.execute(DefaultB
+uildOperationRunner.jav
+a:60)
+[        ] 	at org.grad
+le.internal.operations.
+DefaultBuildOperationRu
+nner.execute(DefaultBui
+ldOperationRunner.java:
+167)
+[        ] 	at org.grad
+le.internal.operations.
+DefaultBuildOperationRu
+nner.execute(DefaultBui
+ldOperationRunner.java:
+60)
+[        ] 	at org.grad
+le.internal.operations.
+DefaultBuildOperationRu
+nner.run(DefaultBuildOp
+erationRunner.java:48)
+[        ] 	at org.grad
+le.api.internal.tasks.e
+xecution.TaskExecution.
+executeAction(TaskExecu
+tion.java:229)
+[        ] 	at org.grad
+le.api.internal.tasks.e
+xecution.TaskExecution.
+executeActions(TaskExec
+ution.java:212)
+[        ] 	at org.grad
+le.api.internal.tasks.e
+xecution.TaskExecution.
+executeWithPreviousOutp
+utFiles(TaskExecution.j
+ava:195)
+[        ] 	at org.grad
+le.api.internal.tasks.e
+xecution.TaskExecution.
+execute(TaskExecution.j
+ava:162)
+[        ] 	at org.grad
+le.internal.execution.s
+teps.ExecuteStep.execut
+eInternal(ExecuteStep.j
+ava:105)
+[        ] 	at org.grad
+le.internal.execution.s
+teps.ExecuteStep.access
+$000(ExecuteStep.java:4
+4)
+[        ] 	at org.grad
+le.internal.execution.s
+teps.ExecuteStep$1.call
+(ExecuteStep.java:59)
+[        ] 	at org.grad
+le.internal.execution.s
+teps.ExecuteStep$1.call
+(ExecuteStep.java:56)
+[        ] 	at org.grad
+le.internal.operations.
+DefaultBuildOperationRu
+nner$CallableBuildOpera
+tionWorker.execute(Defa
+ultBuildOperationRunner
+.java:210)
+[        ] 	at org.grad
+le.internal.operations.
+DefaultBuildOperationRu
+nner$CallableBuildOpera
+tionWorker.execute(Defa
+ultBuildOperationRunner
+.java:205)
+[        ] 	at org.grad
+le.internal.operations.
+DefaultBuildOperationRu
+nner$2.execute(DefaultB
+uildOperationRunner.jav
+a:67)
+[        ] 	at org.grad
+le.internal.operations.
+DefaultBuildOperationRu
+nner$2.execute(DefaultB
+uildOperationRunner.jav
+a:60)
+[        ] 	at org.grad
+le.internal.operations.
+DefaultBuildOperationRu
+nner.execute(DefaultBui
+ldOperationRunner.java:
+167)
+[        ] 	at org.grad
+le.internal.operations.
+DefaultBuildOperationRu
+nner.execute(DefaultBui
+ldOperationRunner.java:
+60)
+[        ] 	at org.grad
+le.internal.operations.
+DefaultBuildOperationRu
+nner.call(DefaultBuildO
+perationRunner.java:54)
+[        ] 	at org.grad
+le.internal.execution.s
+teps.ExecuteStep.execut
+e(ExecuteStep.java:56)
+[        ] 	at org.grad
+le.internal.execution.s
+teps.ExecuteStep.execut
+e(ExecuteStep.java:44)
+[        ] 	at org.grad
+le.internal.execution.s
+teps.CancelExecutionSte
+p.execute(CancelExecuti
+onStep.java:42)
+[        ] 	at org.grad
+le.internal.execution.s
+teps.TimeoutStep.execut
+eWithoutTimeout(Timeout
+Step.java:75)
+[        ] 	at org.grad
+le.internal.execution.s
+teps.TimeoutStep.execut
+e(TimeoutStep.java:55)
+[        ] 	at org.grad
+le.internal.execution.s
+teps.PreCreateOutputPar
+entsStep.execute(PreCre
+ateOutputParentsStep.ja
+va:50)
+[        ] 	at org.grad
+le.internal.execution.s
+teps.PreCreateOutputPar
+entsStep.execute(PreCre
+ateOutputParentsStep.ja
+va:28)
+[        ] 	at org.grad
+le.internal.execution.s
+teps.RemovePreviousOutp
+utsStep.execute(RemoveP
+reviousOutputsStep.java
+:67)
+[        ] 	at org.grad
+le.internal.execution.s
+teps.RemovePreviousOutp
+utsStep.execute(RemoveP
+reviousOutputsStep.java
+:37)
+[        ] 	at org.grad
+le.internal.execution.s
+teps.BroadcastChangingO
+utputsStep.execute(Broa
+dcastChangingOutputsSte
+p.java:61)
+[   +1 ms] 	at org.grad
+le.internal.execution.s
+teps.BroadcastChangingO
+utputsStep.execute(Broa
+dcastChangingOutputsSte
+p.java:26)
+[        ] 	at org.grad
+le.internal.execution.s
+teps.CaptureOutputsAfte
+rExecutionStep.execute(
+CaptureOutputsAfterExec
+utionStep.java:69)
+[        ] 	at org.grad
+le.internal.execution.s
+teps.CaptureOutputsAfte
+rExecutionStep.execute(
+CaptureOutputsAfterExec
+utionStep.java:46)
+[        ] 	at org.grad
+le.internal.execution.s
+teps.ResolveInputChange
+sStep.execute(ResolveIn
+putChangesStep.java:40)
+[        ] 	at org.grad
+le.internal.execution.s
+teps.ResolveInputChange
+sStep.execute(ResolveIn
+putChangesStep.java:29)
+[        ] 	at org.grad
+le.internal.execution.s
+teps.BuildCacheStep.exe
+cuteWithoutCache(BuildC
+acheStep.java:189)
+[        ] 	at org.grad
+le.internal.execution.s
+teps.BuildCacheStep.lam
+bda$execute$1(BuildCach
+eStep.java:75)
+[        ] 	at org.grad
+le.internal.Either$Righ
+t.fold(Either.java:175)
+[        ] 	at org.grad
+le.internal.execution.c
+aching.CachingState.fol
+d(CachingState.java:62)
+[        ] 	at org.grad
+le.internal.execution.s
+teps.BuildCacheStep.exe
+cute(BuildCacheStep.jav
+a:73)
+[        ] 	at org.grad
+le.internal.execution.s
+teps.BuildCacheStep.exe
+cute(BuildCacheStep.jav
+a:48)
+[        ] 	at org.grad
+le.internal.execution.s
+teps.StoreExecutionStat
+eStep.execute(StoreExec
+utionStateStep.java:46)
+[        ] 	at org.grad
+le.internal.execution.s
+teps.StoreExecutionStat
+eStep.execute(StoreExec
+utionStateStep.java:35)
+[        ] 	at org.grad
+le.internal.execution.s
+teps.SkipUpToDateStep.e
+xecuteBecause(SkipUpToD
+ateStep.java:75)
+[        ] 	at org.grad
+le.internal.execution.s
+teps.SkipUpToDateStep.l
+ambda$execute$2(SkipUpT
+oDateStep.java:53)
+[        ] 	at java.bas
+e/java.util.Optional.or
+ElseGet(Optional.java:3
+64)
+[        ] 	at org.grad
+le.internal.execution.s
+teps.SkipUpToDateStep.e
+xecute(SkipUpToDateStep
+.java:53)
+[        ] 	at org.grad
+le.internal.execution.s
+teps.SkipUpToDateStep.e
+xecute(SkipUpToDateStep
+.java:35)
+[        ] 	at org.grad
+le.internal.execution.s
+teps.legacy.MarkSnapsho
+ttingInputsFinishedStep
+.execute(MarkSnapshotti
+ngInputsFinishedStep.ja
+va:37)
+[        ] 	at org.grad
+le.internal.execution.s
+teps.legacy.MarkSnapsho
+ttingInputsFinishedStep
+.execute(MarkSnapshotti
+ngInputsFinishedStep.ja
+va:27)
+[        ] 	at org.grad
+le.internal.execution.s
+teps.ResolveIncremental
+CachingStateStep.execut
+eDelegate(ResolveIncrem
+entalCachingStateStep.j
+ava:49)
+[        ] 	at org.grad
+le.internal.execution.s
+teps.ResolveIncremental
+CachingStateStep.execut
+eDelegate(ResolveIncrem
+entalCachingStateStep.j
+ava:27)
+[        ] 	at org.grad
+le.internal.execution.s
+teps.AbstractResolveCac
+hingStateStep.execute(A
+bstractResolveCachingSt
+ateStep.java:71)
+[        ] 	at org.grad
+le.internal.execution.s
+teps.AbstractResolveCac
+hingStateStep.execute(A
+bstractResolveCachingSt
+ateStep.java:39)
+[        ] 	at org.grad
+le.internal.execution.s
+teps.ResolveChangesStep
+.execute(ResolveChanges
+Step.java:65)
+[        ] 	at org.grad
+le.internal.execution.s
+teps.ResolveChangesStep
+.execute(ResolveChanges
+Step.java:36)
+[        ] 	at org.grad
+le.internal.execution.s
+teps.ValidateStep.execu
+te(ValidateStep.java:10
+7)
+[        ] 	at org.grad
+le.internal.execution.s
+teps.ValidateStep.execu
+te(ValidateStep.java:56
+)
+[        ] 	at org.grad
+le.internal.execution.s
+teps.AbstractCaptureSta
+teBeforeExecutionStep.e
+xecute(AbstractCaptureS
+tateBeforeExecutionStep
+.java:64)
+[        ] 	at org.grad
+le.internal.execution.s
+teps.AbstractCaptureSta
+teBeforeExecutionStep.e
+xecute(AbstractCaptureS
+tateBeforeExecutionStep
+.java:43)
+[        ] 	at org.grad
+le.internal.execution.s
+teps.AbstractSkipEmptyW
+orkStep.executeWithNonE
+mptySources(AbstractSki
+pEmptyWorkStep.java:125
+)
+[        ] 	at org.grad
+le.internal.execution.s
+teps.AbstractSkipEmptyW
+orkStep.execute(Abstrac
+tSkipEmptyWorkStep.java
+:56)
+[        ] 	at org.grad
+le.internal.execution.s
+teps.AbstractSkipEmptyW
+orkStep.execute(Abstrac
+tSkipEmptyWorkStep.java
+:36)
+[        ] 	at org.grad
+le.internal.execution.s
+teps.legacy.MarkSnapsho
+ttingInputsStartedStep.
+execute(MarkSnapshottin
+gInputsStartedStep.java
+:38)
+[        ] 	at org.grad
+le.internal.execution.s
+teps.LoadPreviousExecut
+ionStateStep.execute(Lo
+adPreviousExecutionStat
+eStep.java:36)
+[        ] 	at org.grad
+le.internal.execution.s
+teps.LoadPreviousExecut
+ionStateStep.execute(Lo
+adPreviousExecutionStat
+eStep.java:23)
+[        ] 	at org.grad
+le.internal.execution.s
+teps.HandleStaleOutputs
+Step.execute(HandleStal
+eOutputsStep.java:75)
+[        ] 	at org.grad
+le.internal.execution.s
+teps.HandleStaleOutputs
+Step.execute(HandleStal
+eOutputsStep.java:41)
+[        ] 	at org.grad
+le.internal.execution.s
+teps.AssignMutableWorks
+paceStep.lambda$execute
+$0(AssignMutableWorkspa
+ceStep.java:35)
+[        ] 	at org.grad
+le.api.internal.tasks.e
+xecution.TaskExecution$
+4.withWorkspace(TaskExe
+cution.java:289)
+[        ] 	at org.grad
+le.internal.execution.s
+teps.AssignMutableWorks
+paceStep.execute(Assign
+MutableWorkspaceStep.ja
+va:31)
+[        ] 	at org.grad
+le.internal.execution.s
+teps.AssignMutableWorks
+paceStep.execute(Assign
+MutableWorkspaceStep.ja
+va:22)
+[        ] 	at org.grad
+le.internal.execution.s
+teps.ChoosePipelineStep
+.execute(ChoosePipeline
+Step.java:40)
+[        ] 	at org.grad
+le.internal.execution.s
+teps.ChoosePipelineStep
+.execute(ChoosePipeline
+Step.java:23)
+[        ] 	at org.grad
+le.internal.execution.s
+teps.ExecuteWorkBuildOp
+erationFiringStep.lambd
+a$execute$2(ExecuteWork
+BuildOperationFiringSte
+p.java:67)
+[        ] 	at java.bas
+e/java.util.Optional.or
+ElseGet(Optional.java:3
+64)
+[        ] 	at org.grad
+le.internal.execution.s
+teps.ExecuteWorkBuildOp
+erationFiringStep.execu
+te(ExecuteWorkBuildOper
+ationFiringStep.java:67
+)
+[        ] 	at org.grad
+le.internal.execution.s
+teps.ExecuteWorkBuildOp
+erationFiringStep.execu
+te(ExecuteWorkBuildOper
+ationFiringStep.java:39
+)
+[        ] 	at org.grad
+le.internal.execution.s
+teps.IdentityCacheStep.
+execute(IdentityCacheSt
+ep.java:46)
+[        ] 	at org.grad
+le.internal.execution.s
+teps.IdentityCacheStep.
+execute(IdentityCacheSt
+ep.java:34)
+[        ] 	at org.grad
+le.internal.execution.s
+teps.IdentifyStep.execu
+te(IdentifyStep.java:48
+)
+[        ] 	at org.grad
+le.internal.execution.s
+teps.IdentifyStep.execu
+te(IdentifyStep.java:35
+)
+[        ] 	at org.grad
+le.internal.execution.i
+mpl.DefaultExecutionEng
+ine$1.execute(DefaultEx
+ecutionEngine.java:64)
+[        ] 	at org.grad
+le.api.internal.tasks.e
+xecution.ExecuteActions
+TaskExecuter.executeIfV
+alid(ExecuteActionsTask
+Executer.java:127)
+[        ] 	at org.grad
+le.api.internal.tasks.e
+xecution.ExecuteActions
+TaskExecuter.execute(Ex
+ecuteActionsTaskExecute
+r.java:116)
+[        ] 	at org.grad
+le.api.internal.tasks.e
+xecution.ProblemsTaskPa
+thTrackingTaskExecuter.
+execute(ProblemsTaskPat
+hTrackingTaskExecuter.j
+ava:41)
+[        ] 	at org.grad
+le.api.internal.tasks.e
+xecution.FinalizeProper
+tiesTaskExecuter.execut
+e(FinalizePropertiesTas
+kExecuter.java:46)
+[        ] 	at org.grad
+le.api.internal.tasks.e
+xecution.ResolveTaskExe
+cutionModeExecuter.exec
+ute(ResolveTaskExecutio
+nModeExecuter.java:51)
+[        ] 	at org.grad
+le.api.internal.tasks.e
+xecution.SkipTaskWithNo
+ActionsExecuter.execute
+(SkipTaskWithNoActionsE
+xecuter.java:57)
+[        ] 	at org.grad
+le.api.internal.tasks.e
+xecution.SkipOnlyIfTask
+Executer.execute(SkipOn
+lyIfTaskExecuter.java:7
+4)
+[        ] 	at org.grad
+le.api.internal.tasks.e
+xecution.CatchException
+TaskExecuter.execute(Ca
+tchExceptionTaskExecute
+r.java:36)
+[        ] 	at org.grad
+le.api.internal.tasks.e
+xecution.EventFiringTas
+kExecuter$1.executeTask
+(EventFiringTaskExecute
+r.java:77)
+[   +1 ms] 	at org.grad
+le.api.internal.tasks.e
+xecution.EventFiringTas
+kExecuter$1.call(EventF
+iringTaskExecuter.java:
+55)
+[        ] 	at org.grad
+le.api.internal.tasks.e
+xecution.EventFiringTas
+kExecuter$1.call(EventF
+iringTaskExecuter.java:
+52)
+[        ] 	at org.grad
+le.internal.operations.
+DefaultBuildOperationRu
+nner$CallableBuildOpera
+tionWorker.execute(Defa
+ultBuildOperationRunner
+.java:210)
+[        ] 	at org.grad
+le.internal.operations.
+DefaultBuildOperationRu
+nner$CallableBuildOpera
+tionWorker.execute(Defa
+ultBuildOperationRunner
+.java:205)
+[        ] 	at org.grad
+le.internal.operations.
+DefaultBuildOperationRu
+nner$2.execute(DefaultB
+uildOperationRunner.jav
+a:67)
+[        ] 	at org.grad
+le.internal.operations.
+DefaultBuildOperationRu
+nner$2.execute(DefaultB
+uildOperationRunner.jav
+a:60)
+[        ] 	at org.grad
+le.internal.operations.
+DefaultBuildOperationRu
+nner.execute(DefaultBui
+ldOperationRunner.java:
+167)
+[        ] 	at org.grad
+le.internal.operations.
+DefaultBuildOperationRu
+nner.execute(DefaultBui
+ldOperationRunner.java:
+60)
+[        ] 	at org.grad
+le.internal.operations.
+DefaultBuildOperationRu
+nner.call(DefaultBuildO
+perationRunner.java:54)
+[        ] 	at org.grad
+le.api.internal.tasks.e
+xecution.EventFiringTas
+kExecuter.execute(Event
+FiringTaskExecuter.java
+:52)
+[        ] 	at org.grad
+le.execution.plan.Local
+TaskNodeExecutor.execut
+e(LocalTaskNodeExecutor
+.java:42)
+[        ] 	at org.grad
+le.execution.taskgraph.
+DefaultTaskExecutionGra
+ph$InvokeNodeExecutorsA
+ction.execute(DefaultTa
+skExecutionGraph.java:3
+31)
+[        ] 	at org.grad
+le.execution.taskgraph.
+DefaultTaskExecutionGra
+ph$InvokeNodeExecutorsA
+ction.execute(DefaultTa
+skExecutionGraph.java:3
+18)
+[   +1 ms] 	at org.grad
+le.execution.taskgraph.
+DefaultTaskExecutionGra
+ph$BuildOperationAwareE
+xecutionAction.lambda$e
+xecute$0(DefaultTaskExe
+cutionGraph.java:314)
+[        ] 	at org.grad
+le.internal.operations.
+CurrentBuildOperationRe
+f.with(CurrentBuildOper
+ationRef.java:85)
+[        ] 	at org.grad
+le.execution.taskgraph.
+DefaultTaskExecutionGra
+ph$BuildOperationAwareE
+xecutionAction.execute(
+DefaultTaskExecutionGra
+ph.java:314)
+[        ] 	at org.grad
+le.execution.taskgraph.
+DefaultTaskExecutionGra
+ph$BuildOperationAwareE
+xecutionAction.execute(
+DefaultTaskExecutionGra
+ph.java:303)
+[        ] 	at org.grad
+le.execution.plan.Defau
+ltPlanExecutor$Executor
+Worker.execute(DefaultP
+lanExecutor.java:459)
+[        ] 	at org.grad
+le.execution.plan.Defau
+ltPlanExecutor$Executor
+Worker.run(DefaultPlanE
+xecutor.java:376)
+[        ] 	at org.grad
+le.execution.plan.Defau
+ltPlanExecutor.process(
+DefaultPlanExecutor.jav
+a:111)
+[        ] 	at org.grad
+le.execution.taskgraph.
+DefaultTaskExecutionGra
+ph.executeWithServices(
+DefaultTaskExecutionGra
+ph.java:138)
+[        ] 	at org.grad
+le.execution.taskgraph.
+DefaultTaskExecutionGra
+ph.execute(DefaultTaskE
+xecutionGraph.java:123)
+[        ] 	at org.grad
+le.execution.SelectedTa
+skExecutionAction.execu
+te(SelectedTaskExecutio
+nAction.java:35)
+[        ] 	at org.grad
+le.execution.DryRunBuil
+dExecutionAction.execut
+e(DryRunBuildExecutionA
+ction.java:51)
+[        ] 	at org.grad
+le.execution.BuildOpera
+tionFiringBuildWorkerEx
+ecutor$ExecuteTasks.cal
+l(BuildOperationFiringB
+uildWorkerExecutor.java
+:54)
+[        ] 	at org.grad
+le.execution.BuildOpera
+tionFiringBuildWorkerEx
+ecutor$ExecuteTasks.cal
+l(BuildOperationFiringB
+uildWorkerExecutor.java
+:43)
+[        ] 	at org.grad
+le.internal.operations.
+DefaultBuildOperationRu
+nner$CallableBuildOpera
+tionWorker.execute(Defa
+ultBuildOperationRunner
+.java:210)
+[        ] 	at org.grad
+le.internal.operations.
+DefaultBuildOperationRu
+nner$CallableBuildOpera
+tionWorker.execute(Defa
+ultBuildOperationRunner
+.java:205)
+[        ] 	at org.grad
+le.internal.operations.
+DefaultBuildOperationRu
+nner$2.execute(DefaultB
+uildOperationRunner.jav
+a:67)
+[        ] 	at org.grad
+le.internal.operations.
+DefaultBuildOperationRu
+nner$2.execute(DefaultB
+uildOperationRunner.jav
+a:60)
+[        ] 	at org.grad
+le.internal.operations.
+DefaultBuildOperationRu
+nner.execute(DefaultBui
+ldOperationRunner.java:
+167)
+[        ] 	at org.grad
+le.internal.operations.
+DefaultBuildOperationRu
+nner.execute(DefaultBui
+ldOperationRunner.java:
+60)
+[        ] 	at org.grad
+le.internal.operations.
+DefaultBuildOperationRu
+nner.call(DefaultBuildO
+perationRunner.java:54)
+[        ] 	at org.grad
+le.execution.BuildOpera
+tionFiringBuildWorkerEx
+ecutor.execute(BuildOpe
+rationFiringBuildWorker
+Executor.java:40)
+[        ] 	at org.grad
+le.internal.build.Defau
+ltBuildLifecycleControl
+ler.lambda$executeTasks
+$10(DefaultBuildLifecyc
+leController.java:313)
+[        ] 	at org.grad
+le.internal.model.State
+TransitionController.do
+Transition(StateTransit
+ionController.java:266)
+[        ] 	at org.grad
+le.internal.model.State
+TransitionController.la
+mbda$tryTransition$8(St
+ateTransitionController
+.java:177)
+[        ] 	at org.grad
+le.internal.work.Defaul
+tSynchronizer.withLock(
+DefaultSynchronizer.jav
+a:46)
+[        ] 	at org.grad
+le.internal.model.State
+TransitionController.tr
+yTransition(StateTransi
+tionController.java:177
+)
+[        ] 	at org.grad
+le.internal.build.Defau
+ltBuildLifecycleControl
+ler.executeTasks(Defaul
+tBuildLifecycleControll
+er.java:304)
+[        ] 	at org.grad
+le.internal.build.Defau
+ltBuildWorkGraphControl
+ler$DefaultBuildWorkGra
+ph.runWork(DefaultBuild
+WorkGraphController.jav
+a:220)
+[        ] 	at org.grad
+le.internal.work.Defaul
+tWorkerLeaseService.wit
+hLocks(DefaultWorkerLea
+seService.java:263)
+[        ] 	at org.grad
+le.internal.work.Defaul
+tWorkerLeaseService.run
+AsWorkerThread(DefaultW
+orkerLeaseService.java:
+127)
+[        ] 	at org.grad
+le.composite.internal.D
+efaultBuildController.d
+oRun(DefaultBuildContro
+ller.java:181)
+[        ] 	at org.grad
+le.composite.internal.D
+efaultBuildController.a
+ccess$000(DefaultBuildC
+ontroller.java:50)
+[        ] 	at org.grad
+le.composite.internal.D
+efaultBuildController$B
+uildOpRunnable.lambda$r
+un$0(DefaultBuildContro
+ller.java:198)
+[        ] 	at org.grad
+le.internal.operations.
+CurrentBuildOperationRe
+f.with(CurrentBuildOper
+ationRef.java:85)
+[        ] 	at org.grad
+le.composite.internal.D
+efaultBuildController$B
+uildOpRunnable.run(Defa
+ultBuildController.java
+:198)
+[        ] 	at java.bas
+e/java.util.concurrent.
+Executors$RunnableAdapt
+er.call(Executors.java:
+539)
+[        ] 	at java.bas
+e/java.util.concurrent.
+FutureTask.run(FutureTa
+sk.java:264)
+[        ] 	at org.grad
+le.internal.concurrent.
+ExecutorPolicy$CatchAnd
+RecordFailures.onExecut
+e(ExecutorPolicy.java:6
+4)
+[        ] 	at org.grad
+le.internal.concurrent.
+AbstractManagedExecutor
+$1.run(AbstractManagedE
+xecutor.java:48)
+[        ] 	at java.bas
+e/java.util.concurrent.
+ThreadPoolExecutor.runW
+orker(ThreadPoolExecuto
+r.java:1136)
+[        ] 	at java.bas
+e/java.util.concurrent.
+ThreadPoolExecutor$Work
+er.run(ThreadPoolExecut
+or.java:635)
+[        ] 	at java.bas
+e/java.lang.Thread.run(
+Thread.java:840)
+[        ] BUILD 
+FAILED in 32s
+[        ] Deprecated Gradle features were used in this build, making it incompatible with Gradle 9.0.
+[        ] You can use '--warning-mode all' to show the individual deprecation warnings and determine if they come from your own scripts or plugins.
+[        ] For more on this, please refer to https://docs.gradle.org/8.14/userguide/command_line_interface.html#sec:command_line_warnings in the Gradle documentation.
+[        ] 6 actionable tasks: 4 executed, 2 up-to-date
+[ +633 ms] Watched directory hierarchies: [C:\Users\Farwa\AppData\Local\Programs\flutter\packages\flutter_tools\gradle, C:\Users\Farwa\Documents\whatamilookingat\android]
+[ +503 ms] Running Gradle task 'assembleDebug'... (completed in 34.1s)
+[ +160 ms] "flutter apk" took 38,450ms.
+[ +299 ms] Gradle task 
+assembleDebug failed 
+with exit code 1
+[   +2 ms] 
+           #0      
+throwToolExit (package:
+flutter_tools/src/base/
+common.dart:34:3)
+           #1      Andr
+oidGradleBuilder.buildG
+radleApp (package:flutt
+er_tools/src/android/gr
+adle.dart:592:7)
+           
+<asynchronous 
+suspension>
+           #2      Andr
+oidGradleBuilder.buildA
+pk (package:flutter_too
+ls/src/android/gradle.d
+art:234:5)
+           
+<asynchronous 
+suspension>
+           #3      Buil
+dApkCommand.runCommand 
+(package:flutter_tools/
+src/commands/build_apk.
+dart:131:5)
+           
+<asynchronous 
+suspension>
+           #4      Flut
+terCommand.run.<anonymo
+us closure> (package:fl
+utter_tools/src/runner/
+flutter_command.dart:15
+59:27)
+           
+<asynchronous 
+suspension>
+           #5      AppC
+ontext.run.<anonymous 
+closure> (package:flutt
+er_tools/src/base/conte
+xt.dart:154:19)
+           
+<asynchronous 
+suspension>
+           #6      Comm
+andRunner.runCommand (p
+ackage:args/command_run
+ner.dart:212:13)
+           
+<asynchronous 
+suspension>
+           #7      Flut
+terCommandRunner.runCom
+mand.<anonymous 
+closure> (package:flutt
+er_tools/src/runner/flu
+tter_command_runner.dar
+t:487:9)
+           
+<asynchronous 
+suspension>
+           #8      AppC
+ontext.run.<anonymous 
+closure> (package:flutt
+er_tools/src/base/conte
+xt.dart:154:19)
+           
+<asynchronous 
+suspension>
+           #9      Flut
+terCommandRunner.runCom
+mand (package:flutter_t
+ools/src/runner/flutter
+_command_runner.dart:42
+2:5)
+           
+<asynchronous 
+suspension>
+           #10     
+run.<anonymous 
+closure>.<anonymous 
+closure> (package:flutt
+er_tools/runner.dart:10
+4:11)
+           
+<asynchronous 
+suspension>
+           #11     AppC
+ontext.run.<anonymous 
+closure> (package:flutt
+er_tools/src/base/conte
+xt.dart:154:19)
+           
+<asynchronous 
+suspension>
+           #12     
+main (package:flutter_t
+ools/executable.dart:10
+3:3)
+           
+<asynchronous 
+suspension>
+
+
+[   +1 ms] Running 1 shutdown hook
+[   +9 ms] Shutdown hooks complete
+[ +204 ms] exiting with code 1
