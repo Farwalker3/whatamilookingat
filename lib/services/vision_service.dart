@@ -122,6 +122,7 @@ class VisionService {
   /// Analyze a static image byte array.
   Future<List<String>> detectLabelsFromBytes(Uint8List bytes) async {
     if (!_isInitialized) await initialize();
+    // forced update
 
     try {
       final inputImage = InputImage.fromBytes(
