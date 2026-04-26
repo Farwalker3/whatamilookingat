@@ -1,3 +1,57 @@
+FILE lib/services/ai_provider.dart
+import 'dart:typed_data';
+import '../models/device_context.dart';
+import '../models/explanation.dart';
+
+/// Abstract interface for all AI providers.
+abstract class AIProvider {
+  String get name;
+  bool get isAvailable;
+
+  /// Analyze an image with device context, returning multiple explanations.
+  Future<List<Explanation>> analyzeImage({
+    required Uint8List imageBytes,
+    required DeviceContext context,
+  });
+
+  /// Mark this provider as rate-limited. It will cool down.
+  void markRateLimited();
+
+  /// Check if provider is currently cooled down.
+  bool get isCoolingDown;
+}
+
+/// Base mixin for rate limit tracking.
+mixin RateLimitTracker {
+  DateTime? _cooldownUntil;
+  int _consecutiveFailures = 0;
+
+  void markRateLimited() {
+    _consecutiveFailures++;
+    // Exponential backoff: 30s, 60s, 120s, max 5min
+    final seconds = (30 * (1 << (_consecutiveFailures - 1))).clamp(30, 300);
+    _cooldownUntil = DateTime.now().add(Duration(seconds: seconds));
+  }
+
+  bool get isCoolingDown {
+    if (_cooldownUntil == null) return false;
+    if (DateTime.now().isAfter(_cooldownUntil!)) {
+      _cooldownUntil = null;
+      return false;
+    }
+    return true;
+  }
+
+  void resetCooldown() {
+    _consecutiveFailures = 0;
+    _cooldownUntil = null;
+  }
+}
+
+
+---END---
+
+FILE lib/screens/camera_screen.dart
 import 'dart:io';
 import 'dart:ui' as ui;
 import 'package:camera/camera.dart';
@@ -393,7 +447,7 @@ class _CameraScreenState extends State<CameraScreen>
                   ),
                 )
               else if (provider.isAnalyzing)
-                _buildLoadingCard()
+                _buildLoadingCard(provider.analysisStatusMessage)
               else if (provider.errorMessage != null)
                 _buildErrorCard(provider.errorMessage!)
               else
@@ -518,7 +572,7 @@ class _CameraScreenState extends State<CameraScreen>
     );
   }
 
-  Widget _buildLoadingCard() {
+  Widget _buildLoadingCard(String message) {
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 12),
       child: Container(
@@ -554,6 +608,15 @@ class _CameraScreenState extends State<CameraScreen>
                 decoration: BoxDecoration(
                   color: Colors.white,
                   borderRadius: BorderRadius.circular(4),
+                ),
+              ),
+              const SizedBox(height: 12),
+              Text(
+                message,
+                textAlign: TextAlign.center,
+                style: const TextStyle(
+                  color: AppTheme.textSecondary,
+                  fontSize: 13,
                 ),
               ),
             ],
@@ -793,4 +856,228 @@ class BoundingBoxPainter extends CustomPainter {
     return oldDelegate.objects != objects || oldDelegate.imageSize != imageSize;
   }
 }
+
+
+
+---END---
+
+FILE lib/services/ai_rotation_manager.dart
+import 'dart:typed_data';
+
+import 'package:flutter/foundation.dart';
+import '../models/device_context.dart';
+import '../models/explanation.dart';
+import 'ai_provider.dart';
+import 'providers/localllamaprovider.dart';
+import 'providers/offline_provider.dart';
+import 'providers/proxy_visual_provider.dart';
+
+/// Manages rotation between AI providers with automatic failover.
+class AIRotationManager {
+  final List<AIProvider> _providers = [];
+  final OfflineProvider _offlineProvider = OfflineProvider();
+  int _currentIndex = 0;
+  String _lastUsedProvider = '';
+
+  String get lastUsedProvider => _lastUsedProvider;
+
+  void initialize({
+    String proxyBaseUrl = '/api/chat',
+    String localModelFileName = LocalLlamaProvider.defaultModelFileName,
+    String? localModelPath,
+  }) {
+    _providers.clear();
+
+    final resolvedProxyBaseUrl =
+        proxyBaseUrl.trim().isEmpty ? '/api/chat' : proxyBaseUrl.trim();
+
+    _providers.add(LocalLlamaProvider(
+      modelFileName: localModelFileName,
+      modelPathOverride: localModelPath,
+    ));
+
+    _providers.add(ProxyVisualAIProvider(
+      proxyBaseUrl: resolvedProxyBaseUrl,
+      providerId: 'groq',
+      displayName: 'Groq (Llama 4)',
+      model: 'meta-llama/llama-4-scout-17b-16e-instruct',
+    ));
+    _providers.add(ProxyVisualAIProvider(
+      proxyBaseUrl: resolvedProxyBaseUrl,
+      providerId: 'gemini',
+      displayName: 'Gemini Flash',
+      model: 'gemini-2.5-flash',
+    ));
+    _providers.add(ProxyVisualAIProvider(
+      proxyBaseUrl: resolvedProxyBaseUrl,
+      providerId: 'together',
+      displayName: 'Together (Llama 4)',
+      model: 'meta-llama/Llama-4-Scout-17B-16E-Instruct',
+    ));
+    _providers.add(ProxyVisualAIProvider(
+      proxyBaseUrl: resolvedProxyBaseUrl,
+      providerId: 'openrouter',
+      displayName: 'OpenRouter',
+      model: 'google/gemini-2.5-flash',
+    ));
+
+    debugPrint(
+        '[AI] Initialized ${_providers.length} providers via local + proxy fallback: $resolvedProxyBaseUrl');
+  }
+
+  bool get hasOnlineProviders => _providers.any((p) => p.isAvailable);
+
+  /// Analyze image with automatic provider rotation and failover.
+  Future<(List<Explanation>, String)> analyzeImage({
+    required Uint8List imageBytes,
+    required DeviceContext context,
+    bool isOffline = false,
+  }) async {
+    if (isOffline || _providers.isEmpty) {
+      final results = await _offlineProvider.analyzeImage(
+        imageBytes: imageBytes,
+        context: context,
+      );
+      _lastUsedProvider = _offlineProvider.name;
+      debugPrint(
+          '[AI] Using offline provider (isOffline=$isOffline, providers=${_providers.length})');
+      return (results, _offlineProvider.name);
+    }
+
+    final startIndex = _currentIndex % _providers.length;
+    for (int i = 0; i < _providers.length; i++) {
+      final index = (startIndex + i) % _providers.length;
+      final provider = _providers[index];
+
+      if (!provider.isAvailable) {
+        debugPrint('[AI] Skipping ${provider.name} (unavailable)');
+        continue;
+      }
+
+      try {
+        final results = await provider.analyzeImage(
+          imageBytes: imageBytes,
+          context: context,
+        );
+
+        if (results.isNotEmpty) {
+          _currentIndex = (index + 1) % _providers.length;
+          _lastUsedProvider = provider.name;
+          return (results, provider.name);
+        }
+      } catch (e) {
+        debugPrint('[AI] Provider ${provider.name} failed: $e');
+        continue;
+      }
+    }
+
+    final results = await _offlineProvider.analyzeImage(
+      imageBytes: imageBytes,
+      context: context,
+    );
+    _lastUsedProvider = _offlineProvider.name;
+    debugPrint('[AI] All online providers failed, falling back to offline');
+    return (results, _offlineProvider.name);
+  }
+}
+
+
+---END---
+
+FILE lib/services/providers/offline_provider.dart
+import 'dart:typed_data';
+import '../../models/device_context.dart';
+import '../../models/explanation.dart';
+import '../ai_provider.dart';
+
+/// Offline AI provider using basic heuristics when no network is available.
+/// Provides generic scene descriptions based on available context.
+class OfflineProvider extends AIProvider with RateLimitTracker {
+  @override
+  String get name => 'Offline Mode';
+
+  @override
+  bool get isAvailable => true; // Always available as last resort
+
+  @override
+  Future<List<Explanation>> analyzeImage({
+    required Uint8List imageBytes,
+    required DeviceContext context,
+  }) async {
+    final explanations = <Explanation>[];
+
+    // Basic scene explanation
+    explanations.add(Explanation(
+      headline: 'Camera view captured',
+      summary: 'You are currently offline. Basic analysis is available using device sensors only.',
+      details: 'Full AI analysis requires an internet connection. '
+          'Connect to WiFi or mobile data for detailed explanations powered by AI. '
+          'Your image has been captured and can be analyzed when you reconnect.',
+      sources: ['camera'],
+      category: 'scene',
+      confidence: 0.3,
+    ));
+
+    // Location-based explanation if available
+    if (context.hasLocation) {
+      explanations.add(Explanation(
+        headline: context.placeName ?? 'Current Location',
+        summary: 'You are at ${context.locationSummary}. '
+            '${context.heading != null ? "Facing ${_headingToDirection(context.heading!)}. " : ""}'
+            'Coordinates: ${context.latitude!.toStringAsFixed(4)}, ${context.longitude!.toStringAsFixed(4)}.',
+        details: 'Located at ${context.locationSummary}. '
+            '${context.heading != null ? "Your device is pointing ${_headingToDirection(context.heading!)} (${context.heading!.toStringAsFixed(0)}°). " : ""}'
+            'This information comes from your device\'s GPS and compass sensors.',
+        sources: ['location'],
+        category: 'landmark',
+        confidence: 0.7,
+      ));
+    }
+
+    // Time-based explanation
+    final hour = context.timestamp.hour;
+    String timeOfDay;
+    if (hour < 6) {
+      timeOfDay = 'early morning';
+    } else if (hour < 12) {
+      timeOfDay = 'morning';
+    } else if (hour < 17) {
+      timeOfDay = 'afternoon';
+    } else if (hour < 21) {
+      timeOfDay = 'evening';
+    } else {
+      timeOfDay = 'night';
+    }
+
+    explanations.add(Explanation(
+      headline: 'Captured during the $timeOfDay',
+      summary: 'This image was taken at ${context.timestamp.hour}:${context.timestamp.minute.toString().padLeft(2, '0')} '
+          'on ${_formatDate(context.timestamp)}.',
+      details: 'Time of capture can be important for understanding context — '
+          'lighting conditions, business hours, event schedules, and more '
+          'all depend on when the image was taken.',
+      sources: ['time'],
+      category: 'scene',
+      confidence: 0.9,
+    ));
+
+    return explanations;
+  }
+
+  String _headingToDirection(double heading) {
+    const directions = ['North', 'Northeast', 'East', 'Southeast',
+                        'South', 'Southwest', 'West', 'Northwest'];
+    final index = ((heading + 22.5) / 45).floor() % 8;
+    return directions[index];
+  }
+
+  String _formatDate(DateTime dt) {
+    const months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun',
+                    'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
+    return '${months[dt.month - 1]} ${dt.day}, ${dt.year}';
+  }
+}
+
+
+---END---
 
