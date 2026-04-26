@@ -49,6 +49,11 @@ jobs:
           echo "TOGETHER_API_KEY=$TOGETHER_API_KEY" >> .env
           echo "NEWS_API_KEY=$NEWS_API_KEY" >> .env
 
+      - name: Download Llama 3.2 1B Instruct GGUF model
+        run: |
+          mkdir -p assets/models
+          curl -L --fail --retry 3 --retry-delay 5             -o assets/models/Llama-3.2-1B-Instruct-Q4KM.gguf             "https://huggingface.co/bartowski/Llama-3.2-1B-Instruct-GGUF/resolve/main/Llama-3.2-1B-Instruct-Q4_K_M.gguf"
+
       - name: Build APK
         run: flutter build apk --release
 
@@ -75,4 +80,4 @@ jobs:
           files: build/app/outputs/flutter-apk/app-release.apk
           prerelease: true
         env:
-          GITHUB_TOKEN: \${{ secrets.GITHUB_TOKEN }}
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
