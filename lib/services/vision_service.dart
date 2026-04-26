@@ -1,5 +1,9 @@
+import 'dart:typed_data';
+import 'dart:ui';
+
 import 'package:camera/camera.dart';
 import 'package:flutter/services.dart';
+import 'package:google_mlkit_commons/google_mlkit_commons.dart';
 import 'package:google_mlkit_object_detection/google_mlkit_object_detection.dart';
 import 'package:google_mlkit_text_recognition/google_mlkit_text_recognition.dart';
 
