@@ -4,8 +4,8 @@ import 'dart:math' as math;
 import 'dart:typed_data';
 
 import 'package:flutter/foundation.dart';
+import 'package:http/http.dart' as http;
 import 'package:llama_cpp_dart/llama_cpp_dart.dart';
-import 'package:flutter/services.dart';
 import 'package:path_provider/path_provider.dart';
 
 import '../../models/device_context.dart';
@@ -13,14 +13,17 @@ import '../../models/explanation.dart';
 import '../ai_provider.dart';
 
 class LocalLlamaProvider extends AIProvider with RateLimitTracker {
-  static const String defaultModelFileName = 'llama-3.2-1b-instruct-q4km.gguf';
-  static const String legacyModelFileName = 'llama-3.2-1b-instruct-q4_k_m.gguf';
+  static const String defaultModelFileName = 'Llama-3.2-1B-Instruct-Q4KM.gguf';
+  static const String legacyModelFileName = 'Llama-3.2-1B-Instruct-Q4_K_M.gguf';
+  static const String modelDownloadUrl =
+      'https://huggingface.co/bartowski/Llama-3.2-1B-Instruct-GGUF/resolve/main/Llama-3.2-1B-Instruct-Q4_K_M.gguf';
 
   final String modelFileName;
   final String? modelPathOverride;
 
   Llama? _llama;
   Future<void>? _loadFuture;
+  Future<String?>? _downloadFuture;
   String? _resolvedModelPath;
 
   LocalLlamaProvider({
@@ -32,7 +35,11 @@ class LocalLlamaProvider extends AIProvider with RateLimitTracker {
   String get name => 'Local Llama 3.2 1B';
 
   @override
-  bool get isAvailable => !isCoolingDown;
+  bool get isAvailable => !isCoolingDown && !isPreparingModel;
+
+  bool get isDownloadingModel => _downloadFuture != null;
+
+  bool get isPreparingModel => _loadFuture != null || _downloadFuture != null;
 
   String? get resolvedModelPath => _resolvedModelPath;
 
@@ -89,7 +96,7 @@ class LocalLlamaProvider extends AIProvider with RateLimitTracker {
   }
 
   Future<void> _loadModel() async {
-    final modelPath = await _findModelPath();
+    final modelPath = await _ensureModelPath();
     if (modelPath == null) {
       throw FileSystemException(
         'Local GGUF model not found in app storage',
@@ -124,7 +131,7 @@ class LocalLlamaProvider extends AIProvider with RateLimitTracker {
     debugPrint('[AI] Loaded local llama model from $modelPath');
   }
 
-  Future<String?> _findModelPath() async {
+  Future<String?> _ensureModelPath() async {
     final overridePath = modelPathOverride?.trim();
     if (overridePath != null && overridePath.isNotEmpty) {
       final file = File(overridePath);
@@ -136,7 +143,7 @@ class LocalLlamaProvider extends AIProvider with RateLimitTracker {
       return existingPath;
     }
 
-    return await _copyBundledModelAssetToDocuments();
+    return await _downloadModelIfNeeded();
   }
 
   Future<String?> _findExistingModelPath() async {
@@ -151,10 +158,12 @@ class LocalLlamaProvider extends AIProvider with RateLimitTracker {
       directories.add(await getTemporaryDirectory());
     } catch (_) {}
 
-    final candidateNames = <String>[modelFileName];
-    if (legacyModelFileName != modelFileName) {
-      candidateNames.add(legacyModelFileName);
-    }
+    final candidateNames = <String>{
+      modelFileName,
+      legacyModelFileName,
+      modelFileName.toLowerCase(),
+      legacyModelFileName.toLowerCase(),
+    }.toList();
 
     final candidatePrefixes = <String>['', 'models', 'llm'];
 
@@ -175,46 +184,74 @@ class LocalLlamaProvider extends AIProvider with RateLimitTracker {
     return null;
   }
 
-  Future<String?> _copyBundledModelAssetToDocuments() async {
-    final assetCandidates = <String>[
-      'assets/models/$modelFileName',
-      if (modelFileName != legacyModelFileName) 'assets/models/$legacyModelFileName',
-    ];
-
-    for (final assetPath in assetCandidates) {
-      try {
-        final data = await rootBundle.load(assetPath);
-        final documentsDirectory = await getApplicationDocumentsDirectory();
-        final modelsDirectory = Directory(
-          '${documentsDirectory.path}${Platform.pathSeparator}models',
-        );
-        if (!await modelsDirectory.exists()) {
-          await modelsDirectory.create(recursive: true);
-        }
-
-        final fileName = assetPath.split('/').last;
-        final targetFile = File(
-          '${modelsDirectory.path}${Platform.pathSeparator}$fileName',
-        );
-        if (await targetFile.exists()) {
-          return targetFile.path;
-        }
-
-        final bytes = data.buffer.asUint8List(
-          data.offsetInBytes,
-          data.lengthInBytes,
-        );
-        await targetFile.writeAsBytes(bytes, flush: true);
-        debugPrint('[AI] Copied bundled llama model asset to ${targetFile.path}');
-        return targetFile.path;
-      } on FlutterError {
-        continue;
-      } catch (e) {
-        debugPrint('[AI] Failed to materialize bundled model asset $assetPath: $e');
-      }
+  Future<String?> _downloadModelIfNeeded() async {
+    final pending = _downloadFuture;
+    if (pending != null) {
+      return await pending;
     }
 
-    return null;
+    _downloadFuture = _downloadModel();
+    try {
+      return await _downloadFuture;
+    } finally {
+      _downloadFuture = null;
+    }
+  }
+
+  Future<String?> _downloadModel() async {
+    final documentsDirectory = await getApplicationDocumentsDirectory();
+    final targetFile = File(
+      '${documentsDirectory.path}${Platform.pathSeparator}$modelFileName',
+    );
+
+    if (await targetFile.exists() && await targetFile.length() > 0) {
+      _resolvedModelPath = targetFile.path;
+      return targetFile.path;
+    }
+
+    final tempFile = File('${targetFile.path}.part');
+    if (await tempFile.exists()) {
+      await tempFile.delete();
+    }
+
+    final client = http.Client();
+    try {
+      debugPrint('[AI] Downloading local llama model to ${targetFile.path}');
+      final response = await client.send(
+        http.Request('GET', Uri.parse(modelDownloadUrl)),
+      );
+
+      if (response.statusCode != HttpStatus.ok) {
+        await response.stream.drain();
+        throw HttpException(
+          'Failed to download local model (${response.statusCode})',
+          uri: Uri.parse(modelDownloadUrl),
+        );
+      }
+
+      final sink = tempFile.openWrite();
+      try {
+        await sink.addStream(response.stream);
+      } finally {
+        await sink.flush();
+        await sink.close();
+      }
+
+      if (await targetFile.exists()) {
+        await targetFile.delete();
+      }
+      await tempFile.rename(targetFile.path);
+      _resolvedModelPath = targetFile.path;
+      debugPrint('[AI] Downloaded local llama model to ${targetFile.path}');
+      return targetFile.path;
+    } finally {
+      client.close();
+      if (await tempFile.exists()) {
+        try {
+          await tempFile.delete();
+        } catch (_) {}
+      }
+    }
   }
 
   String _buildPrompt(DeviceContext context) {
@@ -296,7 +333,11 @@ Write concise, practical explanations of what the user is likely looking at base
   }
 
   bool _looksTransient(Object error) {
-    if (error is FileSystemException) return true;
+    if (error is FileSystemException || error is SocketException || error is HttpException) {
+      return true;
+    }
+
+    if (error is http.ClientException) return true;
 
     final text = error.toString();
     return text.contains('429') ||
@@ -308,6 +349,7 @@ Write concise, practical explanations of what the user is likely looking at base
         text.contains('not found') ||
         text.contains('No such file or directory') ||
         text.contains('Unable to open') ||
-        text.contains('could not open');
+        text.contains('could not open') ||
+        text.contains('download');
   }
 }
