@@ -1,0 +1,1 @@
+Place llama-3.2-1b-instruct-q4km.gguf in this directory to bundle it with the Flutter app. The provider will copy the asset to the application documents directory on first run.

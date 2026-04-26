@@ -5,6 +5,7 @@ import 'dart:typed_data';
 
 import 'package:flutter/foundation.dart';
 import 'package:llama_cpp_dart/llama_cpp_dart.dart';
+import 'package:flutter/services.dart';
 import 'package:path_provider/path_provider.dart';
 
 import '../../models/device_context.dart';
@@ -12,7 +13,8 @@ import '../../models/explanation.dart';
 import '../ai_provider.dart';
 
 class LocalLlamaProvider extends AIProvider with RateLimitTracker {
-  static const String defaultModelFileName = 'llama-3.2-1b-instruct-q4_k_m.gguf';
+  static const String defaultModelFileName = 'llama-3.2-1b-instruct-q4km.gguf';
+  static const String legacyModelFileName = 'llama-3.2-1b-instruct-q4_k_m.gguf';
 
   final String modelFileName;
   final String? modelPathOverride;
@@ -129,29 +131,86 @@ class LocalLlamaProvider extends AIProvider with RateLimitTracker {
       if (await file.exists()) return file.path;
     }
 
+    final existingPath = await _findExistingModelPath();
+    if (existingPath != null) {
+      return existingPath;
+    }
+
+    return await _copyBundledModelAssetToDocuments();
+  }
+
+  Future<String?> _findExistingModelPath() async {
     final directories = <Directory>[];
     try {
-      directories.add(await getApplicationSupportDirectory());
+      directories.add(await getApplicationDocumentsDirectory());
     } catch (_) {}
     try {
-      directories.add(await getApplicationDocumentsDirectory());
+      directories.add(await getApplicationSupportDirectory());
     } catch (_) {}
     try {
       directories.add(await getTemporaryDirectory());
     } catch (_) {}
 
-    final candidateNames = <String>[
-      modelFileName,
-      'models/$modelFileName',
-      'llm/$modelFileName',
-    ];
+    final candidateNames = <String>[modelFileName];
+    if (legacyModelFileName != modelFileName) {
+      candidateNames.add(legacyModelFileName);
+    }
+
+    final candidatePrefixes = <String>['', 'models', 'llm'];
 
     for (final directory in directories) {
-      for (final candidate in candidateNames) {
-        final file = File('${directory.path}${Platform.pathSeparator}$candidate');
-        if (await file.exists()) {
-          return file.path;
+      for (final candidateName in candidateNames) {
+        for (final prefix in candidatePrefixes) {
+          final candidatePath = prefix.isEmpty
+              ? '${directory.path}${Platform.pathSeparator}$candidateName'
+              : '${directory.path}${Platform.pathSeparator}$prefix${Platform.pathSeparator}$candidateName';
+          final file = File(candidatePath);
+          if (await file.exists()) {
+            return file.path;
+          }
         }
+      }
+    }
+
+    return null;
+  }
+
+  Future<String?> _copyBundledModelAssetToDocuments() async {
+    final assetCandidates = <String>[
+      'assets/models/$modelFileName',
+      if (modelFileName != legacyModelFileName) 'assets/models/$legacyModelFileName',
+    ];
+
+    for (final assetPath in assetCandidates) {
+      try {
+        final data = await rootBundle.load(assetPath);
+        final documentsDirectory = await getApplicationDocumentsDirectory();
+        final modelsDirectory = Directory(
+          '${documentsDirectory.path}${Platform.pathSeparator}models',
+        );
+        if (!await modelsDirectory.exists()) {
+          await modelsDirectory.create(recursive: true);
+        }
+
+        final fileName = assetPath.split('/').last;
+        final targetFile = File(
+          '${modelsDirectory.path}${Platform.pathSeparator}$fileName',
+        );
+        if (await targetFile.exists()) {
+          return targetFile.path;
+        }
+
+        final bytes = data.buffer.asUint8List(
+          data.offsetInBytes,
+          data.lengthInBytes,
+        );
+        await targetFile.writeAsBytes(bytes, flush: true);
+        debugPrint('[AI] Copied bundled llama model asset to ${targetFile.path}');
+        return targetFile.path;
+      } on FlutterError {
+        continue;
+      } catch (e) {
+        debugPrint('[AI] Failed to materialize bundled model asset $assetPath: $e');
       }
     }
 
