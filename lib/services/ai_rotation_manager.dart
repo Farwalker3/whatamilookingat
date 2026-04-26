@@ -17,6 +17,12 @@ class AIRotationManager {
 
   String get lastUsedProvider => _lastUsedProvider;
 
+  bool get isLocalModelDownloading =>
+      _providers.whereType<LocalLlamaProvider>().any((provider) => provider.isDownloadingModel);
+
+  bool get isLocalModelPreparing =>
+      _providers.whereType<LocalLlamaProvider>().any((provider) => provider.isPreparingModel);
+
   void initialize({
     String proxyBaseUrl = '/api/chat',
     String localModelFileName = LocalLlamaProvider.defaultModelFileName,
@@ -116,3 +122,4 @@ class AIRotationManager {
     return (results, _offlineProvider.name);
   }
 }
+
