@@ -47,7 +47,9 @@ class LocalLlamaProvider extends AIProvider with RateLimitTracker {
       await _ensureLoaded();
       final llama = _llama;
       if (llama == null) {
-        throw StateError('Local Llama model is not ready.');
+        markRateLimited();
+        debugPrint('[AI] Local Llama model is not ready, falling back to cloud providers.');
+        return const [];
       }
 
       llama.clear();
@@ -61,6 +63,8 @@ class LocalLlamaProvider extends AIProvider with RateLimitTracker {
     } catch (e) {
       if (_looksTransient(e)) {
         markRateLimited();
+        debugPrint('[AI] Local Llama unavailable, falling back to cloud providers: $e');
+        return const [];
       }
       rethrow;
     }
@@ -131,6 +135,9 @@ class LocalLlamaProvider extends AIProvider with RateLimitTracker {
     } catch (_) {}
     try {
       directories.add(await getApplicationDocumentsDirectory());
+    } catch (_) {}
+    try {
+      directories.add(await getTemporaryDirectory());
     } catch (_) {}
 
     final candidateNames = <String>[
@@ -239,6 +246,9 @@ Write concise, practical explanations of what the user is likely looking at base
         text.contains('Context full') ||
         text.contains('Failed to eval') ||
         text.contains('loading') ||
-        text.contains('not found');
+        text.contains('not found') ||
+        text.contains('No such file or directory') ||
+        text.contains('Unable to open') ||
+        text.contains('could not open');
   }
 }
