@@ -114,6 +114,7 @@ class AnalysisProvider extends ChangeNotifier {
         _locationService = locationService,
         _newsService = newsService {
     _checkConnectivity();
+    print('[AnalysisProvider] constructed; initial isOnline=' + _isOnline.toString());
     // Lazy-load history in background (non-blocking)
     _historyService.load().then((_) {
       _recentFindings = _historyService.getRecentHeadlines();
@@ -303,15 +304,20 @@ class AnalysisProvider extends ChangeNotifier {
 
   Future<void> _checkConnectivity() async {
     try {
+      print('[AnalysisProvider] _checkConnectivity() starting; current isOnline=' + _isOnline.toString());
       final connectivity = Connectivity();
       final results = await connectivity.checkConnectivity();
+      print('[AnalysisProvider] initial connectivity check results: ' + results.toString());
       _updateOnlineStatus(results);
 
       connectivity.onConnectivityChanged.listen((results) {
+        print('[AnalysisProvider] connectivity.onConnectivityChanged: ' + results.toString());
         _updateOnlineStatus(results);
       });
-    } catch (_) {
+    } catch (e) {
+      print('[AnalysisProvider] _checkConnectivity() failed, defaulting to online=true: ' + e.toString());
       _isOnline = true;
+      print('[AnalysisProvider] fallback connectivity state => isOnline=' + _isOnline.toString());
       notifyListeners();
     }
   }
@@ -319,6 +325,7 @@ class AnalysisProvider extends ChangeNotifier {
   void _updateOnlineStatus(List<ConnectivityResult> results) {
     _isOnline = results.isNotEmpty && 
                 !results.every((r) => r == ConnectivityResult.none);
+    print('[AnalysisProvider] _updateOnlineStatus raw=' + results.toString() + ' => isOnline=' + _isOnline.toString());
     notifyListeners();
   }
 
@@ -483,6 +490,7 @@ class AnalysisProvider extends ChangeNotifier {
       }
 
       // === Step 5: AI analysis with timeout ===
+      print('[AnalysisProvider] Calling AIRotationManager.analyzeImage with isOnline=' + _isOnline.toString() + ', isOffline=' + (!_isOnline).toString());
       debugPrint('[Analysis] Calling AI manager with isOffline=${!_isOnline}');
       final (results, provider) = await _aiManager
           .analyzeImage(
