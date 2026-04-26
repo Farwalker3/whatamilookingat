@@ -16,7 +16,7 @@ void main() async {
   try {
     await dotenv.load(fileName: '.env');
   } catch (_) {
-    // .env might not exist in all environments
+    //  .env might not exist in all environments
   }
 
   await SystemChrome.setPreferredOrientations([
