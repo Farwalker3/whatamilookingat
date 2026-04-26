@@ -97,6 +97,7 @@ class LocalLlamaProvider extends AIProvider with RateLimitTracker {
 
   Future<void> _loadModel() async {
     final modelPath = await _ensureModelPath();
+    print('[LocalLlamaProvider] _loadModel() resolved modelPath=' + (modelPath ?? '<null>'));
     if (modelPath == null) {
       throw FileSystemException(
         'Local GGUF model not found in app storage',
@@ -135,7 +136,9 @@ class LocalLlamaProvider extends AIProvider with RateLimitTracker {
     final overridePath = modelPathOverride?.trim();
     if (overridePath != null && overridePath.isNotEmpty) {
       final file = File(overridePath);
-      if (await file.exists()) return file.path;
+      final exists = file.existsSync();
+      print('[LocalLlamaProvider] checking override model path: ' + file.path + ' existsSync=' + exists.toString());
+      if (exists) return file.path;
     }
 
     final existingPath = await _findExistingModelPath();
@@ -174,13 +177,16 @@ class LocalLlamaProvider extends AIProvider with RateLimitTracker {
               ? '${directory.path}${Platform.pathSeparator}$candidateName'
               : '${directory.path}${Platform.pathSeparator}$prefix${Platform.pathSeparator}$candidateName';
           final file = File(candidatePath);
-          if (await file.exists()) {
+          final exists = file.existsSync();
+          print('[LocalLlamaProvider] checking candidate GGUF path: ' + candidatePath + ' existsSync=' + exists.toString());
+          if (exists) {
             return file.path;
           }
         }
       }
     }
 
+    print('[LocalLlamaProvider] no existing GGUF model path found after checking override and local candidates');
     return null;
   }
 
@@ -203,8 +209,9 @@ class LocalLlamaProvider extends AIProvider with RateLimitTracker {
     final targetFile = File(
       '${documentsDirectory.path}${Platform.pathSeparator}$modelFileName',
     );
+    print('[LocalLlamaProvider] checking download target GGUF path: ' + targetFile.path + ' existsSync=' + targetFile.existsSync().toString());
 
-    if (await targetFile.exists() && await targetFile.length() > 0) {
+    if (targetFile.existsSync() && await targetFile.length() > 0) {
       _resolvedModelPath = targetFile.path;
       return targetFile.path;
     }
