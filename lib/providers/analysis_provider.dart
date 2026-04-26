@@ -84,6 +84,18 @@ class AnalysisProvider extends ChangeNotifier {
   String get providerName => _providerName;
   String? get errorMessage => _errorMessage;
   String get liveLabels => _liveLabels;
+  String get analysisStatusMessage {
+    if (_aiManager.isLocalModelDownloading) {
+      return 'Downloading local AI model...';
+    }
+    if (_aiManager.isLocalModelPreparing) {
+      return 'Preparing local AI model...';
+    }
+    if (_isAnalyzing) {
+      return 'Analyzing...';
+    }
+    return 'Ready to analyze.';
+  }
   AnalysisResult? get lastResult => _lastResult;
   Uint8List? get frozenImage => _frozenImage;
   bool get hasExplanations => _explanations.isNotEmpty;
@@ -713,3 +725,4 @@ class AnalysisProvider extends ChangeNotifier {
     super.dispose();
   }
 }
+
