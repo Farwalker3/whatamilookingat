@@ -4,6 +4,7 @@ import 'package:flutter/foundation.dart';
 import '../models/device_context.dart';
 import '../models/explanation.dart';
 import 'ai_provider.dart';
+import 'providers/localllamaprovider.dart';
 import 'providers/offline_provider.dart';
 import 'providers/proxy_visual_provider.dart';
 
@@ -18,10 +19,18 @@ class AIRotationManager {
 
   void initialize({
     String proxyBaseUrl = '/api/chat',
+    String localModelFileName = LocalLlamaProvider.defaultModelFileName,
+    String? localModelPath,
   }) {
     _providers.clear();
 
-    final resolvedProxyBaseUrl = proxyBaseUrl.trim().isEmpty ? '/api/chat' : proxyBaseUrl.trim();
+    final resolvedProxyBaseUrl =
+        proxyBaseUrl.trim().isEmpty ? '/api/chat' : proxyBaseUrl.trim();
+
+    _providers.add(LocalLlamaProvider(
+      modelFileName: localModelFileName,
+      modelPathOverride: localModelPath,
+    ));
 
     _providers.add(ProxyVisualAIProvider(
       proxyBaseUrl: resolvedProxyBaseUrl,
@@ -48,7 +57,8 @@ class AIRotationManager {
       model: 'google/gemini-2.5-flash',
     ));
 
-    debugPrint('[AI] Initialized ${_providers.length} providers via proxy: $resolvedProxyBaseUrl');
+    debugPrint(
+        '[AI] Initialized ${_providers.length} providers via local + proxy fallback: $resolvedProxyBaseUrl');
   }
 
   bool get hasOnlineProviders => _providers.any((p) => p.isAvailable);
@@ -65,7 +75,8 @@ class AIRotationManager {
         context: context,
       );
       _lastUsedProvider = _offlineProvider.name;
-      debugPrint('[AI] Using offline provider (isOffline=$isOffline, providers=${_providers.length})');
+      debugPrint(
+          '[AI] Using offline provider (isOffline=$isOffline, providers=${_providers.length})');
       return (results, _offlineProvider.name);
     }
 

@@ -24,6 +24,9 @@ dependencies:
   # AI - Gemini
   google_generative_ai: ^0.4.6
 
+  # AI - local llama.cpp runtime
+  llama_cpp_dart: ^0.2.2
+
   # HTTP for REST APIs (Groq, OpenRouter, News)
   http: ^1.4.0
 
