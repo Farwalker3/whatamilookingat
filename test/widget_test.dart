@@ -20,7 +20,7 @@ void main() {
     final locationService = LocationService();
     final newsService = NewsService(apiKey: '');
     final aiManager = AIRotationManager();
-    aiManager.initialize(geminiKey: '', groqKey: '', openRouterKey: '');
+    aiManager.initialize();
 
     await tester.pumpWidget(
       MultiProvider(

@@ -412,9 +412,6 @@ class AnalysisProvider extends ChangeNotifier {
     }
   }
 
-  Future<void> _analyzeCurrentFrame() async {
-    await _captureAndAnalyzeCurrentScene();
-  }
 
   Future<void> _runAnalysis({
     XFile? xFile,
@@ -529,13 +526,13 @@ class AnalysisProvider extends ChangeNotifier {
           // Copy the frozen image to history folder
           try {
             final appDir = await getApplicationDocumentsDirectory();
-            savedImagePath = '\${appDir.path}/history_\${DateTime.now().millisecondsSinceEpoch}.jpg';
+            savedImagePath = '${appDir.path}/history_${DateTime.now().millisecondsSinceEpoch}.jpg';
             await xFile.saveTo(savedImagePath);
           } catch (_) {}
         } else if (_isFrozen && imageBytes != null) { // For uploaded images
           try {
             final appDir = await getApplicationDocumentsDirectory();
-            savedImagePath = '\${appDir.path}/history_\${DateTime.now().millisecondsSinceEpoch}.jpg';
+            savedImagePath = '${appDir.path}/history_${DateTime.now().millisecondsSinceEpoch}.jpg';
             await File(savedImagePath).writeAsBytes(imageBytes);
           } catch (_) {}
         }

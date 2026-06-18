@@ -119,7 +119,7 @@ class AIRotationManager {
       return (results, _offlineProvider.name);
     }
 
-    final startIndex = _currentIndex % _providers.length;
+    const startIndex = 0;
     print('[AIRotationManager] starting provider rotation at index=' + startIndex.toString());
     for (int i = 0; i < _providers.length; i++) {
       final index = (startIndex + i) % _providers.length;

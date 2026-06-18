@@ -86,7 +86,7 @@ class _SettingsScreenState extends State<SettingsScreen> {
               ),
               value: provider.isARModeEnabled,
               onChanged: (val) => provider.toggleARMode(),
-              activeColor: AppTheme.primary,
+              activeThumbColor: AppTheme.primary,
               shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(16)),
               tileColor: Colors.white.withAlpha(10),
             ),
